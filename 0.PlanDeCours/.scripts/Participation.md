@@ -33,7 +33,7 @@
 | 14 | [300155466](../300155466/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/583231?s=460&v=4' width=20 height=20></image>](https://github.com/octocat) | :x: | :x: |
 | 15 | [300155524](../300155524/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/583231?s=460&v=4' width=20 height=20></image>](https://github.com/octocat) | :x: | :x: |
 | 16 | [300155909](../300155909/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/583231?s=460&v=4' width=20 height=20></image>](https://github.com/octocat) | :x: | :x: |
-| 17 | [300155927](../300155927/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/236671775?s=460&v=4' width=20 height=20></image>](https://github.com/garvey200) | :2nd_place_medal: | :heavy_check_mark: |
+| 17 | [300155927](../300155927/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/236671775?s=460&v=4' width=20 height=20></image>](https://github.com/garvey200) | :1st_place_medal: | :heavy_check_mark: |
 | 18 | [300156187](../300156187/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/273896373?s=460&v=4' width=20 height=20></image>](https://github.com/idirislamchili) | :1st_place_medal: | :heavy_check_mark: |
 | 19 | [300156497](../300156497/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/231499918?s=460&v=4' width=20 height=20></image>](https://github.com/mounakaci) | :x: | :x: |
 | 20 | [300156615](../300156615/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/231570011?s=460&v=4' width=20 height=20></image>](https://github.com/waliii81) | :x: | :x: |
