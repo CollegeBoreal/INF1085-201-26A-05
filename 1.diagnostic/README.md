@@ -1,5 +1,7 @@
 # 🔌 Diagnostic
 
+[:tada: Participation](.scripts/Participation.md)
+
 <image src=images/Designer.png width=% height=% > </image>
 
 ---
