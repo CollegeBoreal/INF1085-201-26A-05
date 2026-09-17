@@ -1,2 +1,3 @@
 # 300156187
-![photo1](images/IMG_4290.jpeg)
+🖥️ Démontage du serveur - HP ProLiant DL360 G6
+<image src=images/IMG_4290.jpeg width=50% height=50%> </image>
