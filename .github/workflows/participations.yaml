@@ -23,6 +23,7 @@ jobs:
         run: |
           $chapters = @(
             "0.PlanDeCours"
+            "1.diagnostic"
           )
 
           foreach ($chapter in $chapters) {
@@ -44,6 +45,7 @@ jobs:
         run: |
           $chapters = @(
             "0.PlanDeCours"
+            "1.diagnostic"
           )
 
           foreach ($chapter in $chapters) {
