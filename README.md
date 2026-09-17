@@ -2,3 +2,9 @@
 INF 1085-201 Administration Linux
 
 <image src=images/image.jpeg width=% height=% > </image>
+
+## :one: [Devoirs](Devoirs)
+
+|  :hash: | Date   | Cours                                  | 🎉 Participations                                     |
+|---------|--------|:-----------------------------------------------------|:----------------------------------------------------- |
+| :one:   | 17-Sep | [0.PlanDeCours](0.PlanDeCours)                       | [🎉](0.PlanDeCours/.scripts/Participation.md)         |
