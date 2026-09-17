@@ -31,7 +31,7 @@ Documentation de l'assemblage matériel et de la configuration RAID pour un serv
 Le serveur a été ouvert sur l'établi pour installer et vérifier ses composants internes (RAM, CPU, disques) avant d'être remonté dans le rack.
 
 <div align="center">
-  <img src="chemin/vers/figure1.jpg" alt="Figure 1" width="80%">
+  <img src="images/IMG_4290.jpeg" alt="Figure 1" width="80%">
   <p><em>Figure 1 — Serveur ouvert sur l'établi, moniteur, clavier et souris connectés directement pour la configuration.</em></p>
 </div>
 
