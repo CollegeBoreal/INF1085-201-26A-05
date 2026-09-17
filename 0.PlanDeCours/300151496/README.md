@@ -4,7 +4,12 @@
 <image src=images/11.jpeg width=50% height=50%> </image>
 
 
-<image src=images/11.jpeg width=50% height=50%> </image>
+<image src=images/15.jpeg width=50% height=50%> </image>
+<image src=images/12.jpeg width=50% height=50%> </image>
+<image src=images/13.jpeg width=50% height=50%> </image>
+<image src=images/14.jpeg width=50% height=50%> </image>
+<image src=images/16.jpeg width=50% height=50%> </image>
+
 
 DOCUMENTATION TECHNIQUE : INTERVENTION SUR SERVEUR
 
