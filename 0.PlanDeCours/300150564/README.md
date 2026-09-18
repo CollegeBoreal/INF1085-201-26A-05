@@ -9,7 +9,7 @@ Matériel identifié
 2 CPU Intel 2.53 GHz
 Étape 1 — Retrait des blocs d'alimentation
 
-![Étape 1](./photos/IMG_2702.HEIC) Retrait des 2 blocs d'alimentation HP.
+![Étape 1](./images/IMG_2702.jpg) Retrait des 2 blocs d'alimentation HP.
 
 ![Étape 1b](./photos/IMG_2705.HEIC) Retrait des 3 disques durs SAS hot-swap.
 
