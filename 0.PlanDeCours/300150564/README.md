@@ -57,6 +57,4 @@ Matériel identifié
 
 <img src="./images/IMG_2728.jpg" width="300"> Config finale : 60 Go RAM, 2 CPU détectés.
 
-Étape 9 — Activation des disques
 
-<img src="./images/etape9.jpg" width="300"> Disques activés, prêts à l'usage.
