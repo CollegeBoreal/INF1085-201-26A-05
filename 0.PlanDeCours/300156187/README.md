@@ -42,7 +42,7 @@ Le serveur a été ouvert sur l'établi pour installer et vérifier ses composan
 La mémoire installée se compose de 4 barrettes de 16 Go, pour un total de 64 Go de RAM, insérées dans les emplacements DIMM de la carte mère.
 
 <div align="center">
-  <img src="images/IMG_4293.jpeg" alt="Figure 2" width="80%">
+  <img src="images/IMG_4296.jpeg" alt="Figure 2" width="80%">
   <p><em>Figure 2 — Installation des barrettes de RAM sur la carte mère.</em></p>
 </div>
 
