@@ -55,13 +55,8 @@ Le serveur dispose de deux sockets CPU (Proc 1 et Proc 2). Un seul processeur a 
 * ❌ **Proc 2 :** une tentative d'installation a été effectuée, mais il n'a pas été reconnu par le système (Non installé) — non utilisé dans la configuration finale.
 
 <div align="center">
-  <img src="chemin/vers/figure3.jpg" alt="Figure 3" width="80%">
+  <img src="images/IMG_4300.jpeg" alt="Figure 3" width="80%">
   <p><em>Figure 3 — Tentative d'installation du second processeur (socket ouvert, CPU mis de côté).</em></p>
-</div>
-
-<div align="center">
-  <img src="chemin/vers/figure4.jpg" alt="Figure 4" width="80%">
-  <p><em>Figure 4 — Utilitaire de configuration RBSU confirmant l'état du CPU : Proc 2 = <code>Not Installed</code>.</em></p>
 </div>
 
 ---
@@ -71,7 +66,7 @@ Le serveur dispose de deux sockets CPU (Proc 1 et Proc 2). Un seul processeur a 
 Trois disques durs SAS de 146,8 Go chacun ont été installés dans les baies de disques du serveur (Baie 1, Baie 2 et Baie 3, Port 1I, Boîtier 1).
 
 <div align="center">
-  <img src="chemin/vers/figure5.jpg" alt="Figure 5" width="80%">
+  <img src="images/IMG_4296.jpeg" alt="Figure 5" width="80%">
   <p><em>Figure 5 — Châssis du serveur ouvert, montrant les emplacements des baies de disques.</em></p>
 </div>
 
