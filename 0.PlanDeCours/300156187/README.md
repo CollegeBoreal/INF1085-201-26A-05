@@ -118,7 +118,7 @@ Une fois le RAID 5 sélectionné (et validé sans erreur), le système affiche u
 
 <div align="center">
   <img src="images/IMG_4299.jpeg" alt="Figure 9" width="80%">
-  <p><em>Figure 9 — Confirmation de la configuration (Entrée pour enregistrer, Échap pour annuler).</em></p>
+  <p><em>Figure 8 — Confirmation de la configuration (Entrée pour enregistrer, Échap pour annuler).</em></p>
 </div>
 
 * **Entrée (RETURN) :** enregistre la configuration
