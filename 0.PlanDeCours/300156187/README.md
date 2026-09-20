@@ -67,7 +67,7 @@ Trois disques durs SAS de 146,8 Go chacun ont été installés dans les baies de
 
 <div align="center">
   <img src="images/IMG_4296.jpeg" alt="Figure 5" width="80%">
-  <p><em>Figure 5 — Châssis du serveur ouvert, montrant les emplacements des baies de disques.</em></p>
+  <p><em>Figure 4 — Châssis du serveur ouvert, montrant les emplacements des baies de disques.</em></p>
 </div>
 
 ---
@@ -77,8 +77,8 @@ Trois disques durs SAS de 146,8 Go chacun ont été installés dans les baies de
 Au démarrage, le serveur exécute sa séquence POST (Power-On Self-Test) : initialisation du contrôleur SATA, de la carte réseau Broadcom NetXtreme II, du module iLO 2 (Integrated Lights-Out), puis du contrôleur Smart Array P410i.
 
 <div align="center">
-  <img src="chemin/vers/figure6.jpg" alt="Figure 6" width="80%">
-  <p><em>Figure 6 — Écran POST : initialisation du contrôleur Smart Array P410i avant d'entrer dans l'utilitaire de configuration.</em></p>
+  <img src="images/IMG_4297.jpeg" alt="Figure 6" width="80%">
+  <p><em>Figure 5 — Écran POST : initialisation du contrôleur Smart Array P410i avant d'entrer dans l'utilitaire de configuration.</em></p>
 </div>
 
 C'est à ce moment précis qu'il faut appuyer sur **F8** pour accéder à l'utilitaire de configuration RAID (voir la section suivante).
@@ -94,27 +94,30 @@ La configuration RAID a été effectuée au démarrage du serveur en utilisant l
 Les trois disques physiques disponibles (146,8 Go SAS HDD chacun) sont détectés par le contrôleur HP Smart Array P410i. Le **RAID 5** a été sélectionné, offrant une tolérance aux pannes avec parité répartie sur les disques.
 
 <div align="center">
-  <img src="chemin/vers/figure7.jpg" alt="Figure 7" width="80%">
-  <p><em>Figure 7 — Sélection des disques physiques et du RAID 5.</em></p>
+  <img src="images/IMG_4299.jpeg" alt="Figure 7" width="80%">
+  <p><em>Figure 6 — Sélection des disques physiques et du RAID 5.</em></p>
 </div>
 
-### 6.2 ⚠️ Problème rencontré : Mouvement de disque invalide
+### 6.2 ⚠️ Problème rencontré : Ventilateur 1 démarre pas
 Lors d'une reconfig, l'utilitaire a affiché l'erreur suivante :
-> *An invalid drive movement was reported during POST. Modifications to the array configuration following an invalid drive movement will result in loss of old configuration information and contents of the original logical drives. Press <ESC> for the main menu.*
+> *1611-Fan 1 Warning
+Fan Solution Not Sufficient
+1615-Power Supply Failure or Power Supply Unplugged in Bay 1
+Critical Failure Detected - System Shutting Down in 5 Seconds!.*
 
 <div align="center">
-  <img src="chemin/vers/figure8.jpg" alt="Figure 8" width="80%">
-  <p><em>Figure 8 — Erreur du contrôleur suite au déplacement/échange physique d'un disque entre deux redémarrages.</em></p>
+  <img src="images/IMG_4298.jpeg" alt="Figure 8" width="80%">
+  <p><em>Figure 7 — Erreur du ventilateur.</em></p>
 </div>
 
-* **Cause probable :** un disque a été débranché, réinséré dans une autre baie, ou l'ordre des disques a changé entre deux démarrages, empêchant le contrôleur de faire correspondre la configuration RAID d'origine.
-* **Résolution :** appuyer sur `ESC` pour revenir au menu principal, s'assurer que chaque disque est replacé dans sa baie d'origine (Baie 1, 2, 3), puis recréer ou valider la configuration RAID 5 si nécessaire.
+* **Causes probables :** Ventilateur bloqué ou défectueux : pales bloquées, moteur HS, poussière importante. Ventilateur mal branché : connecteur partiellement débranché ou câble endommagé. Mauvais emplacement du ventilateur : sur certains serveurs, le ventilateur doit être installé dans un emplacement précis.. etc. 
+* **Résolution :** Retrait, nettoyage et replacement du ventilateur 1.
 
 ### 6.3 Enregistrement de la configuration
 Une fois le RAID 5 sélectionné (et validé sans erreur), le système affiche un résumé du lecteur logique créé — une taille totale de 273,4 Go avec la tolérance aux pannes RAID 5 — avant de demander confirmation.
 
 <div align="center">
-  <img src="chemin/vers/figure9.jpg" alt="Figure 9" width="80%">
+  <img src="images/IMG_4299.jpeg" alt="Figure 9" width="80%">
   <p><em>Figure 9 — Confirmation de la configuration (Entrée pour enregistrer, Échap pour annuler).</em></p>
 </div>
 
@@ -128,7 +131,7 @@ Une fois le RAID 5 sélectionné (et validé sans erreur), le système affiche u
 | Composant | Détail |
 | :--- | :--- |
 | **RAM** | 64 Go (4 x 16 Go) |
-| **Processeur(s)** | 1 x Intel (2,40 GHz, cache L3 12 Mo) — Proc 2 non fonctionnel |
+| **Processeur(s)** | 1 x Intel (2,53 GHz, cache L3 8Mb) — Proc 2 non fonctionnel |
 | **Disques durs** | 3 x 146,8 Go SAS HDD |
 | **Configuration RAID** | RAID 5 — Lecteur logique de 273,4 Go |
 | **Méthode de configuration RAID** | Touche `F8` au démarrage → Utilitaire de configuration HP Array |
