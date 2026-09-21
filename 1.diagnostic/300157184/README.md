@@ -1,18 +1,15 @@
 
                                         #LABORATOIRE : DIAGNOSTIC ET ANALYSE D’UN SERVEUR HP PROLIANT DL360 G6 
-📌 1. Identification du composant
-
-
-
-Nom : NVIDIA RTX A2000 Laptop GPU
-
-
-
-Format : MXM (Mobile PCI Express Module)
-
-
-
-Type : Carte graphique professionnelle pour ordinateur portable 
+                                        
+1.## Identification du ComposantDénomination commerciale : NVIDIA RTX A2000 Laptop GPU
+   
+2.## Facteur de forme : Module MXM 3.1 Type B (Mobile PCI Express Module)
+   
+3.##  Architecture : NVIDIA AmpereCatégorie : Unité de traitement graphique (GPU) professionnelle pour stations de travail mobiles et systèmes embarqués
+  
+4.##  Référence constructeur (Dell DP/N) : 0JDC1F
+   
+5.##  Référence NVIDIA (Board ID) : 900-53093-0201-000 / Model P6172a   
 
                                         
 
