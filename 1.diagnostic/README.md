@@ -2,6 +2,8 @@
 
 [:tada: Participation](.scripts/Participation.md)
 
+### :fire_extinguisher: Le serveur ne démarre pas
+
 ---
 
 <image src=images/Designer.png width=% height=% > </image>
