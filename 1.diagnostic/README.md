@@ -61,6 +61,8 @@ Démarre.
 
 Si le serveur POST :
 
+<image src=images/20260917_140052.jpg width=20% height=20% > </image>
+
 - ✅ CPU2 est bon
 - ➡️ le problème est probablement Socket 2 ou son circuit mémoire.
 
