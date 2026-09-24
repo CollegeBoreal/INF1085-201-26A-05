@@ -55,8 +55,7 @@ Cette image montre la connexion au serveur avec le compte administrateur `root`.
 
 Cette image montre l'exécution de la commande `ping` pour vérifier la communication entre le serveur et la passerelle réseau. Les réponses reçues confirment que la connexion réseau fonctionne correctement.
 
-images/ping-test.jpg
-
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/2.Proxmox/300157184/images/WhatsApp%20Image%202026-09-24%20at%2018.38.09.jpeg?raw=true)
 ```bash
 ping 10.7.237.1
 ```
