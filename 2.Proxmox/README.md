@@ -2,9 +2,9 @@
 
 🉑 Credentials: root/Boreal@2️⃣02️⃣6
 
-| IP | S/N 
+| IP | S/N  | 🩹 |
 |-|-|
-| 10.7.237.24 | MXQOO30BLP
+| 10.7.237.24 | MXQOO30BLP | S13
 
 - [ ] 10.7.236.0/23 Network
 - [ ] 10.7.237.1 Gateway
