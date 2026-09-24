@@ -279,39 +279,7 @@ BOOT_IMAGE=/boot/vmlinuz-7.x.x-pve root=/dev/mapper/pve-root ro nomodeset acpi=o
 
 ---
 
-# Étape 6 – Rendre les paramètres permanents
-
-Modifier :
-
-```bash
-nano /etc/default/grub.d/installer.cfg
-```
-
-Ajouter :
-
-```bash
-GRUB_CMDLINE_LINUX="$GRUB_CMDLINE_LINUX nomodeset acpi=off"
-```
-
----
-
-Mettre à jour GRUB :
-
-```bash
-update-grub
-```
-
----
-
-Redémarrer :
-
-```bash
-reboot
-```
-
----
-
-# Étape 7 – Vérifier les processeurs
+# Étape 6 – Vérifier les processeurs
 
 Afficher les informations CPU :
 
@@ -344,7 +312,7 @@ Résultat attendu :
 
 ---
 
-# Étape 8 – Vérifier le matériel
+# Étape 7 – Vérifier le matériel
 
 ## Processeurs
 
