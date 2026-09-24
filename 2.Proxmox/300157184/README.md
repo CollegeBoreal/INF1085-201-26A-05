@@ -8,10 +8,10 @@ Ce projet présente les différentes étapes de l'installation et de la configur
 
 Cette image montre le BIOS du serveur HP ProLiant DL360 G6. Cette étape permet de vérifier les composants matériels du serveur, notamment la mémoire RAM, les processeurs et les options de démarrage avant l'installation du système.
 
-
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/2.Proxmox/300157184/images/WhatsApp%20Image%202026-09-24%20at%2018.37.39%20(2).jpeg?raw=true)  
 
 ---
-![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/2.Proxmox/300157184/images/WhatsApp%20Image%202026-09-24%20at%2018.37.39%20(2).jpeg?raw=true)  
+
 
 ## Étape 2 : Démarrage du serveur HP ProLiant
 
