@@ -6,6 +6,10 @@
 |-|-|
 | 10.7.237.24 | 
 
+- [ ] 10.7.236.0/23 Network
+- [ ] 10.7.237.1 Gateway
+- [ ] 8.8.8.8 DNS
+
 ## 🎯 Objectif
 
 À la fin de ce laboratoire, vous serez capable de :
