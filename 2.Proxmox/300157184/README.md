@@ -47,7 +47,7 @@ https://192.168.100.2:8006/
 
 Cette image montre la connexion au serveur avec le compte administrateur `root`. Cette étape permet d'accéder à la ligne de commande Linux pour effectuer les configurations nécessaires.
 
-images/root-login.jpg
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/2.Proxmox/300157184/images/WhatsApp%20Image%202026-09-24%20at%2018.37.40%20(3).jpeg?raw=true)
 
 ---
 
