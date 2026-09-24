@@ -33,7 +33,7 @@ Cette image présente le menu d'installation de Proxmox Virtual Environment. À 
 
 Cette image montre le premier démarrage de Proxmox après l'installation. Une adresse IP est affichée afin d'accéder à l'interface Web de gestion.
 
-images/proxmox-login.jpg
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/2.Proxmox/300157184/images/WhatsApp%20Image%202026-09-24%20at%2018.37.40%20(2).jpeg?raw=true)
 
 Exemple :
 
