@@ -1,5 +1,4 @@
-
-                                        #LABORATOIRE : DIAGNOSTIC ET ANALYSE D’UN SERVEUR HP PROLIANT DL360 G6 
+# 🧪 LABORATOIRE : DIAGNOSTIC ET ANALYSE D’UN SERVEUR HP PROLIANT DL360 G6 
                                         
 1. Identification du ComposantDénomination commerciale : NVIDIA RTX A2000 Laptop GPU
    
