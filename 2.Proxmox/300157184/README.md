@@ -25,7 +25,7 @@ Cette image montre l'écran de démarrage du serveur HP ProLiant. Le système ef
 
 Cette image présente le menu d'installation de Proxmox Virtual Environment. À cette étape, nous lançons l'installation de l'hyperviseur qui permettra de créer et gérer des machines virtuelles.
 
-images/proxmox-install.jpg
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/2.Proxmox/300157184/images/WhatsApp%20Image%202026-09-24%20at%2018.37.40.jpeg?raw=true)
 
 ---
 
