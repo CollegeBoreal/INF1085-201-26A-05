@@ -1,5 +1,7 @@
 # Installation de Proxmox VE 9 sur un HP ProLiant DL360 G6
 
+🉑 Credentials: root/Boreal@2️⃣02️⃣6
+
 ## 🎯 Objectif
 
 À la fin de ce laboratoire, vous serez capable de :
