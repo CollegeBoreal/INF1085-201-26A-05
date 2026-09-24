@@ -2,6 +2,10 @@
 
 🉑 Credentials: root/Boreal@2️⃣02️⃣6
 
+| IP | S/N 
+|-|-|
+| 10.7.237.24 | 
+
 ## 🎯 Objectif
 
 À la fin de ce laboratoire, vous serez capable de :
