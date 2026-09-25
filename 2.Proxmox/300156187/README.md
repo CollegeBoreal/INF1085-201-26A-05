@@ -118,7 +118,7 @@ Après l’enregistrement, l’utilitaire affiche un volume logique de **293,56 
   <p><em>Figure 6 — Enregistrement de la configuration RAID.</em></p>
 </div> 
 <div align="center">
-  <img src="images/Raid_5.jpeg" alt="Figure 1" width="80%">
+  <img src="images/Raid.jpeg" alt="Figure 1" width="80%">
   <p><em>Figure 7 — Volume logique RAID 5 reconnu et opérationnel.</em></p>
 </div>   
 
@@ -155,5 +155,26 @@ Une clé USB est préparée sous Windows avec **Rufus**.
 
 > [!CAUTION]
 > La création du média efface le contenu de la clé USB. Vérifier le périphérique choisi avant de démarrer l’écriture.
+
+---
+
+## 6. Démarrage de Proxmox VE
+
+1. Insérer la clé USB dans le serveur.
+2. Démarrer ou redémarrer le HP ProLiant.
+3. Sélectionner la clé USB comme périphérique de démarrage.
+4. Dans le menu Proxmox, choisir `Install Proxmox VE (Graphical)`.
+
+<div align="center">
+  <img src="images/install_succes.jpeg" alt="Figure 1" width="80%">
+  <p><em>Figure 9 — Menu principal de l’installateur Proxmox VE 9.2.</em></p>
+</div>   
+
+L’écran suivant confirme le chargement de l’installateur et de l’image `initrd`.
+
+<div align="center">
+  <img src="images/Booting.jpeg" alt="Figure 1" width="80%">
+  <p><em>Figure 10 — Chargement de l’installateur Proxmox VE.</em></p>
+</div>   
 
 ---
