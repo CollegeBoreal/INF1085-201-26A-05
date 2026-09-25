@@ -52,4 +52,59 @@ L’objectif est de transformer un serveur physique en plateforme de virtualisat
 
 ---
 
-<image src=images/1_.jpeg width=50% height=50% > </image>
+## 3. Diagnostic au démarrage
+
+Le POST signale plusieurs problèmes matériels à corriger avant d’utiliser le serveur de façon intensive.
+
+### 3.1 Erreurs de mémoire
+
+Les messages `207-Memory initialization error` concernent les emplacements **DIMM 2, DIMM 3 et DIMM 9 du processeur 1**. Le système avertit que toute la mémoire installée pourrait ne pas être accessible.
+
+<div align="center">
+  <img src="images/DIMMs.jpeg" alt="Figure 1" width="80%">
+  <p><em>Figure 2 — Erreurs d’initialisation sur trois emplacements DIMM du processeur 1.</em></p>
+</div>
+
+**Actions recommandées :**
+
+1. Éteindre le serveur et débrancher l’alimentation.
+2. Retirer puis réinsérer les barrettes concernées.
+3. Vérifier l’ordre de peuplement indiqué sur le capot du serveur.
+4. Tester les barrettes une par une pour isoler une barrette ou un emplacement défectueux.
+5. Relancer le diagnostic mémoire et confirmer la quantité réellement détectée.
+
+### 3.2 Ventilation et alimentation
+
+Le POST affiche également :
+
+- `1611-Fan 1 Failure` : le ventilateur 1 est absent, mal branché ou défectueux.
+- `Fan Solution Not Sufficient` : la ventilation disponible est insuffisante.
+- `1615-Power Supply Failure or Power Supply Unplugged in Bay 2` : la seconde alimentation n’est pas opérationnelle.
+
+<div align="center">
+  <img src="images/FAN_1.jpeg" alt="Figure 1" width="80%">
+  <p><em>Figure 3 — Alertes concernant la mémoire, le ventilateur 1 et l’alimentation de la baie 2.</em></p>
+</div> 
+
+## 4. Configuration du RAID 5
+
+Le contrôleur **HP Smart Array P410i** est configuré avec trois disques SAS de 146,8 Go. Le RAID 5 répartit les données et la parité sur les trois disques. Il fournit une capacité utile d’environ 293,56 Go et tolère la panne d’un disque.
+
+### 4.1 Création du volume logique
+
+Dans l’utilitaire **Option ROM Configuration for Arrays (ORCA)** :
+
+1. Ouvrir `Create Logical Drive`.
+2. Sélectionner les trois disques physiques.
+3. Choisir `RAID 5`.
+4. Conserver la partition de démarrage activée.
+5. Valider la création du volume logique.
+
+<div align="center">
+  <img src="images/Création_vol_logique.jpeg" alt="Figure 1" width="80%">
+  <p><em>Figure 4 — Menu principal de l’utilitaire HP Smart Array.</em></p>
+</div> 
+<div align="center">
+  <img src="images/Raid_5.jpeg" alt="Figure 1" width="80%">
+  <p><em>Figure 5 — Trois disques de 146,8 Go sélectionnés pour le RAID 5.</em></p>
+</div>   
