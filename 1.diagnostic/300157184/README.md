@@ -26,5 +26,5 @@ Cette image présente une carte graphique NVIDIA RTX A2000 Laptop GPU au format 
 1. Le câble d'alimentation (à connecteur noir C13)Emplacement : Branchement sur le premier bloc d'alimentation de 460W du serveur à droite, et au dos de l'écran Dell à gauche.   Rôle : Fournir l'énergie électrique du réseau secteur (230V / 110V) à chacun des appareils pour les sous-mettre sous tension.
    
 2. Le câble vidéo VGA (à connecteur bleu avec vis)Emplacement : Branché sur le port vidéo VGA du serveur (à gauche du bloc d'alimentation) et sur l'entrée VGA bleue au dos de l'écran.   Rôle : Transmettre le signal vidéo analogique du serveur vers l'écran pour afficher l'interface graphique, le BIOS/POST ou le terminal de commande
-
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/1.diagnostic/300157184/images/WhatsApp%20Image%202026-09-24%20at%2018.37.39%20(2).jpeg?raw=true)
 
