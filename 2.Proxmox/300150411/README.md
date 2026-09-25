@@ -15,6 +15,8 @@
 
 
 #En résumé : nous avons installé Proxmox VE sur un serveur et préparé le système pour pouvoir ensuite utiliser Proxmox afin de gérer des machines virtuelles. Le travail prévoit notamment la vérification des processeurs, de la mémoire, des disques et du réseau après l’installation.
+
+
 <image src=images/20260917_140052.jpg width=50% height=50% > </image>
 
 <image src=images/20260917_140056.jpg width=50% height=50% > </image>
