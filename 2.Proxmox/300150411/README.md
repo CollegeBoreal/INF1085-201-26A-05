@@ -6,11 +6,16 @@
 
 #Lors de l’installation, nous avons choisi le disque, d’une capacité d’environ 273,40 GiB, comme disque de destination. L’installateur Proxmox prépare automatiquement le disque et installe les éléments nécessaires au fonctionnement du système.
 
-#Ce que nous avons fait
+#Ce que nous avons fait:
+
 #1 Démarrer l’installation de Proxmox VE.
+
 #2 Choisir le disque /dev/sda comme disque d’installation.
+
 #3 Vérifier les informations du disque avant de continuer.
+
 #4 Laisser Proxmox effectuer l’installation et la configuration automatique.
+
 #5 Après l’installation, vérifier le fonctionnement du serveur et son matériel avec des commandes Linux.
 
 
