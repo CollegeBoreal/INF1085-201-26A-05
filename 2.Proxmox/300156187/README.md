@@ -108,3 +108,52 @@ Dans l’utilitaire **Option ROM Configuration for Arrays (ORCA)** :
   <img src="images/Raid_5.jpeg" alt="Figure 1" width="80%">
   <p><em>Figure 5 — Trois disques de 146,8 Go sélectionnés pour le RAID 5.</em></p>
 </div>   
+
+### 4.2 Validation
+
+Après l’enregistrement, l’utilitaire affiche un volume logique de **293,56 Go** avec l’état `OK`.
+
+<div align="center">
+  <img src="images/Config_saved.jpeg" alt="Figure 1" width="80%">
+  <p><em>Figure 6 — Enregistrement de la configuration RAID.</em></p>
+</div> 
+<div align="center">
+  <img src="images/Raid_5.jpeg" alt="Figure 1" width="80%">
+  <p><em>Figure 7 — Volume logique RAID 5 reconnu et opérationnel.</em></p>
+</div>   
+
+---
+
+## 5. Préparation de la clé USB
+
+Une clé USB est préparée sous Windows avec **Rufus**.
+
+### Paramètres
+
+| Champ | Valeur |
+|---|---|
+| Périphérique | Clé USB sélectionnée |
+| Image de démarrage | ISO Proxmox VE 9.2 |
+| Schéma de partition | MBR |
+| Système cible | BIOS ou UEFI-CSM |
+| Système de fichiers | FAT32 par défaut |
+
+<div align="center">
+  <img src="images/Refus.jpeg" alt="Figure 1" width="80%">
+  <p><em>Figure 8 — Rufus avant la sélection de l’image ISO.</em></p>
+</div>   
+
+**Procédure :**
+
+1. Télécharger l’image ISO officielle de Proxmox VE.
+2. Brancher la clé USB et ouvrir Rufus.
+3. Vérifier que le bon périphérique USB est sélectionné.
+4. Cliquer sur `SÉLECTION`, puis choisir l’ISO Proxmox VE 9.2.
+5. Utiliser le schéma `MBR` et la cible `BIOS (ou UEFI-CSM)` pour ce serveur.
+6. Cliquer sur `DÉMARRER` et confirmer l’effacement de la clé.
+7. Attendre l’état `PRÊT`, puis éjecter la clé correctement.
+
+> [!CAUTION]
+> La création du média efface le contenu de la clé USB. Vérifier le périphérique choisi avant de démarrer l’écriture.
+
+---
