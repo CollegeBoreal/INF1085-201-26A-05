@@ -26,15 +26,21 @@ Nous avons ouvert le serveur et effectué le travail physique :
 
 **Leçon apprise :** les barrettes de RAM doivent être installées **dans l'ordre**, en suivant la numérotation des slots à côté de chaque processeur. Les installer en alternance ne fonctionne pas.
 
-![Intérieur du serveur](images/01-server-hardware-inside.png)
+<p align="center">
+  <img src="images/01-server-hardware-inside.png" alt="Intérieur du serveur" width="300">
+</p>
 
 ## 2. Vérification au POST
 
 Au démarrage, l'écran POST a confirmé que le serveur détectait **8 Go de RAM** et **les deux processeurs**.
 
-![POST 8 Go de RAM détectés](images/02-post-8gb-ram-detected.png)
+<p align="center">
+  <img src="images/02-post-8gb-ram-detected.png" alt="POST 8 Go de RAM détectés" width="300">
+</p>
 
-![POST processeurs et alimentation](images/03-post-cpu-and-psu-info.png)
+<p align="center">
+  <img src="images/03-post-cpu-and-psu-info.png" alt="POST processeurs et alimentation" width="500">
+</p>
 
 > Remarque : le message `1615-Power Supply Failure or Power Supply Unplugged in Bay 1` apparaît parce qu'une seule alimentation était branchée. Il ne bloque pas le démarrage.
 
@@ -42,63 +48,85 @@ Au démarrage, l'écran POST a confirmé que le serveur détectait **8 Go de RAM
 
 Nous avons vérifié la configuration du système dans l'utilitaire de configuration du BIOS (RBSU).
 
-![BIOS RBSU DL360 G6](images/04-bios-rbsu-dl360-g6.png)
+<p align="center">
+  <img src="images/04-bios-rbsu-dl360-g6.png" alt="BIOS RBSU DL360 G6" width="500">
+</p>
 
 ## 4. Configuration RAID (F8)
 
 Au démarrage, le contrôleur **HP Smart Array P410i** est détecté. Nous avons appuyé sur **F8** pour accéder à l'utilitaire de configuration des grappes (ORCA) afin de formater les disques.
 
-![Contrôleur Smart Array P410i](images/05-smart-array-p410i-controller.png)
+<p align="center">
+  <img src="images/05-smart-array-p410i-controller.png" alt="Contrôleur Smart Array P410i" width="300">
+</p>
 
 Le contrôleur a signalé un **déplacement de disque invalide** (*invalid drive movement*), car les disques provenaient d'une autre configuration. Nous avons accepté de perdre l'ancienne configuration.
 
-![ORCA déplacement de disque invalide](images/06-orca-invalid-drive-movement.png)
+<p align="center">
+  <img src="images/06-orca-invalid-drive-movement.png" alt="ORCA déplacement de disque invalide" width="300">
+</p>
 
 Nous avons créé un nouveau lecteur logique en **RAID 5** (293,56 Go) et l'avons enregistré avec **F8**.
 
-![ORCA création du RAID 5](images/07-orca-create-raid5-f8.png)
-
-![ORCA lecteur logique RAID 5](images/08-orca-logical-drive-raid5.png)
+<p align="center">
+  <img src="images/07-orca-create-raid5-f8.png" alt="ORCA création du RAID 5" width="300">
+  <img src="images/08-orca-logical-drive-raid5.png" alt="ORCA lecteur logique RAID 5" width="300">
+</p>
 
 ## 5. Clé USB bootable
 
 Nous avons téléchargé l'**ISO de Proxmox VE 9.2** sur le site officiel et l'avons écrite sur une clé USB pour la rendre bootable.
 
-![Téléchargement de Proxmox VE 9.2](images/09-proxmox-ve-9-2-download.png)
+<p align="center">
+  <img src="images/09-proxmox-ve-9-2-download.png" alt="Téléchargement de Proxmox VE 9.2" width="300">
+</p>
 
 ## 6. Démarrage sur la clé USB (F11)
 
 Nous avons appuyé sur **F11** pendant le POST pour ouvrir le menu de démarrage, puis choisi **3) One Time Boot to USB DriveKey**.
 
-![Menu de démarrage F11](images/10-f11-boot-override-menu.png)
+<p align="center">
+  <img src="images/10-f11-boot-override-menu.png" alt="Menu de démarrage F11" width="300">
+</p>
 
 Le menu d'installation de Proxmox est apparu.
 
-![Menu de démarrage Proxmox](images/11-proxmox-boot-menu.png)
+<p align="center">
+  <img src="images/11-proxmox-boot-menu.png" alt="Menu de démarrage Proxmox" width="300">
+</p>
 
 ## 7. Modification de l'entrée GRUB
 
 En suivant les instructions du cours, nous avons appuyé sur **e** sur *Install Proxmox VE (Graphical)*, ajouté `nomodeset acpi=off` à la fin de la ligne `linux`, puis démarré avec **Ctrl + X** (ou **F10**).
 
-![Instructions GRUB du cours](images/12-course-grub-instructions.png)
-
-![Modification de l'entrée GRUB](images/13-grub-edit-entry.png)
+<p align="center">
+  <img src="images/12-course-grub-instructions.png" alt="Instructions GRUB du cours" width="300">
+  <img src="images/13-grub-edit-entry.png" alt="Modification de l'entrée GRUB" width="300">
+</p>
 
 L'installateur a commencé à charger et a cherché l'ISO (d'abord sur `/dev/sr0`, le lecteur DVD).
 
-![Recherche de l'ISO par l'installateur](images/14-installer-searching-iso.png)
+<p align="center">
+  <img src="images/14-installer-searching-iso.png" alt="Recherche de l'ISO par l'installateur" width="300">
+</p>
 
 ## 8. Installateur Proxmox
 
 L'installateur a détecté le volume logique RAID 5 comme disque cible : `/dev/sda (273.40 GiB, LOGICAL VOLUME)`.
 
-![Disque cible de l'installation](images/15-installer-target-disk.png)
+<p align="center">
+  <img src="images/15-installer-target-disk.png" alt="Disque cible de l'installation" width="300">
+</p>
 
-![Disque cible, vue complète](images/16-installer-target-disk-full.png)
+<p align="center">
+  <img src="images/16-installer-target-disk-full.png" alt="Disque cible, vue complète" width="500">
+</p>
 
 L'installation a commencé.
 
-![Installation en cours](images/17-installation-in-progress.png)
+<p align="center">
+  <img src="images/17-installation-in-progress.png" alt="Installation en cours" width="500">
+</p>
 
 ---
 
@@ -114,7 +142,9 @@ unable to install initramfs
 mount: /target/sys/firmware/efi/efivars: no mount point specified.
 ```
 
-![Erreur chargeur d'amorçage initramfs](images/18-error-bootloader-initramfs.jpg)
+<p align="center">
+  <img src="images/18-error-bootloader-initramfs.jpg" alt="Erreur chargeur d'amorçage initramfs" width="300">
+</p>
 
 **Cause probable :** l'installateur a essayé de configurer un chargeur d'amorçage EFI, alors que le DL360 G6 ne supporte que le **BIOS legacy** (pas d'UEFI). L'option `acpi=off` peut aussi empêcher le système d'être correctement détecté.
 
@@ -126,7 +156,9 @@ Lors de la tentative suivante, l'installation a échoué avec :
 unable to initialize physical volume /dev/sda3
 ```
 
-![Erreur volume physique sda3](images/19-error-physical-volume-sda3.jpg)
+<p align="center">
+  <img src="images/19-error-physical-volume-sda3.jpg" alt="Erreur volume physique sda3" width="300">
+</p>
 
 **Cause probable :** la première tentative échouée a laissé un ancien groupe de volumes LVM (`pve`) sur le disque, donc l'installateur n'a pas pu réutiliser la partition.
 
