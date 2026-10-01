@@ -7,6 +7,11 @@ On y voit la détection du matériel mis à jour : le serveur dispose désormais
 
 ![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/2.Proxmox/300156497/images/34c795f6-3938-4535-a423-740794ed5582.jpeg?raw=true) Chargement de l'installateur Proxmox VE 9.2 et du disque mémoire initial (ramdisk). Le serveur prépare l'environnement pour lancer l'interface d'installation graphique
 
+![images alt](<img width="838" height="464" alt="image" src="https://github.com/user-attachments/assets/31b4103b-476b-4670-94fe-32de639f0a81" />
+) Cette image montre le premier démarrage de Proxmox après l'installation. Une adresse IP est affichée afin d'accéder à l'interface Web de gestion et cette étape permet d'accéder à la ligne de commande Linux pour effectuer les configurations nécessaires.
+
+
+
 ![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/2.Proxmox/300156497/images/78ecd7b9-3404-476d-a8cf-0f4c31404fb3.jpeg?raw=true) Initialisation des services du noyau et recherche d'une adresse IP via DHCP sur les cartes réseau. Le serveur prépare l'affichage de l'interface graphique d'installation de Proxmox
 
 ![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/2.Proxmox/300156497/images/1c1a3112-6d7a-43e2-a18c-ae52bef47a28.jpeg?raw=true) Saisie du mot de passe administrateur (⁠root⁠) et de l'adresse email pour les alertes système dans l'assistant Proxmox
