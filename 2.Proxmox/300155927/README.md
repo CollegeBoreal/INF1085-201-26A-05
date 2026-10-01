@@ -1,9 +1,13 @@
 # 300155927
 
 # Installation de Proxmox VE — serveur « server25 »
+
 **Étudiant :** 300155927
+
 **Date :** 24 septembre 2026
+
 **Lieu :** Laboratoire (Boréal)
+
 **Logiciel :** Proxmox VE 9.2 (ISO release 1), basé sur Debian (noyau 7.0.2-6-pve)
 
 ## 1. Contexte
