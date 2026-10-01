@@ -7,7 +7,7 @@
 Nous avons ouvert le serveur afin d'observer et d'identifier ses différents composants matériels.
 Cette étape permet de savoir de quel matériel on dispose avant d'installer quoi que ce soit.
 
-![images alt](images/WhatsApp%20Image%202026-09-24%20at%2001.09.26%20PM%20(1).jpeg)
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/2.Proxmox/300155109/images/WhatsApp%20Image%202026-09-24%20at%201.09.20%20PM%20(1).jpeg?raw=true)
 
 ## 2.Vérification dans le BIOS
 
