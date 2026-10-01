@@ -28,8 +28,7 @@ Cela nous a  permis de nous assurer que la RAM et le processeur sont bien reconn
 
 ## 3.Démarrage de l'installateur (GRUB)
 
-![Menu GRUB](<img width="2048" height="1536" alt="WhatsApp Image  10 2026-09-28 at 7 16 47 PM" src="https://github.com/user-attachments/assets/d7708203-5c83-4da1-9aa4-822e3838d863" />
-)
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/2.Proxmox/300155109/images/WhatsApp%20Image%20%2010%202026-09-28%20at%207.16.47%20PM.jpeg?raw=true)
 
 **Explication :**  
 Après avoir démarré sur l'ISO de Proxmox VE 9.2, le menu GRUB s'affiche. nous avons appuyé sur la touche e sur l'entrée « Install Proxmox VE (Graphical) » pour modifier les paramètres de démarrage avant de lancer l'installation. On voit les lignes linux /boot/linux26 ro ramdisk_size=16777216 rw quiet splash=silent et initrd /boot/initrd.img. Une fois les modifications faites, on démarre avec Ctrl+X ou F10. C'est utile sur un vieux serveur comme le G6, où l'installateur graphique peut avoir des problèmes d'affichage ou de compatibilité.
