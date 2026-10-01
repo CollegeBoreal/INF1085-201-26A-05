@@ -37,8 +37,7 @@ Après avoir démarré sur l'ISO de Proxmox VE 9.2, le menu GRUB s'affiche. nous
 
 ## 4. Mot de passe administrateur et email
 
-![Mot de passe root et email](<img width="2048" height="1536" alt="WhatsApp Image  11 2026-09-28 at 7 16 47 PM" src="https://github.com/user-attachments/assets/43425d6d-a0e3-4acd-8a77-1db1ea7dc734" />
-)
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/2.Proxmox/300155109/images/WhatsApp%20Image%20%2011%202026-09-28%20at%207.16.47%20PM.jpeg?raw=true)
 
 **Explication :**  
 Après avoir lancé l'installation depuis le menu GRUB, l'installateur graphique de Proxmox VE s'est ouvert. Proxmox Virtual Environment est une plateforme de virtualisation open source basée sur Debian (GNU/Linux).Pendant l'installation graphique, une des étapes demande de créer le compte administrateur. nous avons entré le mot de passe du compte root (8 caractères minimum, avec lettres, chiffres et symboles), puis nous avons ajouté une adresse email. Cette adresse sert à recevoir les alertes du serveur, comme les échecs de sauvegarde. Le mot de passe root sert ensuite à se connecter à Proxmox, notamment à l'interface web.
@@ -47,8 +46,7 @@ Après avoir lancé l'installation depuis le menu GRUB, l'installateur graphique
 
 ## 5.Test de connexion réseau
 
-![Test de connexion réseau](<img width="2048" height="1536" alt="WhatsApp Image  15 2026-09-24 at 18 38 09" src="https://github.com/user-attachments/assets/61d09523-d2fe-41da-b902-32cfa18cfa41" />
-)
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/2.Proxmox/300155109/images/WhatsApp%20Image%20%2015%202026-09-24%20at%2018.38.09.jpeg?raw=true)
 
 **Explication :**  
 Ici on observe que le serveur est bien connecté au réseau, et l'interface web est accessible à l'adresse https://10.7.237.24:8006..
