@@ -46,7 +46,11 @@ The web interface is available at `https://<SERVER_IP>:8006` (login: `root`, rea
 
 ### 2. Fix DNS (if needed)
 
-If `curl` returns `Could not resolve host`, test raw connectivity first:
+If `curl` returns `Could not resolve host`, the host cannot translate domain names into IP addresses, even though the network itself may work:
+
+![curl failing with "Could not resolve host" while ping to 8.8.8.8 succeeds](images/dns-error.png)
+
+Test raw connectivity first:
 
 ```bash
 ping -c 3 8.8.8.8
@@ -138,6 +142,10 @@ qm create 100 \
 qm start 100
 ```
 
+Once started, the VM appears as running in the web interface, together with the `rahma` pool it belongs to:
+
+![Proxmox web interface showing the rahma pool and the running VM 100 (ayoubVM)](images/web-ui-pool-vm.png)
+
 In the web interface, open **100 (ayoubVM) → Console** and run the installer:
 
 1. Choose **Install Proxmox VE (Graphical)**.
@@ -177,3 +185,4 @@ qm destroy 100          # delete the VM and its disks
 | `curl: (6) Could not resolve host` | DNS not configured | See [step 2](#2-fix-dns-if-needed) |
 | Download stuck at 0 bytes | No DNS or no internet | Press `Ctrl + C`, then test with `ping` |
 | `$'\r': command not found` | Windows line ending pasted into bash | Retype the command or paste it again cleanly |
+
