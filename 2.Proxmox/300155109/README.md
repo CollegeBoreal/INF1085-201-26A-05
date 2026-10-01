@@ -11,8 +11,7 @@ Cette étape permet de savoir de quel matériel on dispose avant d'installer quo
 
 ## 2.Vérification dans le BIOS
 
-![BIOS HP](<img width="1600" height="1200" alt="WhatsApp Image 2 2026-09-28 at 7 16 46 PM" src="https://github.com/user-attachments/assets/ba167cfa-70a2-4be6-9d16-af8e039ccc77" />
-)
+![BIOS HP](images/https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/2.Proxmox/300155109/images/WhatsApp%20Image%202%202026-09-28%20at%207.16.46%20PM.jpeg?raw=true)
 
 **Explication :**  
 Ensuite, nous avons  démarré le serveur et avons accédé au BIOS (ROM-Based Setup Utility, version 3.00). L'écran de droite confirme les informations du serveur :
