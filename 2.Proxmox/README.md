@@ -1,5 +1,9 @@
 # Installation de Proxmox VE 9 sur un HP ProLiant DL360 G6
 
+[:tada: Participation](.scripts/Participation.md)
+
+---
+
 🉑 Credentials: root/Boreal@2️⃣02️⃣6
 
 | IP | S/N  | 🩹 |
