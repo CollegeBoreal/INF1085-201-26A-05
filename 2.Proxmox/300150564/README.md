@@ -139,7 +139,7 @@ Pendant l'installation, une erreur liée au stockage a été rencontrée :
 unable to initialize physical volume /dev/sda3
 ```
 
-<img src="./images/IMG_2883(1).jpg" width="250">
+<img src="./images/IMG_2883.jpg" width="250">
 
 Cette erreur indique que l'installateur n'a pas réussi à initialiser correctement le volume physique **`/dev/sda3`**.
 
@@ -153,7 +153,7 @@ Après vérification et correction du problème de stockage, l'installation a pu
 
 Après l'installation, le serveur démarre correctement sous **Proxmox Virtual Environment**.
 
-<img src="./images/IMG_2884(1).jpg" width="250">
+<img src="./images/IMG_2884.jpg" width="250">
 
 L'écran de connexion confirme que Proxmox VE est installé et fonctionnel.
 
@@ -169,7 +169,7 @@ La commande suivante permet de vérifier les paramètres réellement utilisés l
 cat /proc/cmdline
 ```
 
-<img src="./images/IMG_2886(1).jpg" width="250">
+<img src="./images/IMG_2886.jpg" width="250">
 
 On peut notamment vérifier la présence de :
 
@@ -189,7 +189,7 @@ La commande suivante affiche les informations détaillées concernant le process
 lscpu
 ```
 
-<img src="./images/IMG_2889(1).jpg" width="250">
+<img src="./images/IMG_2889.jpg" width="250">
 
 Le système détecte le processeur **Intel Xeon E5540 @ 2.53 GHz** ainsi que **8 CPU logiques**.
 
@@ -205,7 +205,7 @@ nproc
 
 permet d'afficher le nombre de processeurs disponibles pour le système.
 
-<img src="./images/IMG_2890(1).jpg" width="250">
+<img src="./images/IMG_2890.jpg" width="250">
 
 Résultat obtenu :
 
@@ -247,7 +247,7 @@ La commande suivante est utilisée :
 lsmem
 ```
 
-<img src="./images/IMG_2888(1).jpg" width="250">
+<img src="./images/IMG_2888.jpg" width="250">
 
 Le système indique environ **66 Go de mémoire en ligne**, confirmant que la mémoire est reconnue par Linux.
 
@@ -261,7 +261,7 @@ La commande suivante permet d'afficher les disques, les partitions et les volume
 lsblk
 ```
 
-<img src="./images/IMG_2891(1).jpg" width="250">
+<img src="./images/IMG_2891.jpg" width="250">
 
 Le système détecte notamment :
 
@@ -281,7 +281,7 @@ lspci
 
 permet d'identifier les différents périphériques PCI présents dans le serveur.
 
-<img src="./images/IMG_2892(1).jpg" width="250">
+<img src="./images/IMG_2892.jpg" width="250">
 
 On retrouve notamment les contrôleurs **réseau, RAID, VGA et NVMe** du serveur.
 
@@ -297,7 +297,7 @@ lsmod
 
 affiche les modules actuellement chargés par le noyau Linux.
 
-<img src="./images/IMG_2893(1).jpg" width="250">
+<img src="./images/IMG_2893.jpg" width="250">
 
 On retrouve notamment des modules associés au **NVMe, au stockage HP et aux interfaces réseau**.
 
@@ -311,7 +311,7 @@ La commande suivante permet d'afficher les interruptions gérées par le systèm
 cat /proc/interrupts
 ```
 
-<img src="./images/IMG_2895(1).jpg" width="250">
+<img src="./images/IMG_2895.jpg" width="250">
 
 Cette vérification permet d'observer la gestion des interruptions matérielles entre les processeurs.
 
@@ -337,7 +337,7 @@ Les interfaces physiques ainsi que le bridge réseau **`vmbr0`** de Proxmox sont
 
 L'interface **`vmbr0`** est le bridge réseau utilisé par Proxmox pour permettre la communication du serveur et des futures machines virtuelles avec le réseau.
 
-<img src="./images/IMG_2897(1).jpg" width="250">
+<img src="./images/IMG_2897.jpg" width="250">
 
 ---
 
