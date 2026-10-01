@@ -26,7 +26,8 @@ Mémoire : 8192 Mo (8 Go)
 Processeur 1 : Intel 2,40 GHz avec 12 Mo de cache L3
 Processeur 2 : non installé
 
-Cela nous a  permis de m'assurer que la RAM et le processeur sont bien reconnus. Le menu de gauche contient aussi Standard Boot Order (IPL), qui sert à choisir le périphérique de démarrage (ici, le support contenant l'ISO de Proxmox).
+Cela nous a  permis de nous assurer que la RAM et le processeur sont bien reconnus. Le menu de gauche contient aussi Standard Boot Order (IPL), qui sert à choisir le périphérique de démarrage (ici, le support contenant l'ISO de Proxmox).
+
 ---
 
 ## 3.Démarrage de l'installateur (GRUB)
