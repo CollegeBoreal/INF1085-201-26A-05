@@ -95,7 +95,7 @@ Un disque virtuel de 32 Go est configuré pour la machine virtuelle.
 
 * **Disque :** 32 Go
 
-![Configuration Disque](images/06-disque.png)
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/4.VMs/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-10-01%20220508.png?raw=true)
 
 ---
 
