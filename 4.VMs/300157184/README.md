@@ -105,7 +105,7 @@ Une interface réseau virtuelle est configurée pour permettre à la VM de commu
 
 * **Interface :** VirtIO
 
-![Configuration Réseau](images/07-network.png)
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/4.VMs/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-10-01%20220809.png?raw=true))
 
 ---
 
