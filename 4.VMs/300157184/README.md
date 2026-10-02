@@ -75,7 +75,7 @@ La VM est configurée avec un seul processeur virtuel.
 * **Sockets :** 1
 * **Cores :** 1
 
-![Configuration CPU](images/04-cpu.png)
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/4.VMs/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-10-01%20215545.png?raw=true))
 
 ---
 
