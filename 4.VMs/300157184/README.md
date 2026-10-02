@@ -83,9 +83,9 @@ La VM est configurée avec un seul processeur virtuel.
 
 La mémoire RAM attribuée à la VM est :
 
-* **RAM :** 2 Go
+* **RAM :** 2048 MiB (2GIB)
 
-![Configuration RAM](images/05-ram.png)
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/4.VMs/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-10-01%20220055.png?raw=true)
 
 ---
 
