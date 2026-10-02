@@ -45,7 +45,7 @@ La première étape consiste à récupérer l’image ISO de la distribution Lin
 
 * **Distribution utilisée :** Ubuntu
 
-![Récupération ISO](images/01-iso.png)
+![Récupération ISO]([images/01-iso.png)](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/4.VMs/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-10-01%20214048.png?raw=true)
 
 ---
 
