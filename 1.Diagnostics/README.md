@@ -1,4 +1,4 @@
-# 🔌 Diagnostic
+# 🔌 Diagnostics
 
 [:tada: Participation](.scripts/Participation.md)
 
