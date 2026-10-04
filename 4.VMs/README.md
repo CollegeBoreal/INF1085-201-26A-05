@@ -16,8 +16,5 @@
 | 2️⃣   | 25 | 🅰️ G6️⃣      | S13 | MXQOO30BLP❌ | 10.7.236.199                 | 64GB | 16  | 273.4G  | $\color{green}\text{1TBNVMe}$  
 | 2️⃣   | 24 | 🅰️ G6️⃣      |     | MXQO16001V✅ | 10.7.236.200                 | 64GB | 16  | 273.4G  | $\color{green}\text{1TBNVMe}$  
 
-:x:
 
-
-
-- [ ] Créer sa propre VM sur le serveur Proxmox de votre choix
+- [ ] Créer sa propre VM sur le serveur Proxmox de votre groupe
