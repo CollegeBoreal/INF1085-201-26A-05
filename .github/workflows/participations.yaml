@@ -23,7 +23,7 @@ jobs:
         run: |
           $chapters = @(
             "0.PlanDeCours"
-            "1.diagnostic"
+            "1.Diagnostics"
             "2.Proxmox"
             "3.VMs"
           )
