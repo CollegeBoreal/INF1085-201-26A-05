@@ -11,9 +11,10 @@
 
 | Rack | U#️⃣| 🏙️ Serveurs | 🏷️  | S/N #️⃣        | Host IP                    | RAM  | CPU | HD      | Comments                             |
 | ---- | -:| ------------| --- | ------------ | --------------------------- | ---: | ---:| ------- | ------------------------------------ |
-| 2️⃣   | 27 | 🅰️ G6️⃣      | S28 | MXQ1370MCG✅ | 10.7.236.197                 | 64GB | 16  | 273.4G  | $\color{green}\text{1TBNVMe}$  $\color{red}\text{E:}$
-| 2️⃣   | 26 | 🅰️ G6️⃣      | S26 | MXQ1170T6R✅ | 10.7.236.198                 | 64GB | 16  | 273.4G  | $\color{green}\text{1TBNVMe}$  $\color{green}\text{D:}$
-| 2️⃣   | 25 | 🅰️ G6️⃣      | S25 | MXQ016001V✅ | 10.7.236.199                 | 64GB | 16  | 273.4G  | $\color{green}\text{1TBNVMe}$  $\color{red}\text{E:}$  
-| 2️⃣   | 24 | 🅰️ G6️⃣      | S13 | MXQ0030BLP✅ | 10.7.236.200                 | 64GB | 16  | 273.4G  | $\color{green}\text{1TBNVMe}$  $\color{green}\text{D:}$
+| 2️⃣   | 27 | 🅰️ G6️⃣      |     | MXQO390BMX❌ | 10.7.236.197                 | 64GB | 16  | 273.4G  | $\color{green}\text{1TBNVMe}$  
+| 2️⃣   | 26 | 🅰️ G6️⃣      |     | USE025N7B5❌ | 10.7.236.198                 | 64GB | 16  | 273.4G  | $\color{green}\text{1TBNVMe}$  
+| 2️⃣   | 25 | 🅰️ G6️⃣      | S13 | MXQOO30BLP❌ | 10.7.236.199                 | 64GB | 16  | 273.4G  | $\color{green}\text{1TBNVMe}$  
+| 2️⃣   | 24 | 🅰️ G6️⃣      |     | MXQO16001V✅ | 10.7.236.200                 | 64GB | 16  | 273.4G  | $\color{green}\text{1TBNVMe}$  
 
-- [ ] Créer sa propre VM sur le serveur Proxmox de votre choix
+
+- [ ] Créer sa propre VM sur le serveur Proxmox de votre groupe
