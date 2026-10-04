@@ -79,7 +79,6 @@ $GROUPS = New-Groups -Items $STUDENTS -Size $GROUP_SIZE
 # --------------------------------------
 
 $SERVERS = @(
-"10.7.236.160"
 "10.7.236.161"
 "10.7.236.162"
 "10.7.236.163"
@@ -112,6 +111,7 @@ $SERVERS = @(
 "10.7.236.190"
 "10.7.236.191"
 "10.7.236.192"
+"10.7.236.193"
 )
 
 $SERVER_GROUPS = New-Groups -Items $SERVERS -Size $GROUP_SIZE
