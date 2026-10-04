@@ -144,4 +144,4 @@ $LAB_GROUPS = for ($i = 0; $i -lt $GROUPS.Count; $i++) {
 # --------------------------------------
 
 $PK_PROF="b300098957@ramena"
-$LMS_COURSE=6
+$LMS_COURSE=11
