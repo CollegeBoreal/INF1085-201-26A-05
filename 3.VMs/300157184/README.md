@@ -83,8 +83,7 @@ La mémoire RAM attribuée à la VM est :
 
 * **RAM :** 2048 MiB (2GIB)
 
-![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/4.VMs/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-10-01%20220055.png?raw=true)
-
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/0c8232d0e5feb14daec8b3a0eb9cece629c6597f/3.VMs/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-10-01%20220055.png)
 ---
 
 ## 6. Configuration du disque
