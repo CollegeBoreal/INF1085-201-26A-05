@@ -110,7 +110,7 @@ Une interface réseau virtuelle est configurée pour permettre à la VM de commu
 
 Une fois la configuration terminée, la machine virtuelle est démarrée avec le bouton **Start**.
 
-![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/4.VMs/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-10-01%20221046.png?raw=true))
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/138b9037cc256bb83bc2e92d969d278a24ba161d/3.VMs/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-10-01%20221046.png)
 
 ---
 
