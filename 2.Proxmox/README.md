@@ -6,12 +6,12 @@
 
 🉑 Credentials: root/Boreal@2️⃣02️⃣6
 
-| IP | S/N  | 🩹 |
-|-|-|-|
+| IP | S/N  | 🩹 | 🧻 NVMe | Comments |
+|-|-|-|-|-|
 | 10.7.236.197 | MXQO390BMX |
 | 10.7.236.198 | USE025N7B5 | 
-| 10.7.236.199 | MXQOO30BLP | S13
-| 10.7.236.200 | MXQO16001V | 
+| 10.7.236.199 | MXQOO30BLP | S19
+| 10.7.236.200 | MXQO16001V | S17 | ✅ | 
 
 - [ ] 10.7.236.0/23 Network
 - [ ] 10.7.237.1 Gateway
