@@ -45,8 +45,7 @@ La première étape consiste à récupérer l’image ISO de la distribution Lin
 
 * **Distribution utilisée :** Ubuntu
 
-![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/4.VMs/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-10-01%20214048.png?raw=true)
-
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/4e964b2f4fc040ac666e81d7606b81adc0ba7e08/3.VMs/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-10-01%20212003.png)
 ---
 
 ## 2. 📦 Ajouter l’ISO dans Proxmox
