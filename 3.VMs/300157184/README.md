@@ -52,8 +52,7 @@ La première étape consiste à récupérer l’image ISO de la distribution Lin
 
 Après avoir récupéré l’image ISO, elle est ajoutée au stockage disponible dans Proxmox. L’ISO sera ensuite utilisée lors de la création de la machine virtuelle.
 
-![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/4.VMs/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-10-01%20214759.png?raw=true))
-
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/4766830eace9b1b16822fadd5fc4ad4f8f878376/3.VMs/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-10-01%20214048.png)
 ---
 
 ## 🖥️ Création de la machine virtuelle
