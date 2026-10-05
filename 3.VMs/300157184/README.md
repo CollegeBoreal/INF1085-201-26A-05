@@ -1,6 +1,6 @@
-# 🖥️ Création d’une machine virtuelle Linux avec Proxmox
+#  Création d’une machine virtuelle Linux avec Proxmox
 
-## 📌 Description
+##  Description
 
 Dans ce laboratoire, j’ai créé et configuré une machine virtuelle Linux sur un serveur Proxmox VE.
 
@@ -8,7 +8,7 @@ L’objectif est de comprendre les principales étapes de création d’une VM :
 
 ---
 
-## 🎯 Objectifs
+##  Objectifs
 
 * Comprendre le fonctionnement de Proxmox VE.
 * Créer une machine virtuelle.
@@ -22,7 +22,7 @@ L’objectif est de comprendre les principales étapes de création d’une VM :
 
 ---
 
-## 🏗️ Environnement
+## Environnement
 
 | Élément | Configuration |
 | :--- | :--- |
@@ -39,7 +39,7 @@ L’objectif est de comprendre les principales étapes de création d’une VM :
 
 ---
 
-## 1. 📥 Récupération de l’image ISO
+## 1. Récupération de l’image ISO
 
 La première étape consiste à récupérer l’image ISO de la distribution Linux choisie. L’image ISO est utilisée comme support d’installation du système d’exploitation.
 
@@ -48,7 +48,7 @@ La première étape consiste à récupérer l’image ISO de la distribution Lin
 ![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/4e964b2f4fc040ac666e81d7606b81adc0ba7e08/3.VMs/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-10-01%20212003.png)
 ---
 
-## 2. 📦 Ajouter l’ISO dans Proxmox
+## 2.  Ajouter l’ISO dans Proxmox
 
 Après avoir récupéré l’image ISO, elle est ajoutée au stockage disponible dans Proxmox. L’ISO sera ensuite utilisée lors de la création de la machine virtuelle.
 
@@ -56,7 +56,7 @@ Après avoir récupéré l’image ISO, elle est ajoutée au stockage disponible
 
 ---
 
-## 3. 🖥️ Création de la machine virtuelle
+## 🖥️ Création de la machine virtuelle
 
 Dans Proxmox, une nouvelle machine virtuelle est créée.
 
@@ -67,7 +67,7 @@ Dans Proxmox, une nouvelle machine virtuelle est créée.
 
 ---
 
-## 4. ⚙️ Configuration du processeur
+## 4. Configuration du processeur
 
 La VM est configurée avec un seul processeur virtuel.
 
@@ -78,7 +78,7 @@ La VM est configurée avec un seul processeur virtuel.
 
 ---
 
-## 5. 🧠 Configuration de la mémoire
+## 5. Configuration de la mémoire
 
 La mémoire RAM attribuée à la VM est :
 
@@ -88,7 +88,7 @@ La mémoire RAM attribuée à la VM est :
 
 ---
 
-## 6. 💾 Configuration du disque
+## 6. Configuration du disque
 
 Un disque virtuel de 32 Go est configuré pour la machine virtuelle.
 
@@ -98,7 +98,7 @@ Un disque virtuel de 32 Go est configuré pour la machine virtuelle.
 
 ---
 
-## 7. 🌐 Configuration réseau
+## 7.  Configuration réseau
 
 Une interface réseau virtuelle est configurée pour permettre à la VM de communiquer avec le réseau.
 
@@ -108,7 +108,7 @@ Une interface réseau virtuelle est configurée pour permettre à la VM de commu
 
 ---
 
-## 8. ▶️ Démarrage de la VM
+## 8.  Démarrage de la VM
 
 Une fois la configuration terminée, la machine virtuelle est démarrée avec le bouton **Start**.
 
@@ -116,7 +116,7 @@ Une fois la configuration terminée, la machine virtuelle est démarrée avec le
 
 ---
 
-## 9. ⚠️ Erreur rencontrée
+## 9.  Erreur rencontrée
 
 Lors du premier démarrage, la VM n’a pas démarré correctement. L’erreur affichée par Proxmox était liée à QEMU/KVM et à une fonctionnalité du processeur.
 
