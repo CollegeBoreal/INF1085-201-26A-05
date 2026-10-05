@@ -27,6 +27,7 @@ cd /var/lib/vz/template/iso
 wget https://releases.ubuntu.com/24.04/ubuntu-24.04.5-live-server-amd64.iso
 
 ISO utilisée : ubuntu-24.04.5-live-server-amd64.iso
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/3.VMs/300156497/images/4d308b62-13fb-41ae-abb6-fae955704d65.jpeg?raw=true)
 
 # 6. Vérification de l’ISO
 
