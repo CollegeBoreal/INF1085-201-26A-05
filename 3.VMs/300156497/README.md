@@ -77,3 +77,4 @@ Cette commande permet de vérifier la configuration de la machine virtuelle.
 # Conclusion
 
 Une machine virtuelle Ubuntu Server a été créée sur le serveur Proxmox. La VM utilise 1 processeur et a été démarrée avec succès.
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/3.VMs/300156497/images/cd8f0e18-2d89-4ad5-8bc1-31f0547bb73b.jpeg?raw=true)
