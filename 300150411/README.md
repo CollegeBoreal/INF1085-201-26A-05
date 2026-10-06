@@ -18,6 +18,8 @@ qm start 101
 # 6. Vérification
 Je vérifie que la VM fonctionne :
 qm status 101
+<image src=images/20261001_165352.jpg width=50% height=50% > </image>
+<image src=images/20261001_165455.jpg width=50% height=50% > </image>
 
 Conclusion : La VM Ubuntu Server est créée et fonctionne correctement sur Proxmox.
 
