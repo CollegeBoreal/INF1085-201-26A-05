@@ -142,14 +142,12 @@ chmod 600 ~/.ssh/authorized_keys
 | `ssh idir-@10.7.236.190` depuis le portable | ✔ |
 | Clé du professeur dans `~/.ssh/authorized_keys` (`idir-` et `root`) | ✔ |
 
-## 📸 Captures d'écran
 
 ## 📸 Captures d'écran
 
 Les captures sont dans le dossier [`images/`](images/) :
 
 ![Création de l'utilisateur](images/Kali_creation_utilisateur.png)
-![Partitionnement](images/partitonnement.png)
 ![Détail des partitions](images/repartition_1.png)
 ![Installation du système de base](images/installation_systeme_base.png)
 ![Fin de l'installation](images/installation_fini.png)
