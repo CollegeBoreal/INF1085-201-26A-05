@@ -25,7 +25,6 @@ Si le serveur ne démarre pas, le CPU 2 peut être défectueux.
 
 Ce test permet de trouver rapidement la cause du problème avant de remplacer la carte mère.
 
-<image src=images/20260917_140052.jpg width=50% height=50% > </image>
 
 <image src=images/20260917_140052.jpg width=50% height=50% > </image>
 
