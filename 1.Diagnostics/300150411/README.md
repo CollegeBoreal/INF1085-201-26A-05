@@ -1,6 +1,5 @@
  # 300150411
 
-Diagnostic  
 # TP – Diagnostic du serveur
 Objectif
 
