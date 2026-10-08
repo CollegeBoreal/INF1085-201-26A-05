@@ -149,7 +149,6 @@ chmod 600 ~/.ssh/authorized_keys
 Les captures sont dans le dossier [`images/`](images/) :
 
 ![Création de l'utilisateur](images/Kali_creation_utilisateur.png)
-![Partitionnement](images/partitonnement.png)
 ![Détail des partitions](images/repartition_1.png)
 ![Installation du système de base](images/installation_systeme_base.png)
 ![Fin de l'installation](images/installation_fini.png)
