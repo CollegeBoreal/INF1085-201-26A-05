@@ -23,7 +23,7 @@
 |:hash:| Boréal :id: | README.md | images | Appréciation | Commentaires | :link: IP |
 |------|-------------|-----------|--------|--------------|--------------|-----------|
 | 1 | [300155109](../300155109/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/231572626?s=460&v=4' width=20 height=20></image>](https://github.com/AlexiaKabore) | :x: | :x: | :x: | :x: à corriger | ~  10.7.236.177  |
-| 2 | [300155466](../300155466/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/583231?s=460&v=4' width=20 height=20></image>](https://github.com/octocat) | :x: | :x: | :x: | :x: à corriger | ~  10.7.236.178  |
+| 2 | [300155466](../300155466/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/232940163?s=460&v=4' width=20 height=20></image>](https://github.com/rekhilahana34-tech) | :x: | :x: | :x: | :x: à corriger | ~  10.7.236.178  |
 | 3 | [300155524](../300155524/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/583231?s=460&v=4' width=20 height=20></image>](https://github.com/octocat) | :x: | :x: | :x: | :x: à corriger | ~  10.7.236.179  |
 | 4 | [300155909](../300155909/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/583231?s=460&v=4' width=20 height=20></image>](https://github.com/octocat) | :2nd_place_medal: | :heavy_check_mark: | :x: | :x: à corriger | ~  10.7.236.180  |
 | 5 | [300155927](../300155927/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/236671775?s=460&v=4' width=20 height=20></image>](https://github.com/garvey200) | :x: | :x: | :x: | :x: à corriger | ~  10.7.236.181  |
