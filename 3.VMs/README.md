@@ -6,6 +6,7 @@
 | 2️⃣ | [:tada: Participation](.scripts/Participation-group2.md) |
 | 3️⃣ | [:tada: Participation](.scripts/Participation-group3.md) |
 | 4️⃣ | [:tada: Participation](.scripts/Participation-group4.md) |
+| 5️⃣ | [:tada: Participation](.scripts/Participation-group5.md) |
 
 ## 🗄️ Rack 2️⃣ - 📇 42U
 
