@@ -1,4 +1,4 @@
-# 4.Root — Créer un utilisateur avec droit Administratif sur Proxmox
+# Créer un utilisateur avec droit Administratif sur Proxmox
 
 **Étudiant :** CHILI Idir Islam — 300156187
 **Cours :** INF1085-201-26A-05 — Administration Linux
