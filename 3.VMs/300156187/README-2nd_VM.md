@@ -142,7 +142,6 @@ chmod 600 ~/.ssh/authorized_keys
 | `ssh idir-@10.7.236.190` depuis le portable | ✔ |
 | Clé du professeur dans `~/.ssh/authorized_keys` (`idir-` et `root`) | ✔ |
 
-## 📸 Captures d'écran
 
 ## 📸 Captures d'écran
 
