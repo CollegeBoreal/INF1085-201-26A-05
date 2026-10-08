@@ -6,8 +6,10 @@ Objectif
 
 Le but du TP est de trouver pourquoi le serveur ne démarre pas.
 
-Étapes
-Nous avons vérifié le socket du processeur pour voir si des broches étaient pliées ou cassées.
+Nous avons vérifié le serveur et ses composants pour trouver le problème.
+
+# ET 
+Nous avons vérifié le processeur et le socket pour voir s’il y avait un problème.
 Nous avons retiré le CPU 2.
 Nous avons placé le CPU 2 dans le Socket 1.
 Nous avons installé une barrette de RAM dans le premier emplacement.
