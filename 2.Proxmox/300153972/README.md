@@ -64,15 +64,20 @@ Les captures d’écran ci-dessous permettent de suivre les principales étapes 
 
 ### Démarrage du serveur
 
-![Démarrage du serveur]
 
 ### Sélection du démarrage USB
 
-![Menu de démarrage USB]
+
 
 ### Menu d’installation de Proxmox
 
-![Installateur Proxmox]
+![](images/photo_2026-10-09_19-07-57.jpg)
+![](images/photo_2026-10-09_19-08-02.jpg)
+![](images/photo_2026-10-09_19-08-05.jpg)
+![](images/photo_2026-10-09_19-08-11.jpg)
+![](images/photo_2026-10-09_19-08-15.jpg)
+![](images/photo_2026-10-09_19-08-35.jpg)
+![](images/photo_2026-10-09_19-08-44.jpg)
 
 ## 9. Conclusion
 
