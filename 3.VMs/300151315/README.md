@@ -1,188 +1,221 @@
 # 300151315
-# Nested Proxmox VE VM on a Proxmox Host
 
-This guide documents how to create a virtual machine running **Proxmox VE 9.2** inside an existing Proxmox VE host (nested virtualization), entirely from the command line over SSH.
+# Ubuntu Server VM on the Group 1 Proxmox Server
+
+This guide documents how I created my own virtual machine running **Ubuntu Server 24.04** on the Group 1 Proxmox VE server, using SSH for the commands and the web interface for the installation.
 
 ## Overview
 
 | Item | Value |
 |---|---|
-| Host | Proxmox VE (Debian-based), hostname `server56` |
-| Guest OS | Proxmox VE 9.2 (`proxmox-ve_9.2-1.iso`) |
-| VM ID | `100` |
+| Proxmox host | `server197`, Proxmox VE 9.2.2 |
+| Host IP | `10.7.236.197` (web UI: `https://10.7.236.197:8006`) |
+| Guest OS | Ubuntu Server 24.04.5 LTS (`ubuntu-24.04.5-live-server-amd64.iso`) |
+| VM ID | `101` |
 | VM name | `ayoubVM` |
-| Pool | `rahma` |
-| CPU | 4 cores, type `host` |
-| Memory | 8 GB |
-| Disk | 64 GB on `local-lvm` |
-| Network | VirtIO on bridge `vmbr0` |
+| CPU | 2 cores, type `host` |
+| Memory | 4 GB |
+| Disk | 32 GB on `local-lvm` (LVM, `/` = 15 GB, `/boot` = 2 GB) |
+| Network | VirtIO on bridge `vmbr0`, interface `ens18` in the VM |
+| VM IP | `10.7.236.166/23` (static) |
+| Gateway | `10.7.237.1` |
+| DNS | `1.1.1.1`, `8.8.8.8` |
 
 ## Prerequisites
 
-- A running Proxmox VE host with root SSH access
-- Internet access from the host (see [DNS fix](#2-fix-dns-if-needed) if names don't resolve)
-- CPU virtualization enabled (Intel VT-x or AMD-V)
-- Enough free resources: at least 8 GB RAM, 4 cores and 64 GB of storage
-
-> **Note:** Proxmox is Linux, not Windows. Hyper-V PowerShell commands such as `New-VM` or `Install-WindowsFeature` do not exist on it. Use `qm` and `pvesm` instead.
+- Be on the college network (on campus), or connected through the **FortiClient VPN** (`RAVPN`) from home
+- The `root` credentials of the group's Proxmox server (see the group's participation page)
+- The IP address assigned to me in the participation table: `10.7.236.166`
 
 ## Steps
 
-### 1. Connect to the host
+### 1. Connect to the Proxmox host
 
-From PowerShell (Windows) or any terminal:
-
-```bash
-ssh root@<SERVER_IP>
-```
-
-To find the host IP once connected:
+From PowerShell:
 
 ```bash
-hostname -I
+ssh root@10.7.236.197
 ```
 
-The web interface is available at `https://<SERVER_IP>:8006` (login: `root`, realm: Linux PAM).
+Type `yes` the first time to accept the host fingerprint, then the root password (nothing is displayed while typing).
 
-### 2. Fix DNS (if needed)
+### 2. Check the server before creating anything
 
-If `curl` returns `Could not resolve host`, the host cannot translate domain names into IP addresses, even though the network itself may work:
-
-![curl failing with "Could not resolve host" while ping to 8.8.8.8 succeeds](images/dns-error.png)
-
-Test raw connectivity first:
+The server is shared by the whole group, so I first checked what already exists:
 
 ```bash
-ping -c 3 8.8.8.8
+qm list                         # VMs already created by classmates
+pvesh get /cluster/nextid       # first free VM ID
+pvesm status                    # available storage
+ip route | grep default         # gateway
+ip -4 addr show vmbr0           # host IP and subnet mask
+pvesm list local --content iso  # ISOs available on the server
 ```
 
-If the ping succeeds, only DNS is broken. Back up and replace the resolver config:
+Results:
+
+| Check | Result |
+|---|---|
+| Existing VMs | `100 AnisHcn` (running) |
+| Next free ID | `101` |
+| `local-lvm` free space | about 160 GB |
+| Gateway | `10.7.237.1` |
+| Host address | `10.7.236.197/23`, so the network is `10.7.236.0/23` |
+| ISO available | `ubuntu-24.04.5-live-server-amd64.iso` |
+
+The ISO was already on the server, so no download was needed.
+
+### 3. Create the VM
 
 ```bash
-cp /etc/resolv.conf /etc/resolv.conf.bak
-printf "nameserver 1.1.1.1\nnameserver 8.8.8.8\n" > /etc/resolv.conf
-ping -c 3 enterprise.proxmox.com
+qm create 101 --name ayoubVM --memory 4096 --cores 2 --cpu host --ostype l26 --scsihw virtio-scsi-single --scsi0 local-lvm:32 --ide2 local:iso/ubuntu-24.04.5-live-server-amd64.iso,media=cdrom --net0 virtio,bridge=vmbr0 --boot order='scsi0;ide2'
 ```
 
-The same setting can be made in the web interface under **Node → System → DNS**.
+| Option | Meaning |
+|---|---|
+| `--memory 4096` | 4 GB of RAM (the host has 64 GB shared by 8 students) |
+| `--cores 2 --cpu host` | 2 CPU cores with the host CPU features |
+| `--scsi0 local-lvm:32` | 32 GB virtual disk on `local-lvm` |
+| `--ide2 ...iso,media=cdrom` | Ubuntu ISO in the virtual CD drive |
+| `--net0 virtio,bridge=vmbr0` | Network card connected to the server's LAN |
+| `--boot order='scsi0;ide2'` | Boot from the disk, then the CD |
 
-### 3. Download the Proxmox VE ISO
+Output:
 
-ISOs must be stored on the host in the `local` storage's ISO folder:
+```
+Logical volume "vm-101-disk-0" created.
+scsi0: successfully created disk 'local-lvm:vm-101-disk-0,size=32G'
+```
+
+### 4. Start the VM
 
 ```bash
-cd /var/lib/vz/template/iso/
+qm start 101
+qm list
 ```
 
-List the available Proxmox ISOs:
+```
+VMID NAME     STATUS   MEM(MB) BOOTDISK(GB)
+ 100 AnisHcn  running  2048    20.00
+ 101 ayoubVM  running  4096    32.00
+```
+
+### 5. Open the Proxmox web interface
+
+Go to `https://10.7.236.197:8006`. The browser shows a certificate warning because Proxmox uses a self-signed certificate: click **Paramètres avancés**, then **Continuer vers le site**.
+
+![Certificate warning in Chrome](images/01-cert-warning.png)
+
+Log in as `root`, realm **Linux PAM**. VM 101 appears next to the classmate's VM 100:
+
+![Proxmox Datacenter view with VM 101](images/02-proxmox-datacenter.png)
+
+Click **server197 → 101 (ayoubVM)** to see its summary:
+
+![Summary of VM 101](images/03-vm-101-summary.png)
+
+Then click **Console**.
+
+### 6. Install Ubuntu Server
+
+**Language:** English.
+
+![Ubuntu installer language screen](images/04-installer-language.png)
+
+**Keyboard:** English (US). **Type of install:** Ubuntu Server.
+
+**Network:** the VM first received a temporary DHCP address (`10.7.236.189`).
+
+![Network screen with the DHCP address](images/05-network-dhcp.png)
+
+I replaced it with my assigned static address: `ens18` → **Edit IPv4** → **Manual**.
+
+| Field | Value |
+|---|---|
+| Subnet | `10.7.236.0/23` |
+| Address | `10.7.236.166` |
+| Gateway | `10.7.237.1` |
+| Name servers | `1.1.1.1,8.8.8.8` |
+
+![Manual IPv4 configuration](images/06-network-manual.png)
+
+**Proxy:** empty. **Mirror:** `http://ca.archive.ubuntu.com/ubuntu/`. The mirror test passing confirmed that the IP, gateway and DNS were correct.
+
+![Mirror test](images/07-mirror-test.png)
+
+**Storage:** use an entire disk (32 GB), set up as LVM, no encryption.
+
+![Guided storage configuration](images/08-storage-guided.png)
+
+Ubuntu gives 15 GB to `/` and 2 GB to `/boot`, and leaves 15 GB free in the LVM group.
+
+![Storage summary](images/09-storage-summary.png)
+
+Confirm with **Continue** (this only erases the VM's empty virtual disk).
+
+![Confirm destructive action](images/10-confirm-destructive.png)
+
+**Profile:** server name `ayoubvm`. **Ubuntu Pro:** Skip.
+
+**SSH:** **Install OpenSSH server** checked.
+
+![OpenSSH server option](images/11-ssh-setup.png)
+
+**Snaps:** none selected.
+
+![Featured server snaps](images/12-snaps.png)
+
+The installation then runs:
+
+![Installation in progress](images/13-install-progress.png)
+
+### 7. Remove the ISO and reboot
+
+When the installer shows **Reboot Now**, detach the ISO from the Proxmox host:
 
 ```bash
-curl -s https://enterprise.proxmox.com/iso/ | grep -o 'proxmox-ve_[^"]*\.iso' | sort -u
+qm set 101 --ide2 none,media=cdrom
 ```
 
-Download the latest x86_64 version (not the `arm64` build, and not the `.asc` signature):
+Then press **Enter** in the console so the VM boots from its disk.
+
+### 8. Verify
+
+From PowerShell on my computer:
 
 ```bash
-curl -L -O https://enterprise.proxmox.com/iso/proxmox-ve_9.2-1.iso
+ping 10.7.236.166
+ssh <username>@10.7.236.166
 ```
 
-Confirm Proxmox sees it:
+Inside the VM:
 
 ```bash
-pvesm list local --content iso
+hostname          # ayoubvm
+ip -4 addr        # 10.7.236.166/23 on ens18
+ping -c 3 1.1.1.1
+lsb_release -a    # Ubuntu 24.04.5 LTS
 ```
 
-Expected: `local:iso/proxmox-ve_9.2-1.iso`
+![SSH connection to the VM](images/14-vm-ssh.png)
 
-### 4. Check storage and the next free VM ID
-
-```bash
-pvesm status
-pvesh get /cluster/nextid
-```
-
-### 5. Check nested virtualization
-
-```bash
-cat /sys/module/kvm_intel/parameters/nested 2>/dev/null || cat /sys/module/kvm_amd/parameters/nested
-```
-
-`Y` or `1` means nested virtualization is enabled.
-
-### 6. Create a pool (folder)
-
-Pools group VMs in the web interface (switch the left panel to **Pool View** to see them):
-
-```bash
-pvesh create /pools --poolid rahma
-```
-
-### 7. Create the VM
-
-```bash
-qm create 100 \
-  --name ayoubVM \
-  --pool rahma \
-  --memory 8192 \
-  --cores 4 \
-  --cpu host \
-  --ostype l26 \
-  --scsihw virtio-scsi-single \
-  --scsi0 local-lvm:64 \
-  --ide2 local:iso/proxmox-ve_9.2-1.iso,media=cdrom \
-  --net0 virtio,bridge=vmbr0 \
-  --boot order='scsi0;ide2'
-```
-
-`--cpu host` passes the host CPU features through, which the nested Proxmox needs to run its own VMs.
-
-### 8. Start the VM and install Proxmox
-
-```bash
-qm start 100
-```
-
-Once started, the VM appears as running in the web interface, together with the `rahma` pool it belongs to:
-
-![Proxmox web interface showing the rahma pool and the running VM 100 (ayoubVM)](images/web-ui-pool-vm.png)
-
-In the web interface, open **100 (ayoubVM) → Console** and run the installer:
-
-1. Choose **Install Proxmox VE (Graphical)**.
-2. Accept the license.
-3. Keep the 64 GB target disk.
-4. Set country, time zone and keyboard.
-5. Set the root password and an email.
-6. **Network:** assign a free static IP on the same subnet as the host, the same gateway, and `1.1.1.1` as DNS.
-7. Click **Install**.
-
-### 9. Remove the ISO after installation
-
-```bash
-qm set 100 --ide2 none,media=cdrom
-```
-
-The nested Proxmox is then reachable at `https://<VM_IP>:8006`.
-
-## Useful commands
+## Useful commands (on the Proxmox host)
 
 ```bash
 qm list                 # list all VMs
-qm start 100            # start the VM
-qm shutdown 100         # graceful shutdown
-qm stop 100             # force stop
-qm config 100           # show VM configuration
-qm destroy 100          # delete the VM and its disks
+qm start 101            # start the VM
+qm shutdown 101         # graceful shutdown
+qm stop 101             # force stop
+qm config 101           # show the VM configuration
 ```
 
 ## Troubleshooting
 
 | Problem | Cause | Fix |
 |---|---|---|
-| `New-VM: command not found` | Hyper-V command run on Linux | Use `qm create` |
-| `storage ID 'local:iso' contains illegal characters` | Wrong `pvesm list` syntax | `pvesm list local --content iso` |
-| `pvesm list` shows only column headers | No ISO in that storage | Download or upload one to `/var/lib/vz/template/iso/` |
-| `curl: (6) Could not resolve host` | DNS not configured | See [step 2](#2-fix-dns-if-needed) |
-| Download stuck at 0 bytes | No DNS or no internet | Press `Ctrl + C`, then test with `ping` |
-| `$'\r': command not found` | Windows line ending pasted into bash | Retype the command or paste it again cleanly |
-
+| `Permission denied` on SSH | Wrong password | The emoji digits on the participation page are plain digits; type them as numbers |
+| `Votre connexion n'est pas privée` / `NET::ERR_CERT_AUTHORITY_INVALID` | Self-signed Proxmox certificate | **Paramètres avancés** → **Continuer vers le site** |
+| Commands pasted together don't all run | Several lines pasted at once | Run them one at a time |
+| Wrong characters in the installer (`/`, `,`) | Console uses a US keyboard, PC uses FRA | Check each field before saving |
+| Back on a previous installer screen | **Esc** was pressed | Press **Done** to move forward again |
+| Mirror test fails | Wrong IP, gateway or DNS | **Back** to the network screen and fix the values |
