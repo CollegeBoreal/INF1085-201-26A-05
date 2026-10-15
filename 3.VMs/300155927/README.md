@@ -1,15 +1,17 @@
  # 300155927
 
- # Installation d'Ubuntu Server 24.04 LTS — Compte-rendu
+# Installation d'Ubuntu Server 24.04 LTS — Compte-rendu
 
-Documentation de l'installation d'Ubuntu Server sur une machine virtuelle hébergée sur le nœud **server56** (Proxmox VE).
+Documentation de l'installation d'Ubuntu Server sur une machine virtuelle hébergée sur le nœud **server46** (Proxmox VE).
 
 ## Configuration retenue
 
 | Paramètre | Valeur |
 |---|---|
-| Nœud Proxmox | `server56` |
-| VM ID / nom | `108` / `Garvey` |
+| Nœud Proxmox | `server46` (`10.7.236.199`) |
+| VM ID / nom | `109` / `Garvey` |
+| RAM | 2,00 Gio (4096 Mo) |
+| CPU | 2 (1 socket, 4 cores) |
 | Nom du serveur | `ubuntu` |
 | Nom d'utilisateur | `garvey200` |
 | Version | Ubuntu **24.04.5 LTS** (noyau 6.8.0-146-generic, x86_64) |
@@ -18,25 +20,60 @@ Documentation de l'installation d'Ubuntu Server sur une machine virtuelle héber
 | Adresse IPv4 finale | `10.7.236.181` (DHCPv4, /23 — la capture de l'étape 11 montrait encore `10.7.237.140`) |
 | Proxy | Aucun |
 | Miroir d'archives | `http://ca.archive.ubuntu.com/ubuntu/` (version *noble*) |
-| Disque | 32 Go (`QEMU_QEMU_HARDDISK_drive-scsi0`) |
+| Disque | 50 Go (`local-lvm:vm-109-disk-0`, vu comme 32 Go pendant l'installation) |
+| Réseau (Proxmox) | `virtio`, bridge `vmbr0` |
 | Partitionnement | LVM : `/` 14,996 Go (ext4), `/boot` 2,000 Go (ext4) |
 | Ubuntu Pro | Ignoré (peut être activé plus tard avec `pro attach`) |
 | Snaps | Aucun sélectionné |
 
 ## Création de la machine virtuelle (Proxmox VE)
 
-Avant l'installation d'Ubuntu, la VM a été créée depuis l'interface web Proxmox VE (`https://<ip-proxmox>:8006/`, utilisateur `root`) :
+La VM a été créée en ligne de commande avec `qm`, depuis **PowerShell sur Windows** via SSH vers le nœud Proxmox.
 
-1. Sélectionner le nœud **server56** dans l'arborescence, puis cliquer sur **Create VM** (en haut à droite).
-2. **General** : VM ID `108`, nom `Garvey`.
-3. **OS** : choisir l'image ISO *Ubuntu Server 24.04 LTS* (type *Linux*).
-4. **System** : laisser les valeurs par défaut (contrôleur SCSI VirtIO).
-5. **Disks** : disque `scsi0` de **32 Go**.
-6. **CPU** : *à compléter* (nombre de cœurs configuré).
-7. **Memory** : *à compléter* (quantité de RAM configurée, ex. 2048 Mo).
-8. **Network** : modèle *VirtIO (paravirtualized)*, bridge *à confirmer*.
-9. **Confirm** : vérifier le résumé puis cliquer sur **Finish**.
-10. Démarrer la VM (**Start**), ouvrir la **Console** et lancer l'installateur Ubuntu (étapes ci-dessous).
+### 1. Connexion au nœud depuis PowerShell
+
+```powershell
+ssh root@10.7.236.199
+```
+
+### 2. Création de la VM 109 « Garvey »
+
+```bash
+qm create 109 --name Garvey --ostype l26 \
+  --memory 4096 --sockets 1 --cores 4 \
+  --net0 virtio,bridge=vmbr0
+```
+
+### 3. Ajout du disque de 50 Go
+
+```bash
+qm set 109 --scsi0 local-lvm:50
+```
+
+### 4. Montage de l'ISO Ubuntu Server 24.04
+
+```bash
+qm set 109 --ide2 <STOCKAGE>:iso/<nom-iso>.iso,media=cdrom
+```
+
+### 5. Démarrage de la VM
+
+```bash
+qm start 109
+```
+
+Ensuite, ouvrir la **Console** de la VM dans l'interface Proxmox et suivre l'installateur Ubuntu (étapes ci-dessous).
+
+### Commandes utiles
+
+```bash
+qm list          # lister les VM du nœud
+qm status 109    # état de la VM
+qm stop 109      # arrêt forcé
+qm shutdown 109  # arrêt propre
+```
+
+> ⚠️ Remplace `<STOCKAGE>` et `<nom-iso>` par le stockage et le nom exact du fichier ISO dans ton environnement.
 
 ## Étapes de l'installation
 
@@ -115,8 +152,4 @@ df -h
 apt list --upgradable
 ```
 
-## ⚠️ Pour que les images s'affichent sur GitHub
 
-Le fichier `README.md` doit être à la **racine du dépôt** et le dossier `images/` (avec les 11 fichiers `.jpg`) doit être téléversé **au même niveau**, avec exactement les mêmes noms (minuscules, sans espaces). Si seules les légendes s'affichent sans les images, c'est que le dossier `images/` n'a pas été poussé sur GitHub.
-
- 
