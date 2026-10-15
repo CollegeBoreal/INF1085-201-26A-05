@@ -5,7 +5,8 @@
 **Étudiant :** Anis Ouhocine (matricule 300151496)
 **Date :** 12 octobre 2026
 **Serveur :** 10.7.236.197 (serveur Proxmox dédié du groupe)
-**VM créée :** 100 — `AnisHcn` (Ubuntu Server 24.04.5)
+**VM créée :** 100 — `AnisHcn` (Ubuntu Server 24.04.5)  [10.7.236.168]
+
 
 ---
 
