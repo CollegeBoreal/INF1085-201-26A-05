@@ -219,7 +219,9 @@ sudo apt update && sudo apt install -y openssh-server && sudo systemctl enable -
 # Dans le Shell de notre serveur :
 
 pveum user add B300151496@pve
+
 pveum passwd B300151496@pve
+
 pveum user list 
 
 <image src=images/image.png width=50% height=50% > </image>
