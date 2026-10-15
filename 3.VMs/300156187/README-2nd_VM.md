@@ -24,10 +24,10 @@ pour la correction.
 | ISO | `local:iso/kali-linux-2026.2-installer-amd64.iso` |
 | Nom d'hôte | `kali-idir` |
 | Utilisateur | `idir-` (voir note ci-dessous) |
-| Adresse IP | `10.7.236.190/23` (DHCP) |
+| Adresse IP | `10.7.236.160/23` (statique) |
 
 > ⚠️ **Note :** pendant l'installation, le nom d'utilisateur saisi a été `idir-`
-> (avec un tiret final). La connexion SSH se fait donc avec `ssh idir-@10.7.236.190`.
+> (avec un tiret final). La connexion SSH se fait donc avec `ssh idir-@10.7.236.160`.
 
 ## 📋 Étapes réalisées
 
@@ -108,7 +108,7 @@ Installation via la console noVNC de l'interface web Proxmox
 
 ### 5. Configuration réseau et SSH
 
-La VM a obtenu son IP par DHCP : `10.7.236.190/23`.
+La VM a obtenu son IP par DHCP : `10.7.236.160/23`.
 
 Installation et activation d'OpenSSH (dans la VM) :
 
@@ -138,7 +138,7 @@ chmod 600 ~/.ssh/authorized_keys
 | --- | --- |
 | `sudo qm list` — VM 103 `running` | ✔ |
 | Installation Kali terminée, bureau Xfce | ✔ |
-| IP de la VM : `10.7.236.190/23` | ✔ |
+| IP de la VM : `10.7.236.160/23` | ✔ |
 | `ssh idir-@10.7.236.190` depuis le portable | ✔ |
 | Clé du professeur dans `~/.ssh/authorized_keys` (`idir-` et `root`) | ✔ |
 
