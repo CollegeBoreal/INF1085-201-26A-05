@@ -108,7 +108,7 @@ Installation via la console noVNC de l'interface web Proxmox
 
 ### 5. Configuration réseau et SSH
 
-La VM a obtenu son IP par DHCP : `10.7.236.160/23`.
+La VM est configurée avec l'IP statique : `10.7.236.160/23`.
 
 Installation et activation d'OpenSSH (dans la VM) :
 
@@ -139,7 +139,7 @@ chmod 600 ~/.ssh/authorized_keys
 | `sudo qm list` — VM 103 `running` | ✔ |
 | Installation Kali terminée, bureau Xfce | ✔ |
 | IP de la VM : `10.7.236.160/23` | ✔ |
-| `ssh idir-@10.7.236.190` depuis le portable | ✔ |
+| `ssh idir-@10.7.236.160` depuis le portable | ✔ |
 | Clé du professeur dans `~/.ssh/authorized_keys` (`idir-` et `root`) | ✔ |
 
 
