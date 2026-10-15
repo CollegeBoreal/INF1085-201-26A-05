@@ -222,5 +222,5 @@ pveum user add B300151496@pve
 pveum passwd B300151496@pve
 pveum user list 
 
-<image src=images/IMG_4291.jpeg width=50% height=50% > </image>
+<image src=images/image.png width=50% height=50% > </image>
 
