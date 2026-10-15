@@ -1,2 +1,152 @@
  # 300155927
- 
+
+# Installation d'Ubuntu Server 24.04 LTS — Compte-rendu
+
+Documentation de l'installation d'Ubuntu Server sur une machine virtuelle hébergée sur le nœud **server46** (Proxmox VE).
+
+## Configuration retenue
+
+| Paramètre | Valeur |
+|---|---|
+| Nœud Proxmox | `server46` (`10.7.236.199`) |
+| VM ID / nom | `109` / `Garvey` |
+| RAM | 2,00 Gio (4096 Mo) |
+| CPU | 2 (1 socket, 2 cores) |
+| Nom du serveur | `ubuntu` |
+| Nom d'utilisateur | `garvey200` |
+| Version | Ubuntu **24.04.5 LTS** (noyau 6.8.0-146-generic, x86_64) |
+| Type d'installation | Ubuntu Server (installation complète, pas minimisée) |
+| Interface réseau | `ens18` (Virtio, MAC `bc:24:11:f4:5c:7b`) |
+| Adresse IPv4 finale | `10.7.236.181` (DHCPv4, /23 — la capture de l'étape 11 montrait encore `10.7.237.140`) |
+| Proxy | Aucun |
+| Miroir d'archives | `http://ca.archive.ubuntu.com/ubuntu/` (version *noble*) |
+| Disque | 50 Go (`local-lvm:vm-109-disk-0`, vu comme 32 Go pendant l'installation) |
+| Réseau (Proxmox) | `virtio`, bridge `vmbr0` |
+| Partitionnement | LVM : `/` 14,996 Go (ext4), `/boot` 2,000 Go (ext4) |
+| Ubuntu Pro | Ignoré (peut être activé plus tard avec `pro attach`) |
+| Snaps | Aucun sélectionné |
+
+## Création de la machine virtuelle (Proxmox VE)
+
+La VM a été créée en ligne de commande avec `qm`, depuis **PowerShell sur Windows** via SSH vers le nœud Proxmox.
+
+### 1. Connexion au nœud depuis PowerShell
+
+```powershell
+ssh root@10.7.236.199
+```
+
+### 2. Création de la VM 109 « Garvey »
+
+```bash
+qm create 109 --name Garvey --ostype l26 \
+  --memory 4096 --sockets 1 --cores 4 \
+  --net0 virtio,bridge=vmbr0
+```
+
+### 3. Ajout du disque de 50 Go
+
+```bash
+qm set 109 --scsi0 local-lvm:50
+```
+
+### 4. Montage de l'ISO Ubuntu Server 24.04
+
+```bash
+qm set 109 --ide2 <local>:iso/<ubuntu-24.04.3-live-server-amd64.iso,media=cdrom 
+
+### 5. Démarrage de la VM
+
+```bash
+qm start 109
+```
+
+Ensuite, ouvrir la **Console** de la VM dans l'interface Proxmox et suivre l'installateur Ubuntu (étapes ci-dessous).
+
+### Commandes utiles
+
+```bash
+qm list          # lister les VM du nœud
+qm status 109    # état de la VM
+qm stop 109      # arrêt forcé
+qm shutdown 109  # arrêt propre
+```
+
+## Étapes de l'installation
+
+### 1. Type d'installation
+Choix de **Ubuntu Server** (installation complète avec l'ensemble de paquets recommandé).
+
+![Type d'installation](images/etape-01-type-installation.jpg)
+
+### 2. Configuration réseau
+L'interface `ens18` est configurée en DHCPv4 (`10.7.237.138/23` pendant l'installation).
+
+![Configuration réseau](images/etape-02-configuration-reseau.jpg)
+
+### 3. Configuration du proxy
+Aucun proxy nécessaire : le champ est laissé vide.
+
+![Configuration du proxy](images/etape-03-configuration-proxy.jpg)
+
+### 4. Miroir d'archives Ubuntu
+Miroir canadien `http://ca.archive.ubuntu.com/ubuntu/` — le test du miroir est réussi (`noble`, `noble-updates`, `noble-backports`).
+
+![Miroir Ubuntu](images/etape-04-miroir-ubuntu.jpg)
+
+### 5. Stockage guidé
+Utilisation du disque entier de 32 Go, configuré comme **groupe LVM** (sans chiffrement LUKS).
+
+![Stockage guidé](images/etape-05-stockage-guide.jpg)
+
+### 6. Résumé du système de fichiers
+- `/` : 14,996 Go, ext4, volume logique LVM (`ubuntu-vg`)
+- `/boot` : 2,000 Go, ext4, partition du disque local
+
+![Résumé du système de fichiers](images/etape-06-resume-systeme-fichiers.jpg)
+
+### 7. Configuration du profil
+- Nom : Garvey
+- Nom du serveur : `ubuntu`
+- Nom d'utilisateur : `garvey200`
+- Mot de passe défini (masqué sur la capture)
+
+![Configuration du profil](images/etape-07-configuration-profil.jpg)
+
+### 8. Ubuntu Pro
+Option **« Skip for now »** : Ubuntu Pro n'est pas activé pendant l'installation.
+
+![Ubuntu Pro](images/etape-08-ubuntu-pro.jpg)
+
+### 9. Snaps serveur
+Aucun snap sélectionné.
+
+![Snaps serveur](images/etape-09-snaps-serveur.jpg)
+
+### 10. Installation du système
+Le programme d'installation (Subiquity/Curtin) configure le stockage, APT et installe le système.
+
+![Installation du système](images/etape-10-installation-systeme.jpg)
+
+### 11. Connexion réussie
+Premier démarrage : connexion avec `garvey200`. Le système affiche Ubuntu **24.04.5 LTS**, adresse IPv4 `10.7.237.140`, charge système 0.69, 13 % de mémoire utilisée.
+
+![Connexion réussie](images/etape-11-connexion-reussie.jpg)
+
+## Vérifications post-installation
+
+```bash
+# Vérifier la version
+lsb_release -a
+
+# Vérifier l'adresse IP
+ip addr show ens18
+
+# Vérifier l'espace disque
+df -h
+
+# Voir les mises à jour disponibles
+apt list --upgradable
+```
+
+

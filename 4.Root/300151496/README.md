@@ -207,12 +207,22 @@ qm set 100 --delete ide2 --boot order=scsi0
 # En cas de VM bloquée
 kill -9 $(ps -ef | grep '\-id 100 ' | grep -v grep | awk '{print $2}'); sleep 2; qm start 100
 
-# Dans la VM : installation du serveur SSH
-sudo apt update && sudo apt install -y openssh-server && sudo systemctl enable --now ssh
-
 # Dans la VM : ajout de la clé du professeur
 mkdir -p ~/.ssh && chmod 700 ~/.ssh
 echo 'CLE_PUBLIQUE_DU_PROFESSEUR' >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys
 ssh-keygen -l -f ~/.ssh/authorized_keys
 ```
+
+# Dans la VM : installation du serveur SSH
+sudo apt update && sudo apt install -y openssh-server && sudo systemctl enable --now ssh
+
+# Dans le Shell de notre serveur :
+
+pveum user add B300151496@pve
+
+pveum passwd B300151496@pve
+
+pveum user list 
+
+<image src=images/image.png width=50% height=50% > </image>
 
