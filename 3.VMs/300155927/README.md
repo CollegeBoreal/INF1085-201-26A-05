@@ -11,7 +11,7 @@ Documentation de l'installation d'Ubuntu Server sur une machine virtuelle héber
 | Nœud Proxmox | `server46` (`10.7.236.199`) |
 | VM ID / nom | `109` / `Garvey` |
 | RAM | 2,00 Gio (4096 Mo) |
-| CPU | 2 (1 socket, 4 cores) |
+| CPU | 2 (1 socket, 2 cores) |
 | Nom du serveur | `ubuntu` |
 | Nom d'utilisateur | `garvey200` |
 | Version | Ubuntu **24.04.5 LTS** (noyau 6.8.0-146-generic, x86_64) |
@@ -53,8 +53,7 @@ qm set 109 --scsi0 local-lvm:50
 ### 4. Montage de l'ISO Ubuntu Server 24.04
 
 ```bash
-qm set 109 --ide2 <STOCKAGE>:iso/<nom-iso>.iso,media=cdrom
-```
+qm set 109 --ide2 <local>:iso/<ubuntu-24.04.3-live-server-amd64.iso,media=cdrom 
 
 ### 5. Démarrage de la VM
 
@@ -72,8 +71,6 @@ qm status 109    # état de la VM
 qm stop 109      # arrêt forcé
 qm shutdown 109  # arrêt propre
 ```
-
-> ⚠️ Remplace `<STOCKAGE>` et `<nom-iso>` par le stockage et le nom exact du fichier ISO dans ton environnement.
 
 ## Étapes de l'installation
 
