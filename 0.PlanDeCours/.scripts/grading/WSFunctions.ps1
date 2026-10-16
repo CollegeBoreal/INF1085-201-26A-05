@@ -48,7 +48,7 @@ function Get-ParticipationGrades {
             # ---------------------------------
             $readEmoji = ($cols[3]).Trim()
             $levels = @(572, 573, 574)  # fail, silver, gold
-            $readScore = Get-RubricLevelIdFromReadmeEmoji `
+            $readScore = Get-RubricLevelId `
                 -Emoji $readEmoji `
                 -Levels $levels
 
@@ -56,10 +56,9 @@ function Get-ParticipationGrades {
             # Images folder presence (pass/fail)
             # ---------------------------------
             $imgEmoji = ($cols[4]).Trim()
-            $imgScore = Get-RubricLevelIdFromEmoji `
+            $imgScore = Get-RubricLevelId `
                 -Emoji $imgEmoji `
-                -FailLevelId 575 `
-                -PassLevelId 576
+                -Levels @(575, 576)
 
             # If README.md exceeds expectations,
             # images folder is implicitly considered present

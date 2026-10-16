@@ -23,6 +23,16 @@ $RepoRoot = Resolve-Path (Join-Path $PSScriptRoot "../../..")
 # Fichier local au script
 . (Join-Path $PSScriptRoot "WSFunctions.ps1")
 
+# =====================================================================
+# CONFIGURATION
+# =====================================================================
+# Static IDs and flags used throughout participation grading
+# =====================================================================
+
+# LMS assignment ID where participation grades will be submitted
+$LMSAssignmentID = 55
+
+
 # ---------------------------------------------------------------------
 # FETCH GRADABLE USERS FROM LMS
 # ---------------------------------------------------------------------
@@ -34,15 +44,6 @@ $responseLMS = Get-LMSGradableUsers -LMS_COURSE $LMS_COURSE
 #   "123456789" = { moodleId, email }
 # }
 $LMSStudents = Get-LMSStudentInfo -LMSResponse $responseLMS
-
-# =====================================================================
-# CONFIGURATION
-# =====================================================================
-# Static IDs and flags used throughout participation grading
-# =====================================================================
-
-# LMS assignment ID where participation grades will be submitted
-$LMSAssignmentID = 55
 
 # ---------------------------------------------------------------------
 # READ PARTICIPATION FILES
