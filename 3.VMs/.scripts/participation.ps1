@@ -67,7 +67,7 @@ for ($i = 0; $i -lt $ACTIVE_GROUP.Count; $i++) {
     $AdminIP  = $server_parts[1]
 
     # $RdpStatus = Get-RdpStatus -ServerIP $ServerIP
-    $RdpStatus = "~ "
+    $RdpStatus = "🏙️ "
     
     Write-LabStudentRow `
         -Index ($i + 1) `
