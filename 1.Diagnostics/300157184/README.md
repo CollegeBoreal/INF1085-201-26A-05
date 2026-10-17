@@ -21,7 +21,7 @@ Cette image présente une carte graphique NVIDIA RTX A2000 Laptop GPU au format 
 ![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/78761795238e078bb7ca47bf23b9b8acc92913c1/1.Diagnostics/300157184/images/WhatsApp%20Image%202026-09-18%20at%2011.08.01%20(1).jpeg)
 
 
-![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/1.diagnostic/300157184/images/WhatsApp%20Image%202026-09-18%20at%2011.08.02.jpeg?raw=true)
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/fe05635d737ebc8c6c9153bb7faa57a1f7f65b09/1.Diagnostics/300157184/images/WhatsApp%20Image%202026-09-18%20at%2011.08.02.jpeg)
 
 1. Le câble d'alimentation (à connecteur noir C13)Emplacement : Branchement sur le premier bloc d'alimentation de 460W du serveur à droite, et au dos de l'écran Dell à gauche.   Rôle : Fournir l'énergie électrique du réseau secteur (230V / 110V) à chacun des appareils pour les sous-mettre sous tension.
    
