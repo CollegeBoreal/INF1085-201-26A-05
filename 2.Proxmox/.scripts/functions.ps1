@@ -13,9 +13,9 @@ function Write-LabParticipationHeader {
     Write-Output "| Signe              | Signification                       |"
     Write-Output "|--------------------|-------------------------------------|"
     Write-Output "| ❌                 | Rien dans `README.md`               |"
-    Write-Output "| 🥉                 | Composants matériels détaillés      |"
-    Write-Output "| 🥈                 | Écran POST ou BIOS affiché          |"
-    Write-Output "| 🥇                 | Configuration/formatage des disques |"
+    Write-Output "| 🥉                 | Écran Proxmox (nomedeset) ou init Clé USB RUFUS |"
+    Write-Output "| 🥈                 | Configuration démarrage /dev/sda ou adresse IP  |"
+    Write-Output "| 🥇                 | Affichage écran PVE et test listes CPU, MEM, PCI |"
     Write-Output "| 🏆                 | `README.md` impeccable              |"
 
 }
