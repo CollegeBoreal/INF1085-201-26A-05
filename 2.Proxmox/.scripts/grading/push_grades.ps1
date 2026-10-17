@@ -17,7 +17,7 @@ $ErrorActionPreference = "Stop"
 # LOAD DEPENDENCIES
 # ---------------------------------------------------------------------
 
-# 2.Proxmox/.scripts/grading -> repo root
+# 0.PlanDeCours/.scripts/grading -> repo root
 $RepoRoot = Resolve-Path (Join-Path $PSScriptRoot "../../..")
 
 . (Join-Path $RepoRoot ".scripts/students.ps1")
@@ -27,10 +27,22 @@ $RepoRoot = Resolve-Path (Join-Path $PSScriptRoot "../../..")
 # =====================================================================
 # LOAD RUBRIC CONFIG (assignment-specific, sourced from API)
 # =====================================================================
-$config          = Get-Content "$PSScriptRoot/rubric.json" -Raw | ConvertFrom-Json
+$config = Get-Content "$PSScriptRoot/rubric.json" -Raw | ConvertFrom-Json
 $LMSAssignmentID = $config.assignmentId
-$Criteria        = $config.criteria
-$ImpliedPass     = $config.impliedPass   # may be $null
+$Criteria = $config.criteria
+$ImpliedPass = $config.impliedPass   # may be $null
+
+# ---------------------------------------------------------------------
+# LOAD FEEDBACK (per-student remarks from feedback.csv)
+# ---------------------------------------------------------------------
+# Keyed by StudentID → { Appreciation, Comments }
+$FeedbackLookup = @{}
+$feedbackPath = Join-Path $PSScriptRoot "feedback.csv"
+if (Test-Path $feedbackPath) {
+    Import-Csv $feedbackPath | ForEach-Object {
+        $FeedbackLookup[$_.StudentID] = $_
+    }
+}
 
 # ---------------------------------------------------------------------
 # FETCH GRADABLE USERS FROM LMS
@@ -80,6 +92,14 @@ foreach ($entry in $participation) {
     $moodleId = $LMSStudents[$entry.borealId].moodleId
     if ($DEBUG) {
         Write-Output $moodleId, $entry.borealId
+    }
+
+    # Merge per-student feedback remark into entry
+    # (used as the remark on criteria whose rubric.json "remark" points to "comments")
+    if ($FeedbackLookup.ContainsKey($entry.borealId)) {
+        $entry | Add-Member -NotePropertyName comments `
+            -NotePropertyValue $FeedbackLookup[$entry.borealId].Comments `
+            -Force
     }
 
     # Build LMS-compatible rubric payload from config-driven criteria
