@@ -48,7 +48,7 @@ jobs:
           $chapters = @(
             "0.PlanDeCours"
             "1.Diagnostics"
-
+            "2.Proxmox"
           )
 
           foreach ($chapter in $chapters) {
