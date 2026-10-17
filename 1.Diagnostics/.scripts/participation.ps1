@@ -19,7 +19,7 @@ $ErrorActionPreference = "Stop"
 
 $FeedbackLookup = Get-FeedbackLookup -Students $STUDENTS
 
-Write-ParticipationHeader
+Write-LabParticipationHeader
 Write-PresenceHeader -FeedbackLookup $FeedbackLookup
 
 $s = 0
@@ -29,12 +29,12 @@ for ($i = 0; $i -lt $STUDENTS.Count; $i++) {
     $parts = $STUDENTS[$i] -split '\|'
 
     $StudentID = $parts[0]
-    $GitHubID  = $parts[1]
-    $AvatarID  = $parts[2]
+    $GitHubID = $parts[1]
+    $AvatarID = $parts[2]
 
-    $paths  = Get-StudentPaths -StudentID $StudentID
+    $paths = Get-StudentPaths -StudentID $StudentID
     $checks = Get-StudentChecks -Paths $paths
-    $url    = Get-GitHubAvatarLink -GitHubID $GitHubID -AvatarID $AvatarID
+    $url = Get-GitHubAvatarLink -GitHubID $GitHubID -AvatarID $AvatarID
 
     Write-LabStudentRow `
         -Index ($i + 1) `

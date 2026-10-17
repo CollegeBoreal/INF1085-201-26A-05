@@ -7,10 +7,13 @@
 
 ## Légende
 
-| Signe              | Signification                 |
-|--------------------|-------------------------------|
-| :heavy_check_mark: | Prêt à être corrigé           |
-| :x:                | Fichier inexistant            |
+| Signe              | Signification                       |
+|--------------------|-------------------------------------|
+| ❌                 | Rien dans README.md               |
+| 🥉                 | Composants matériels détaillés      |
+| 🥈                 | Écran POST ou BIOS affiché          |
+| 🥇                 | Configuration/formatage des disques |
+| 🏆                 | README.md impeccable              |
 
 ## :a: Présence
 

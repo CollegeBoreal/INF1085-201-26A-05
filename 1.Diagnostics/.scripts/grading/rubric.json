@@ -1,28 +1,48 @@
 {
-  "assignmentId": 32,
+  "assignmentId": 60,
   "files": [
     "./.scripts/Participation.md"
   ],
   "criteria": [
     {
-      "name":        "readme",
-      "col":         3,
-      "criterionid": 158,
-      "remark":      "Quantité README.md",
-      "levels":      [365, 366, 367]
+      "name": "readme",
+      "col": 3,
+      "criterionid": 250,
+      "remark": "Quantité README.md",
+      "levels": [
+        617,
+        618,
+        619
+      ]
     },
     {
-      "name":        "image",
-      "col":         4,
-      "criterionid": 159,
-      "remark":      "Présence répertoire images",
-      "levels":      [368, 369]
+      "name": "image",
+      "col": 4,
+      "criterionid": 251,
+      "remark": "Présence répertoire images",
+      "levels": [
+        620,
+        621
+      ]
+    },
+    {
+      "name": "app",
+      "col": 5,
+      "criterionid": 252,
+      "remark": "comments",
+      "levels": [
+        622,
+        623,
+        624,
+        625,
+        626
+      ]
     }
   ],
   "impliedPass": {
-    "when":    "readme",
-    "exceeds": 367,
-    "set":     "image",
-    "levelid": 369
+    "when": "readme",
+    "exceeds": 619,
+    "set": "image",
+    "levelid": 621
   }
 }

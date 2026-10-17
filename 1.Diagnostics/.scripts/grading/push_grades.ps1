@@ -17,7 +17,7 @@ $ErrorActionPreference = "Stop"
 # LOAD DEPENDENCIES
 # ---------------------------------------------------------------------
 
-# 1.Diagnostics/.scripts/grading -> repo root
+# 0.PlanDeCours/.scripts/grading -> repo root
 $RepoRoot = Resolve-Path (Join-Path $PSScriptRoot "../../..")
 
 . (Join-Path $RepoRoot ".scripts/students.ps1")
