@@ -7,13 +7,13 @@
 
 ## Légende
 
-| Signe              | Signification                       |
-|--------------------|-------------------------------------|
-| ❌                 | Rien dans README.md               |
-| 🥉                 | Écran Proxmox (nomedeset) ou init Clé USB RUFUS |
-| 🥈                 | Configuration démarrage /dev/sda ou adresse IP  |
-| 🥇                 | Affichage écran PVE et test listes CPU, MEM, PCI |
-| 🏆                 | README.md impeccable              |
+| Signe              | Signification                                                      |
+|--------------------|--------------------------------------------------------------------|
+| ❌                 | Rien dans README.md                                              |
+| 🥉                 | Installation PVE - Écran Proxmox (nomedeset) ou init Clé USB RUFUS |
+| 🥈                 | Configuration PVE - Démarrage /dev/sda ou adresse IP               |
+| 🥇                 | Affichage PVE - Écran console et test listes CPU, MEM, PCI         |
+| 🏆                 | README.md impeccable                                             |
 
 ## :a: Présence
 

@@ -10,13 +10,13 @@ function Write-LabParticipationHeader {
     Write-Output ""
     Write-Output "## Légende"
     Write-Output ""
-    Write-Output "| Signe              | Signification                       |"
-    Write-Output "|--------------------|-------------------------------------|"
-    Write-Output "| ❌                 | Rien dans `README.md`               |"
-    Write-Output "| 🥉                 | Écran Proxmox (nomedeset) ou init Clé USB RUFUS |"
-    Write-Output "| 🥈                 | Configuration démarrage /dev/sda ou adresse IP  |"
-    Write-Output "| 🥇                 | Affichage écran PVE et test listes CPU, MEM, PCI |"
-    Write-Output "| 🏆                 | `README.md` impeccable              |"
+    Write-Output "| Signe              | Signification                                                      |"
+    Write-Output "|--------------------|--------------------------------------------------------------------|"
+    Write-Output "| ❌                 | Rien dans `README.md`                                              |"
+    Write-Output "| 🥉                 | Installation PVE - Écran Proxmox (nomedeset) ou init Clé USB RUFUS |"
+    Write-Output "| 🥈                 | Configuration PVE - Démarrage /dev/sda ou adresse IP               |"
+    Write-Output "| 🥇                 | Affichage PVE - Écran console et test listes CPU, MEM, PCI         |"
+    Write-Output "| 🏆                 | `README.md` impeccable                                             |"
 
 }
 
