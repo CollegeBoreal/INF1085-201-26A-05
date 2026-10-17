@@ -12,6 +12,26 @@ https://${LMS_URL}/course/view.php?id=11
 
 - [ ] Retrieve all assignments from LMS
 
+```powershell
+$body = @{
+    wstoken            = $env:API_SYNC_TOKEN
+    wsfunction         = 'mod_assign_get_assignments'
+    moodlewsrestformat = 'json'
+    'courseids[0]'     = '11'
+}
+
+$response = Invoke-RestMethod `
+    -Uri "https://$env:LMS_URL/webservice/rest/server.php" `
+    -Method Post `
+    -Body $body `
+    -ContentType 'application/x-www-form-urlencoded'
+
+$response.courses |
+    ForEach-Object { $_.assignments } |
+    Select-Object id, cmid, name |
+    ConvertTo-Json -Depth 10
+```
+
 ```bash
 curl -X POST "https://${LMS_URL}/webservice/rest/server.php" \
 -d "wstoken=${API_SYNC_TOKEN}" \
@@ -41,6 +61,11 @@ curl -X POST "https://${LMS_URL}/webservice/rest/server.php" \
   "id": 61,
   "cmid": 71,
   "name": "2.Proxmox"
+}
+{
+  "id": 62,
+  "cmid": 72,
+  "name": "3.VMs"
 }
 
 ```
