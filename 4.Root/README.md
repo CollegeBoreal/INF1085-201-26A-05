@@ -1,5 +1,14 @@
 # 🔐 root - Comptes administrateurs Proxmox : bonnes pratiques
 
+| #️⃣ | Participations |
+|-|-|
+| 1️⃣ | [:tada: Participation](.scripts/Participation-group1.md) |
+| 2️⃣ | [:tada: Participation](.scripts/Participation-group2.md) |
+| 3️⃣ | [:tada: Participation](.scripts/Participation-group3.md) |
+| 4️⃣ | [:tada: Participation](.scripts/Participation-group4.md) |
+| 5️⃣ | [:tada: Participation](.scripts/Participation-group5.md) |
+
+
 ## 🎯 Objectif
 
 Apprendre à sécuriser l'accès à Proxmox VE en utilisant des comptes administrateurs individuels plutôt que le compte `root`.
