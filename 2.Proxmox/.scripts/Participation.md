@@ -18,7 +18,7 @@
 ## :a: Présence
 
 |:hash:| Boréal :id: | README.md | images | Appréciation | Commentaires |
-|------|-------------|-----------|--------|--------------|--------------|
+|------|-------------|-----------|--------|---------|--------------|
 | 1 | [300141685](../300141685/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/157196575?s=460&v=4' width=20 height=20></image>](https://github.com/soulemaneBRY) | :x: | :x: | :x: | 0️⃣ Rien à corriger |
 | 2 | [300147065](../300147065/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/266599103?s=460&v=4' width=20 height=20></image>](https://github.com/Ahmedboreal) | :x: | :x: | :x: | 0️⃣ Rien à corriger |
 | 3 | [300150411](../300150411/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/211593030?s=460&v=4' width=20 height=20></image>](https://github.com/brhnkess) | :1st_place_medal: | :heavy_check_mark: | 🥇 | 1️⃣ Bonne séquence mais pas détaillée - images, texte |
