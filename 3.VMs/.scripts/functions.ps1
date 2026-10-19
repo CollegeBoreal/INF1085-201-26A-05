@@ -6,9 +6,9 @@ function Write-ConfigurationSection {
     Write-Output "## :gear: Configuration"
     Write-Output ""
 
-    Write-Output "| Proxmox V9.2           | User/Pwd                   |"
-    Write-Output "|------------------------|----------------------------|"
-    Write-Output "| ${Server}              | root/Boreal@2️⃣02️⃣6          |"
+    Write-Output "| Proxmox V9.2                        | User/Pwd                   |"
+    Write-Output "|-------------------------------------|----------------------------|"
+    Write-Output "| [${Server}](https://${Server}:8006) | root/Boreal@2️⃣02️⃣6          |"
     Write-Output ""
 
 }
