@@ -20,8 +20,8 @@
 
 ## :a: Présence
 
-|:hash:| Boréal :id: | README.md | images | Appréciation | Commentaires | :link: IP |
-|------|-------------|-----------|--------|--------------|--------------|-----------|
+|:hash:| Boréal :id: | README.md | images | Appréc. | Commentaires | :link: IP |
+|------|-------------|-----------|--------|---------|--------------|-----------|
 | 1 | [300155109](../300155109/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/231572626?s=460&v=4' width=20 height=20></image>](https://github.com/AlexiaKabore) | :x: | :x: | :x: | 0️⃣ Rien à corriger | 🏙️  ubuntu@10.7.236.177  |
 | 2 | [300155466](../300155466/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/232940163?s=460&v=4' width=20 height=20></image>](https://github.com/rekhilahana34-tech) | :x: | :x: | :x: | 0️⃣ Rien à corriger | 🏙️  ubuntu@10.7.236.178  |
 | 3 | [300155524](../300155524/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/236676877?s=460&v=4' width=20 height=20></image>](https://github.com/Berihan-1995) | :x: | :x: | :x: | 0️⃣ Rien à corriger | 🏙️  ubuntu@10.7.236.179  |

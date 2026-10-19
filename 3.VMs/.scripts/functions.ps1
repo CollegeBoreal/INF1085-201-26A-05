@@ -24,8 +24,8 @@ function Write-LabHeader {
     Write-Output ""
 
     if ($FeedbackLookup.Count -gt 0) {
-        Write-Output "|:hash:| Boréal :id: | README.md | images | Appréciation | Commentaires | :link: IP |"
-        Write-Output "|------|-------------|-----------|--------|--------------|--------------|-----------|"
+        Write-Output "|:hash:| Boréal :id: | README.md | images | Appréc. | Commentaires | :link: IP |"
+        Write-Output "|------|-------------|-----------|--------|---------|--------------|-----------|"
     }
     else {
         Write-Output "|:hash:| Boréal :id: | README.md | images | :link: IP |"
