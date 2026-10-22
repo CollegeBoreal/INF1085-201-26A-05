@@ -8,8 +8,10 @@
   
 4. Référence constructeur (Dell DP/N) : 0JDC1F
    
-5. Référence NVIDIA (Board ID) : 900-53093-0201-000 / Model P6172a   
+5. Référence NVIDIA (Board ID) : 900-53093-0201-000 / Model P6172a
 
+    
+Interface du BIOS (RBSU) du serveur HP ProLiant DL360 G6 affichant un processeur Intel (2.40 GHz), 8 Go de RAM installés et le menu de configuration système.
    
 ![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/9ac4d7d36c969e34252e986bb29e9c8a60c9fe9e/1.Diagnostics/300157184/images/WhatsApp%20Image%202026-09-18%20at%2011.08.00.jpeg) 
 
