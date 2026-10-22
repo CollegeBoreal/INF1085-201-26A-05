@@ -22,7 +22,7 @@ fonctionnement adequate
 
 ### Suppression d'une configuration RAID (HP Smart Array P410i)
 
-![Avertissement suppression RAID](images/WhatsApp%20Image%202026-10-22%20at%2013.39.52%20(2).jpg)
+![image alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/aa77a0e15966e647c4df4e9e887a4df25c3317c5/1.Diagnostics/300157184/images/WhatsApp%20Image%202026-10-22%20at%2013.39.52%20(2)_edited.jpg)
 
 * **Contrôleur :** HP Smart Array P410i (Slot 0)[cite: 4]
 * **Action :** Confirmation de la suppression du volume logique (#1)[cite: 4]
