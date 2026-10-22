@@ -15,7 +15,19 @@ Interface du BIOS (RBSU) du serveur HP ProLiant DL360 G6 affichant un processeur
    
 ![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/9ac4d7d36c969e34252e986bb29e9c8a60c9fe9e/1.Diagnostics/300157184/images/WhatsApp%20Image%202026-09-18%20at%2011.08.00.jpeg) 
 
-cet image presente l'interieur d'un serveur HP Proliant DL360 G6. On peut obserser la carte mere, les emplacements de memoire RAM, les dissipateurs thermiques et les ventilateurs. Ces compsants permetent au serveur de traiter les information, de stocker temporairement les donnees et de maintenir une temperature de fonctionnement adequate
+cet image presente l'interieur d'un serveur HP Proliant DL360 G6. On peut obserser la carte mere, les emplacements de memoire RAM, les dissipateurs thermiques et les ventilateurs. Ces compsants permetent au serveur de traiter les information, de stocker temporairement les donnees et de maintenir une temperature de 
+fonctionnement adequate
+
+
+
+### Suppression d'une configuration RAID (HP Smart Array P410i)
+
+![Avertissement suppression RAID](images/WhatsApp%20Image%202026-10-22%20at%2013.39.52%20(2).jpg)
+
+* **Contrôleur :** HP Smart Array P410i (Slot 0)[cite: 4]
+* **Action :** Confirmation de la suppression du volume logique (#1)[cite: 4]
+* **Configuration :** RAID 5 d'une capacité de 273,4 Go composé de 3 disques physiques[cite: 4]
+* **Avertissement :** Perte totale et définitive des données présentes sur la grappe lors de la validation (`F3`)[cite: 4]
 
 ![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/9de6fd289bf03c71f874af744f3a9ff75e98596d/1.Diagnostics/300157184/images/WhatsApp%20Image%202026-09-18%20at%2011.12.58.jpeg)
 Cette image présente une carte graphique NVIDIA RTX A2000 Laptop GPU au format MXM (Mobile PCI Express Module). Cette carte graphique est conçue pour les ordinateurs portables professionnels et permet de traiter les tâches graphiques, la modélisation 3D et les applications nécessitant des performances graphiques élevées. Son format MXM permet son intégration dans des systèmes compatibles.
