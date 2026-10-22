@@ -32,7 +32,7 @@ fonctionnement adequate
 
 ### Menu principal du contrôleur RAID (HP Option ROM Configuration for Arrays)
 
-![Menu principal HP Smart Array](images/WhatsApp%20Image%202026-10-22%20at%2013.39.52%20(1).jpg)
+![images alt ](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/8c01d19890b19bb063087523bdb7f8fd770f042e/1.Diagnostics/300157184/images/WhatsApp%20Image%202026-10-22%20at%2013.39.52%20(1).jpeg)
 
 * **Contrôleur :** HP Smart Array P410i (version 8.30.02.00 / Slot 0)[cite: 5]
 * **Interface :** Menu principal de configuration de l'utilitaire d'extension ROM (ORCA)[cite: 5]
