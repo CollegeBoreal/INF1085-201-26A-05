@@ -29,6 +29,19 @@ fonctionnement adequate
 * **Configuration :** RAID 5 d'une capacité de 273,4 Go composé de 3 disques physiques[cite: 4]
 * **Avertissement :** Perte totale et définitive des données présentes sur la grappe lors de la validation (`F3`)[cite: 4]
 
+
+### Menu principal du contrôleur RAID (HP Option ROM Configuration for Arrays)
+
+![Menu principal HP Smart Array](images/WhatsApp%20Image%202026-10-22%20at%2013.39.52%20(1).jpg)
+
+* **Contrôleur :** HP Smart Array P410i (version 8.30.02.00 / Slot 0)[cite: 5]
+* **Interface :** Menu principal de configuration de l'utilitaire d'extension ROM (ORCA)[cite: 5]
+* **Options disponibles :**
+  * **Create Logical Drive :** Créer un nouveau volume/lecteur logique (Option actuellement sélectionnée)[cite: 5]
+  * **View Logical Drive :** Afficher les volumes logiques existants et leur statut[cite: 5]
+  * **Delete Logical Drive :** Supprimer un volume logique existant[cite: 5]
+  * **Manage License Keys :** Gérer les clés de licence du contrôleur[cite: 5]
+
 ![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/9de6fd289bf03c71f874af744f3a9ff75e98596d/1.Diagnostics/300157184/images/WhatsApp%20Image%202026-09-18%20at%2011.12.58.jpeg)
 Cette image présente une carte graphique NVIDIA RTX A2000 Laptop GPU au format MXM (Mobile PCI Express Module). Cette carte graphique est conçue pour les ordinateurs portables professionnels et permet de traiter les tâches graphiques, la modélisation 3D et les applications nécessitant des performances graphiques élevées. Son format MXM permet son intégration dans des systèmes compatibles.
 
