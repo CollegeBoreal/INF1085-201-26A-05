@@ -98,3 +98,31 @@ Ajouter les captures d’écran démontrant :
 - L’adresse IP du serveur.
 - L’état actif du service SSH.
 - Le test de connexion SSH locale.
+  ## Captures d'écran
+
+### Capture 1
+![Capture 1](images/WhatsApp%20Image%202026-10-01%20at%2016.54.45.jpeg)
+
+### Capture 2
+![Capture 2](images/WhatsApp%20Image%202026-10-01%20at%2016.55.35.jpeg)
+
+### Capture 3
+![Capture 3](images/WhatsApp%20Image%202026-10-01%20at%2016.56.42.jpeg)
+
+### Capture 4
+![Capture 4](images/WhatsApp%20Image%202026-10-08%20at%2018.41.51%20(1).jpeg)
+
+### Capture 5
+![Capture 5](images/WhatsApp%20Image%202026-10-08%20at%2018.41.51%20(2).jpeg)
+
+### Capture 6
+![Capture 6](images/WhatsApp%20Image%202026-10-08%20at%2018.41.51%20(4).jpeg)
+
+### Capture 7
+![Capture 7](images/WhatsApp%20Image%202026-10-08%20at%2018.41.51%20(6).jpeg)
+
+### Capture 8
+![Capture 8](images/WhatsApp%20Image%202026-10-08%20at%2018.41.51%20(7).jpeg)
+
+### Capture 9
+![Capture 9](images/WhatsApp%20Image%202026-10-08%20at%2018.41.51.jpeg)
