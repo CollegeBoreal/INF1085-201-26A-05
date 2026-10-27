@@ -1,6 +1,6 @@
 # 300156497
 # Configuration du serveur HP ProLiant DL360 G6
-![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/1.diagnostic/300156497/images/c2cb620f-8b42-43cd-a64a-4bd295b81138.jpeg?raw=true) 
+![images alt](0a5d22d4-ba33-49df-8a22-de06ffa339c3.jpeg) 
 Cette image montre le capot d'un serveur HP ProLiant DL360 G6 retiré, avec ses schémas techniques imprimés bien visibles. En bas, on distingue l'arrière du serveur avec son câble d'alimentation sur le bloc PS2 et son câble vidéo VGA bleu connectés
 
 ![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/1.diagnostic/300156497/images/0a5d22d4-ba33-49df-8a22-de06ffa339c3.jpeg?raw=true)
