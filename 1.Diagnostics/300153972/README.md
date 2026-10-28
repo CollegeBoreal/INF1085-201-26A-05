@@ -10,7 +10,8 @@
 
 
 ---
-20260917_142240.jpg
+
+1.Diagnostics/300153972/images/20260917_144105.jpg
 
 ## Introduction et objectifs
 
