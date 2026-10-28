@@ -84,6 +84,8 @@ Les trois disques SAS ont été regroupés en un volume logique RAID 5 de 273,4 
 
 **Calcul de la capacité utile** : en RAID 5, l'équivalent d'un disque sert à la parité.
 
+https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/1.Diagnostics/300153972/images/20260917_142823.jpg
+
 
 ```math
 
