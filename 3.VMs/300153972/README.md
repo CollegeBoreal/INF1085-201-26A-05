@@ -99,7 +99,7 @@ TASK ERROR: start failed: QEMU exited with code 1
 **Cause :** le type de CPU par défaut (`x86-64-v2-AES`) exige l'instruction AES-NI, que les processeurs Xeon du serveur ne supportent pas.
 **Solution :** **VM** → **Hardware** → **Processors** → **Type** : `<type choisi>` (ex. `x86-64-v2` ou `host`). La VM démarre ensuite normalement.
 
-![Correction du type de CPU](images/07-cpu-type.png)
+![Correction du type de CPU]
 
 > Supprime cette section si tu n'as pas eu ces erreurs.
 
