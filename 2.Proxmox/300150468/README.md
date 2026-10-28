@@ -28,7 +28,7 @@ Le serveur HP ProLiant DL360 G6 est une plate-forme matérielle d'ancienne gén�
 
 **2\. Infrastructure Matérielle et Câblage Réseau**
 
-![](./Documentation_Proxmox_VE9_HP_DL360_G6_v2_images/image-002.jpeg)
+![Figure : Raccordement réseau du serveur sur le switch Cisco (Baie / Cabinet 2)](./images/Image%20WhatsApp%20du%2007-10-2026%20%C3%A0%2012.50.11%20(1).jpeg)
 
 *Figure : Raccordement réseau du serveur sur le switch Cisco (Baie / Cabinet 2)*
 
