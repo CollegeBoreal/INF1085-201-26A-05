@@ -11,7 +11,7 @@
 
 ---
 
-1.Diagnostics/300153972/images/20260917_144105.jpg
+[1.Diagnostics/300153972/images/20260917_144105.jpg](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/1.Diagnostics/300153972/images/20260917_142240.jpg)
 
 ## Introduction et objectifs
 
@@ -83,6 +83,7 @@ Les trois disques SAS ont été regroupés en un volume logique RAID 5 de 273,4 
 **Pourquoi RAID 5 ?** Les données et la parité sont réparties sur les trois disques. Si un disque tombe en panne, le contrôleur reconstruit son contenu à partir des deux autres. C'est un bon compromis entre capacité, performance en lecture et tolérance aux pannes.
 
 **Calcul de la capacité utile** : en RAID 5, l'équivalent d'un disque sert à la parité.
+
 
 ```math
 
