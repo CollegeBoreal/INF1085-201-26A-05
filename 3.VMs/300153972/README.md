@@ -28,6 +28,7 @@ Installer une machine virtuelle Ubuntu Server 24.04 LTS sur le serveur Proxmox V
 ---
 
 ## 1. Connexion au serveur Proxmox
+https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/3.VMs/300153972/Images/13-demarrage-ubuntu.png
 
 Depuis un terminal, connexion SSH au nœud puis vérification de son adresse et de sa version :
 
