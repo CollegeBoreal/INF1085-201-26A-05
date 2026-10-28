@@ -4,7 +4,7 @@
 
 **1\. Contextualisation et Objectifs**
 
-![](./Documentation_Proxmox_VE9_HP_DL360_G6_v2_images/image-001.png)
+![Figure : Objectifs et contexte du laboratoire Proxmox VE 9 sur HP DL360 G6](./images/image-001.png)
 
 *Figure : Objectifs et contexte du laboratoire Proxmox VE 9 sur HP DL360 G6*
 
