@@ -38,11 +38,11 @@ ip a
 pveversion
 ```
 
-![Connexion SSH au serveur Proxmox](images/01-ssh-proxmox.png)
+
+
 
 L'interface Web est ensuite ouverte à l'adresse `https://<IP_SERVEUR>:8006`.
 
-![Interface Web Proxmox](images/02-interface-web.png)
 
 ---
 
@@ -52,7 +52,7 @@ L'interface Web est ensuite ouverte à l'adresse `https://<IP_SERVEUR>:8006`.
 
 Le fichier `ubuntu-24.04.x-live-server-amd64.iso` est téléversé dans le stockage local pour pouvoir être monté dans la VM.
 
-![Téléversement de l'ISO](images/03-upload-iso.png)
+
 
 ---
 
@@ -71,8 +71,8 @@ Assistant **Create VM**, avec les paramètres suivants :
 
 VirtIO est choisi parce que c'est un pilote paravirtualisé : il offre de meilleures performances réseau qu'une carte émulée (ex. Intel E1000).
 
-![Paramètres de la VM](images/04-create-vm.png)
-![Résumé avant création](images/05-confirmation.png)
+![Paramètres de la VM]
+![Résumé avant création]
 
 ---
 
@@ -87,7 +87,7 @@ unable to create VM <ID>: VM <ID> already exists on node '<SERVEUR>'
 **Cause :** le serveur est partagé ; chaque VM ID doit être unique sur le nœud.
 **Solution :** choisir un ID libre (`<VM_ID>`).
 
-![Erreur VM ID](images/06-erreur-vmid.png)
+
 
 ### Incompatibilité du type de CPU
 
@@ -115,11 +115,6 @@ TASK ERROR: start failed: QEMU exited with code 1
 | Profil | Utilisateur `<UTILISATEUR>`, hostname `<HOSTNAME>` |
 | SSH | **Install OpenSSH server** coché |
 
-![Installation - réseau](images/08-install-reseau.png)
-![Installation - stockage](images/09-install-stockage.png)
-![Installation - profil](images/10-install-profil.png)
-![Installation terminée](images/11-install-terminee.png)
-
 À la fin de l'installation, l'ISO est retirée du lecteur CD/DVD virtuel (**Hardware** → **CD/DVD Drive** → *Do not use any media*) pour éviter que la VM redémarre sur l'installateur.
 
 ---
@@ -135,7 +130,7 @@ ping -c 4 8.8.8.8    # tester l'accès Internet
 
 Résultat : 4 paquets reçus, 0 % de perte.
 
-![Premier démarrage et ping](images/12-premier-demarrage.png)
+![Premier démarrage et ping]
 
 ---
 
@@ -158,7 +153,7 @@ drwx------ ... .ssh
 
 Ces permissions sont obligatoires : si le dossier ou le fichier est accessible par d'autres utilisateurs, OpenSSH refuse la clé.
 
-![Permissions SSH](images/13-cle-ssh.png)
+![Permissions SSH]
 
 Vérification du service :
 
@@ -168,7 +163,7 @@ sudo systemctl status ssh
 
 Le service est `active (running)` et écoute sur le port 22.
 
-![Service SSH actif](images/14-service-ssh.png)
+![Service SSH actif]
 
 ---
 
@@ -202,7 +197,7 @@ ip a
 
 > Netplan utilise le YAML : l'indentation se fait **uniquement avec des espaces**. Une tabulation ou un décalage provoque une erreur de syntaxe.
 
-![Configuration Netplan](images/15-netplan.png)
+![Configuration Netplan]
 
 ---
 
@@ -215,7 +210,7 @@ ping -c 4 google.com   # résolution DNS
 
 Les deux tests réussissent avec 0 % de perte : la passerelle, l'accès Internet, le DNS et l'IP statique sont fonctionnels.
 
-![Tests réseau](images/16-tests-reseau.png)
+![Tests réseau]
 
 ---
 
@@ -229,7 +224,7 @@ ssh <UTILISATEUR>@<IP_STATIQUE>
 
 La connexion réussit : la VM est administrable à distance.
 
-![Connexion SSH depuis PowerShell](images/17-ssh-powershell.png)
+![Connexion SSH depuis PowerShell]
 
 ---
 
