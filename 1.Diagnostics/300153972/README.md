@@ -7,7 +7,6 @@
 | Étudiant | Karim Bamba |
 | Matricule | 300153972 |
 | Programme | Techniques des systèmes informatiques – Collège Boréal |
-| Cours | [code et nom du cours] |
 
 
 ---
