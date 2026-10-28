@@ -71,8 +71,8 @@ Assistant **Create VM**, avec les paramètres suivants :
 
 VirtIO est choisi parce que c'est un pilote paravirtualisé : il offre de meilleures performances réseau qu'une carte émulée (ex. Intel E1000).
 
-![Paramètres de la VM]
-![Résumé avant création]
+![Paramètres de la VM] https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/3.VMs/300153972/Images/03-iso-images.png?raw=true
+
 
 ---
 
