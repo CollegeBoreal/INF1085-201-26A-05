@@ -4,7 +4,7 @@
 
 **1\. Contextualisation et Objectifs**
 
-![](./Documentation_Proxmox_VE9_HP_DL360_G6_v2_images/image-001.png)
+![Figure : Objectifs et contexte du laboratoire Proxmox VE 9 sur HP DL360 G6](./images/image-001.png)
 
 *Figure : Objectifs et contexte du laboratoire Proxmox VE 9 sur HP DL360 G6*
 
@@ -28,7 +28,7 @@ Le serveur HP ProLiant DL360 G6 est une plate-forme matérielle d'ancienne gén�
 
 **2\. Infrastructure Matérielle et Câblage Réseau**
 
-![](./Documentation_Proxmox_VE9_HP_DL360_G6_v2_images/image-002.jpeg)
+![Figure : Raccordement réseau du serveur sur le switch Cisco (Baie / Cabinet 2)](2.Proxmox/300150468/images/WhatsApp Image 2026-10-07 at 12.50.11 (1).jpeg)
 
 *Figure : Raccordement réseau du serveur sur le switch Cisco (Baie / Cabinet 2)*
 
