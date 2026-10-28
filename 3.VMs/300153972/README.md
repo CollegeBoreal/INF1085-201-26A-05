@@ -9,8 +9,7 @@
 | Cours | INF1085 |
 
 
->
->
+https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/3.VMs/300153972/Images/01-verification-ssh-proxmox.png
 ---
 
 ## Objectif
