@@ -73,39 +73,9 @@ VirtIO est choisi parce que c'est un pilote paravirtualisé : il offre de meille
 
 ![Paramètres de la VM] https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/3.VMs/300153972/Images/03-iso-images.png?raw=true
 
-
 ---
 
-## 4. Problèmes rencontrés et solutions
-
-### VM ID déjà utilisé
-
-```
-unable to create VM <ID>: VM <ID> already exists on node '<SERVEUR>'
-```
-
-**Cause :** le serveur est partagé ; chaque VM ID doit être unique sur le nœud.
-**Solution :** choisir un ID libre (`<VM_ID>`).
-
-
-
-### Incompatibilité du type de CPU
-
-```
-host doesn't support requested feature: CPUID...ECX.aes
-TASK ERROR: start failed: QEMU exited with code 1
-```
-
-**Cause :** le type de CPU par défaut (`x86-64-v2-AES`) exige l'instruction AES-NI, que les processeurs Xeon du serveur ne supportent pas.
-**Solution :** **VM** → **Hardware** → **Processors** → **Type** : `<type choisi>` (ex. `x86-64-v2` ou `host`). La VM démarre ensuite normalement.
-
-![Correction du type de CPU]
-
-> Supprime cette section si tu n'as pas eu ces erreurs.
-
----
-
-## 5. Installation d'Ubuntu Server
+## 4. Installation d'Ubuntu Server
 
 | Étape de l'installateur | Choix |
 | --- | --- |
@@ -119,7 +89,7 @@ TASK ERROR: start failed: QEMU exited with code 1
 
 ---
 
-## 6. Premier démarrage et tests réseau
+## 5. Premier démarrage et tests réseau
 
 Connexion avec `<UTILISATEUR>` dans la console Proxmox, puis :
 
@@ -134,7 +104,7 @@ Résultat : 4 paquets reçus, 0 % de perte.
 
 ---
 
-## 7. Configuration de la clé SSH
+## 6. Configuration de la clé SSH
 
 ```bash
 mkdir -p ~/.ssh
@@ -167,7 +137,7 @@ Le service est `active (running)` et écoute sur le port 22.
 
 ---
 
-## 8. Adresse IP statique avec Netplan
+## 7. Adresse IP statique avec Netplan
 
 Fichier : `/etc/netplan/50-cloud-init.yaml`
 
@@ -201,7 +171,7 @@ ip a
 
 ---
 
-## 9. Validation du réseau
+## 8. Validation du réseau
 
 ```bash
 ping -c 4 8.8.8.8      # passerelle + Internet
@@ -214,7 +184,7 @@ Les deux tests réussissent avec 0 % de perte : la passerelle, l'accès Internet
 
 ---
 
-## 10. Connexion SSH depuis Windows
+## 9. Connexion SSH depuis Windows
 
 Depuis PowerShell :
 
@@ -241,7 +211,7 @@ La connexion réussit : la VM est administrable à distance.
 | Passerelle / DNS | `<PASSERELLE>` / 8.8.8.8 |
 | SSH | Actif, port 22, authentification par clé |
 
-## Conclusion
+## 10. Conclusion
 
 La VM Ubuntu Server est installée sur Proxmox, configurée avec une adresse IP statique et accessible par SSH depuis Windows.
 
