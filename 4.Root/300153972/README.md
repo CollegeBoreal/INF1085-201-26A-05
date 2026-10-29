@@ -27,6 +27,8 @@ Connexion réussie en `root` sur `server239`. L'invite `root@server239:~#` confi
 ssh root@10.7.236.239
 ```
 
+https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/4.Root/300153972/images/Screenshot%202026-10-14%20113852.png?raw=true
+
 ### Problème rencontré : `Connection timed out`
 
 Ce message signifie que le serveur ne répond pas du tout : le problème vient du réseau, pas du mot de passe.
