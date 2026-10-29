@@ -215,4 +215,4 @@ La connexion réussit : la VM est administrable à distance.
 
 La VM Ubuntu Server est installée sur Proxmox, configurée avec une adresse IP statique et accessible par SSH depuis Windows.
 
-Les difficultés rencontrées (VM ID déjà pris, type de CPU incompatible, syntaxe YAML) m'ont permis de comprendre trois points pratiques : les ressources d'un serveur partagé doivent être uniques, le CPU virtuel doit correspondre aux capacités du matériel réel, et la configuration Netplan doit être validée avant d'être appliquée.
+Les difficultés rencontrées (type de CPU incompatible, syntaxe YAML) m'ont permis de comprendre trois points pratiques : les ressources d'un serveur partagé doivent être uniques, le CPU virtuel doit correspondre aux capacités du matériel réel, et la configuration Netplan doit être validée avant d'être appliquée.
