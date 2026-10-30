@@ -56,8 +56,7 @@ Nous avons également observé une carte graphique professionnelle NVIDIA RTX A4
 
 ## 6. Carte graphique et stockage
 
-![Carte graphique et SSD](<img width="1536" height="2048" alt="WhatsApp Image 2026-09-24 at 1 09 24 PM (2)" src="https://github.com/user-attachments/assets/6e09174f-c5ed-4ab2-8f75-38174fb64c9c" />
-)
+![Carte graphique et SSD](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/1.Diagnostics/300155109/images/WhatsApp%20Image%202026-09-24%20at%201.09.24%20PM%20(2).jpeg?raw=true)
 
 **Explication :**  
 Cette image montre la carte graphique ainsi qu'un SSD au format M.2. Le SSD est utilisé pour le stockage des données, des fichiers et du système d'exploitation. Contrairement à la RAM, les données enregistrées sur le SSD restent conservées lorsque le serveur est éteint.
