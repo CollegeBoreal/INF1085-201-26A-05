@@ -46,8 +46,7 @@ Cette image montre les barrettes de RAM ainsi que leurs emplacements sur la cart
 
 ## 5. Carte graphique
 
-![Carte graphique](<img width="1536" height="2048" alt="WhatsApp Image 2026-09-24 at 1 09 24 PM (1)" src="https://github.com/user-attachments/assets/184eb45b-a29b-4940-88cd-6b1aeb008b47" />
-)
+![Carte graphique](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/1.Diagnostics/300155109/images/WhatsApp%20Image%202026-09-24%20at%201.09.24%20PM%20(1).jpeg?raw=true)
 
 **Explication :**  
 Nous avons également observé une carte graphique professionnelle NVIDIA RTX A4000. Le GPU permet d'effectuer des calculs graphiques et certains calculs parallèles. La carte se connecte à la carte mère par l'intermédiaire d'un emplacement PCI Express.
