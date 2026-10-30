@@ -26,8 +26,7 @@ Cette deuxième vue permet d'observer plus précisément l'organisation des diff
 
 ## 3. Mémoire vive (RAM)
 
-![Barrette de RAM](<img width="1536" height="2048" alt="WhatsApp Image 2026-09-24 at 1 09 24 PM (4)" src="https://github.com/user-attachments/assets/6d387765-6bd0-4456-9d12-07ff588c82a8" />
-)
+![Barrette de RAM](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/1.Diagnostics/300155109/images/WhatsApp%20Image%202026-09-24%20at%201.09.24%20PM%20(8).jpeg?raw=true)
 
 **Explication :**  
 Nous avons retiré et observé les barrettes de mémoire vive (RAM) du serveur. La RAM est une mémoire temporaire utilisée par le processeur pour conserver les données nécessaires aux programmes en cours d'exécution.
