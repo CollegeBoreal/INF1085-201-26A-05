@@ -6,8 +6,7 @@
 
 Nous avons ouvert le serveur afin d'observer et d'identifier ses différents composants matériels.
 
-![Vue du serveur](<img width="1536" height="2048" alt="WhatsApp Image 2026-09-24 at 1 09 24 PM (7)" src="https://github.com/user-attachments/assets/8d119d81-b38c-4407-96b9-d24560cd7995" />
-)
+![Vue du serveur](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/1.Diagnostics/300155109/images/WhatsApp%20Image%202026-09-24%20at%201.09.24%20PM%20(7).jpeg?raw=true)
 
 **Explication :**  
 Cette image montre l'intérieur du serveur après son ouverture. Nous pouvons observer différents composants matériels, notamment la carte mère, les emplacements de mémoire vive (RAM), les processeurs (CPU), les dissipateurs thermiques et les ventilateurs.
