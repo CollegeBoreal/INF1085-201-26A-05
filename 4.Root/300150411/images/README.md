@@ -26,7 +26,7 @@ adduser b300150411
 ```
 
 Je dois ensuite choisir un mot de passe et confirmer sa création. Les autres informations demandées peuvent être laissées vides en appuyant sur Entrée.
-<image src=images/Capture.jpg width=50% height=50% > </image>
+<image src=images/12344.jpg width=50% height=50% > </image>
 
 
 ### 2. Attribution des droits administrateur
