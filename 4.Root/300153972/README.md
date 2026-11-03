@@ -194,7 +194,7 @@ server239
 | `B300153972@pam` dans Proxmox (nom, courriel) | ✅ Fait |
 | Rôle Administrator sur `/` | ✅ Fait |
 | Clé SSH sur le compte `B300153972` | ✅ Fait |
-| Mot de passe Linux (`passwd`) pour l'interface web | ⬜ À faire |
+| Mot de passe Linux (`passwd`) et connexion web | ✅ Fait |
 
 ## 🎓 Conclusion
 
