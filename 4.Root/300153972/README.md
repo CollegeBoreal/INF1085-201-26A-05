@@ -1,182 +1,201 @@
-# Rapport Proxmox – server239
+# 🔐 Comptes administrateurs Proxmox – server239
 
-**Cours :** INF1085 – Collège Boréal
-**Auteur :** Karim Bamba (300153972)
-**Date :** 18 octobre 2026
-
----
-
-## Contexte
-
-Ce rapport résume le travail réalisé sur le serveur Proxmox du cours : connexion au serveur, création d'un utilisateur administrateur, clé SSH, bridge réseau et machine virtuelle.
-
-| Élément | Valeur |
+| Champ | Information |
 | --- | --- |
-| Serveur | `server239` (Proxmox VE, basé sur Debian) |
-| Adresse IP | `10.7.236.239` |
-| Accès | SSH depuis Windows PowerShell, compte `root` |
-| Utilisateur créé | `B300153972@pve` |
+| Étudiant | Karim Bamba |
+| Matricule | 300153972 |
+| Cours | INF1085 – Administration Linux, Collège Boréal |
+| Serveur | `server239` – Proxmox VE (Debian), `10.7.236.239` |
+| Compte administrateur | `B300153972@pam` |
 
 ---
 
-## 1. Connexion SSH au serveur
+## 🎯 Objectif
 
-Connexion réussie en `root` sur `server239`. L'invite `root@server239:~#` confirme que les commandes s'exécutent sur le serveur.
+Ne plus utiliser le compte partagé `root@pam` pour l'administration courante. Chaque administrateur a son propre compte, ce qui rend les actions traçables et évite de partager le mot de passe `root`.
+
+| Méthode | Recommandation |
+| --- | --- |
+| Utiliser seulement `root@pam` | ❌ |
+| Un compte par administrateur | ✅ |
+| SSH avec mot de passe | ⚠️ |
+| SSH avec clé publique | ✅ |
+| Utiliser les ACL Proxmox | ✅ |
+
+Le compte `root@pam` est gardé uniquement pour le dépannage, la réinitialisation de mots de passe et la récupération du système.
+
+---
+
+## 1. Connexion SSH au serveur (compte root)
 
 ```powershell
 ssh root@10.7.236.239
 ```
 
-https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/4.Root/300153972/images/Screenshot%202026-10-14%20113852.png?raw=true
+L'invite `root@server239:~#` confirme que les commandes s'exécutent sur le serveur.
 
-### Problème rencontré : `Connection timed out`
+**`Connection timed out`** : le serveur ne répond pas du tout, le problème vient du réseau et pas du mot de passe. Le serveur a une adresse privée du collège : il faut être sur le réseau **Boréal** (labo ou Wi-Fi étudiant), ou sur le VPN FortiClient depuis la maison.
 
-Ce message signifie que le serveur ne répond pas du tout : le problème vient du réseau, pas du mot de passe.
+Vérifications depuis le PC :
 
-Vérifications effectuées :
-
-1. `ipconfig` : le PC doit avoir une adresse en `10.7.x.x`.
-2. `ping 10.7.236.239` : vérifier que le serveur répond.
-3. `Test-NetConnection 10.7.236.239 -Port 22` : vérifier que le port SSH est ouvert.
-
-> **Important :** le serveur utilise une adresse privée du collège. Il faut être connecté au réseau **Boréal** (labo ou Wi‑Fi étudiant). Le réseau **Invité** et la connexion depuis la maison ne permettent pas d'y accéder.
-
-### Première connexion
-
-- SSH demande de confirmer l'empreinte (*fingerprint*) du serveur : répondre `yes`.
-- Le serveur est ensuite ajouté aux *known hosts* et la question ne revient plus.
-- `Permission denied` = mauvais mot de passe.
+```powershell
+ipconfig                                   # le PC doit avoir une adresse en 10.7.x.x
+ping 10.7.236.239                          # le serveur répond-il ?
+Test-NetConnection 10.7.236.239 -Port 22   # le port SSH est-il ouvert ?
+```
 
 ---
 
-## 2. Utilisateur administrateur Proxmox
+## 2. Premier essai : utilisateur `@pve` (erreur)
 
-**Consigne :** créer un utilisateur avec droit Administrateur sur Proxmox.
-
-### Commandes
+Au premier essai, j'ai créé un utilisateur dans le domaine **`pve`** (Proxmox VE authentication server), sans le préfixe **B** :
 
 ```bash
-pveum user add B300153972@pve
-pveum passwd B300153972@pve
-pveum acl modify / -user B300153972@pve -role Administrator
+pveum user add 300153972@pve
+pveum passwd add 300153972@pve     # erreur : 400 too many arguments
+pveum passwd 300153972@pve
+pveum acl modify / -user 300153972@pve -role Administrator
 ```
 
-### Vérification
-
-```bash
-pveum user list
-pveum acl list
-```
-
-Résultat : `B300153972@pve` possède le rôle **Administrator** sur `/`.
-
-### Erreurs rencontrées et corrections
+![Premier essai avec 300153972@pve](images/Screenshot%202026-10-14%20113852.png)
 
 | Erreur | Cause | Correction |
 | --- | --- | --- |
-| `400 too many arguments` | Commande `pveum passwd add ...` : le mot `add` est de trop | `pveum passwd <userid>` |
-| Utilisateur créé sans le préfixe **B** (`300153972@pve`) | Oubli lors de la création | Suppression puis recréation (voir ci-dessous) |
+| `400 too many arguments` | Le mot `add` est de trop dans `pveum passwd` | `pveum passwd <userid>` |
+| Compte `300153972@pve` | Préfixe **B** oublié, et domaine `pve` au lieu de `pam` | Recréé en `B300153972@pve`, puis remplacé par `B300153972@pam` |
 
-Commandes de correction :
+**Différence entre `@pve` et `@pam` :**
 
-```bash
-pveum acl delete / -user 300153972@pve -role Administrator
-pveum user delete 300153972@pve
-pveum user add B300153972@pve
-pveum passwd B300153972@pve
-pveum acl modify / -user B300153972@pve -role Administrator
-```
+- `@pve` : compte qui existe **seulement dans Proxmox**. Il permet d'ouvrir l'interface web, mais pas de se connecter en SSH.
+- `@pam` : compte relié à un **vrai utilisateur Linux** du serveur. Le même compte sert pour l'interface web **et** pour SSH. C'est ce que demande la consigne.
 
-### Ajouter les informations de l'utilisateur
+Nettoyage des anciens comptes (`300153972@pve`, puis `B300153972@pve`) :
 
 ```bash
-pveum user modify B300153972@pve --firstname Karim --lastname Bamba --email 300153972@monboreal.ca
+pveum acl delete / -user B300153972@pve -role Administrator
+pveum user delete B300153972@pve
 ```
 
 ---
 
-## 3. Clé SSH
+## 3. Créer l'utilisateur Linux
 
-La clé privée reste sur le PC ; la clé publique est déposée sur le serveur. La connexion se fait ensuite sans le mot de passe `root`.
+```bash
+adduser --allow-bad-names --disabled-password --comment "Karim Bamba" B300153972
+passwd B300153972
+id B300153972
+```
 
-Commandes dans PowerShell (sur le PC) :
+```text
+uid=1004(B300153972) gid=1004(B300153972) groups=1004(B300153972),100(users)
+```
+
+- `adduser` crée le compte et son dossier `/home/B300153972`.
+- `--allow-bad-names` est nécessaire parce que Debian refuse par défaut les noms d'utilisateur avec une majuscule (le **B**).
+- `passwd` définit le mot de passe du compte, utilisé pour l'interface web.
+
+---
+
+## 4. Ajouter l'utilisateur à Proxmox
+
+```bash
+pveum user add B300153972@pam --firstname Karim --lastname Bamba --email 300153972@monboreal.ca
+pveum user list
+```
+
+Avec `@pam`, il n'y a pas de `pveum passwd` à faire : Proxmox utilise le mot de passe Linux défini par `adduser`.
+
+---
+
+## 5. Donner les droits administrateur
+
+```bash
+pveum aclmod / -user B300153972@pam -role Administrator
+pveum acl list
+```
+
+- `/` : la permission s'applique à tout le serveur (nœuds, VMs, stockages).
+- `propagate = 1` : la permission est héritée par tous les sous-chemins.
+
+---
+
+## 6. Connexion à l'interface web
+
+```text
+https://10.7.236.239:8006
+Utilisateur : B300153972
+Realm       : Linux PAM standard authentication
+```
+
+---
+
+## 7. Clé SSH
+
+Depuis PowerShell sur mon PC. La clé privée reste sur le PC, seule la clé publique est copiée sur le serveur.
+
+La paire de clés `id_ed25519` existait déjà (`ssh-keygen -t ed25519`). La clé publique a été copiée dans le dossier du nouveau compte, avec les bonnes permissions :
 
 ```powershell
-ssh-keygen -t ed25519
-type $env:USERPROFILE\.ssh\id_ed25519.pub | ssh root@10.7.236.239 "cat >> ~/.ssh/authorized_keys"
-ssh root@10.7.236.239
+type $env:USERPROFILE\.ssh\id_ed25519.pub | ssh root@10.7.236.239 "install -d -m 700 -o B300153972 -g B300153972 /home/B300153972/.ssh && cat >> /home/B300153972/.ssh/authorized_keys && chown B300153972:B300153972 /home/B300153972/.ssh/authorized_keys && chmod 600 /home/B300153972/.ssh/authorized_keys"
 ```
 
-- Une phrase de passe (*passphrase*) protège la clé : SSH demande `Enter passphrase for key` au lieu du mot de passe `root`.
-- Si SSH redemande `root@10.7.236.239's password`, la clé n'a pas été copiée correctement.
+```text
+drwx------ 2 B300153972 B300153972 4096 Nov  3 15:09 .
+-rw------- 1 B300153972 B300153972   97 Nov  3 15:09 authorized_keys
+```
+
+> `ssh-copy-id` n'existe pas dans PowerShell. La commande `type ... | ssh ...` fait la même chose. On passe par `root` parce que le nouveau compte n'a pas encore de mot de passe.
+
+- Si la clé a une phrase de passe, SSH demande `Enter passphrase for key` au lieu du mot de passe du compte.
+- Si SSH redemande `B300153972@10.7.236.239's password`, la clé n'a pas été copiée correctement.
 
 ---
 
-## 4. Bridge réseau `vmbr1`
-
-Seul `vmbr0` existait sur le serveur. Le nouveau bridge est donc `vmbr1`. `vmbr0` est le bridge principal relié au réseau réel ; il ne doit pas être modifié, car le serveur est partagé.
-
-Vérification des bridges existants :
+## 8. Vérifications
 
 ```bash
-ip -br link | grep vmbr
+pveum user list
 ```
 
-Création et application :
+```text
+│ userid         │ email                  │ enable │ firstname │ lastname │ realm-type │
+│ B300153972@pam │ 300153972@monboreal.ca │ 1      │ Karim     │ Bamba    │ pam        │
+```
 
 ```bash
-pvesh create /nodes/server239/network --iface vmbr1 --type bridge --autostart 1 --comments "B300153972"
-pvesh set /nodes/server239/network
-ip -br link | grep vmbr
+pveum acl list
 ```
 
-Résultat attendu : `vmbr0` et `vmbr1` apparaissent. Les VMs branchées sur `vmbr1` communiquent entre elles, mais n'ont pas accès à Internet sans configuration supplémentaire.
+```text
+│ path │ roleid        │ type │ ugid           │ propagate │
+│ /    │ Administrator │ user │ B300153972@pam │ 1         │
+```
+
+Connexion SSH par clé, sans mot de passe :
+
+```powershell
+ssh B300153972@10.7.236.239 "whoami; hostname"
+```
+
+```text
+B300153972
+server239
+```
 
 ---
 
-## 5. Machine virtuelle
-
-La VM se crée en ligne de commande avec `qm`, l'outil Proxmox de gestion des VMs.
-
-1. Trouver un numéro de VM libre : `qm list`
-2. Vérifier les stockages : `pvesm status`
-3. Lister les ISO disponibles : `ls /var/lib/vz/template/iso`
-4. Créer et démarrer la VM :
-
-```bash
-qm create 150 --name vm-B300153972 --memory 2048 --cores 2 \
-  --net0 virtio,bridge=vmbr1 --scsi0 local-lvm:20 \
-  --ide2 local:iso/NOM-ISO.iso,media=cdrom \
-  --boot 'order=ide2;scsi0' --ostype l26
-qm start 150
-qm list
-```
-
-| Option | Rôle |
-| --- | --- |
-| `--memory 2048` | 2 Go de RAM |
-| `--cores 2` | 2 cœurs CPU |
-| `--scsi0 local-lvm:20` | Disque de 20 Go |
-| `--net0 virtio,bridge=vmbr1` | Carte réseau branchée sur `vmbr1` |
-| `--ide2 ...,media=cdrom` | ISO d'installation |
-
-L'installation du système d'exploitation se fait ensuite dans l'interface web Proxmox, onglet **Console** de la VM.
-
----
-
-## État d'avancement
+## ✅ État d'avancement
 
 | Étape | État |
 | --- | --- |
-| Connexion SSH au serveur | ✅ Fait |
-| Utilisateur admin `B300153972@pve` | ✅ Fait |
-| Nom et courriel de l'utilisateur | ⏳ À confirmer |
-| Clé SSH | ✅ Fait |
-| Bridge `vmbr1` | ⏳ À confirmer |
-| Machine virtuelle | ⬜ À faire |
+| Connexion SSH en `root` | ✅ Fait |
+| Suppression des comptes `@pve` | ✅ Fait |
+| Utilisateur Linux `B300153972` | ✅ Fait |
+| `B300153972@pam` dans Proxmox (nom, courriel) | ✅ Fait |
+| Rôle Administrator sur `/` | ✅ Fait |
+| Clé SSH sur le compte `B300153972` | ✅ Fait |
+| Mot de passe Linux (`passwd`) pour l'interface web | ⬜ À faire |
 
-### Prochaines étapes
+## 🎓 Conclusion
 
-- [x] Vérifier que `B300153972@pve` est Administrator
-- [ ] Confirmer que `vmbr1` apparaît avec `ip -br link | grep vmbr`
-- [ ] Créer et démarrer la VM avec `qm create` et `qm start`
+Avec un compte personnel `B300153972@pam`, mes actions sur le serveur sont traçables, je n'ai plus besoin du mot de passe `root`, et la connexion SSH se fait par clé publique. Le compte `root@pam` reste réservé aux urgences.

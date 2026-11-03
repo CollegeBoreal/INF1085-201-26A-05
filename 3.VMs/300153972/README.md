@@ -1,15 +1,12 @@
-
 # Création d'une VM Ubuntu Server sur Proxmox VE
 
 | Champ | Information |
 | --- | --- |
-| Étudiant | Karim Bamba|
+| Étudiant | Karim Bamba |
 | Matricule | 300153972 |
 | Programme | Techniques des systèmes informatiques – Collège Boréal |
-| Cours | INF1085 |
+| Cours | INF1085 – Administration Linux |
 
-
-https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/3.VMs/300153972/Images/01-verification-ssh-proxmox.png
 ---
 
 ## Objectif
@@ -20,58 +17,73 @@ Installer une machine virtuelle Ubuntu Server 24.04 LTS sur le serveur Proxmox V
 
 | Élément | Valeur |
 | --- | --- |
-| Hyperviseur | Proxmox VE `<version>` |
-| Nœud | `<SERVEUR>` (`<IP_SERVEUR>`) |
-| Système invité | Ubuntu Server 24.04.x LTS |
+| Hyperviseur | Proxmox VE 9.2.2 (noyau `7.0.2-6-pve`) |
+| Nœud | `server56` (`10.7.237.200/23`) |
+| Système invité | Ubuntu Server 24.04.5 LTS |
 | Accès hors campus | VPN FortiClient |
 
 ---
 
 ## 1. Connexion au serveur Proxmox
-https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/3.VMs/300153972/Images/13-demarrage-ubuntu.png
 
-Depuis un terminal, connexion SSH au nœud puis vérification de son adresse et de sa version :
+Depuis PowerShell, connexion SSH au nœud, puis vérification de son adresse et de sa version :
 
 ```bash
-ssh root@<IP_SERVEUR>
+ssh root@10.7.237.200
 ip a
 pveversion
 ```
 
+Les deux premiers essais ont échoué avec `Connection timed out` (problème réseau : le PC n'était pas encore sur le bon réseau). Au troisième essai, SSH demande de confirmer l'empreinte ED25519 du serveur, puis la connexion réussit.
 
+Résultats :
 
+- `ip a` : le bridge `vmbr0` porte l'adresse `10.7.237.200/23`, et l'interface physique `nic0` est rattachée à `vmbr0`.
+- `pveversion` : `pve-manager/9.2.2` avec le noyau `7.0.2-6-pve`.
 
-L'interface Web est ensuite ouverte à l'adresse `https://<IP_SERVEUR>:8006`.
+![Connexion SSH, ip a et pveversion](Images/01-verification-ssh-proxmox.png)
 
+L'interface Web est ensuite ouverte à l'adresse `https://10.7.237.200:8006`.
 
 ---
 
 ## 2. Téléversement de l'ISO Ubuntu
 
-**Chemin :** `<SERVEUR>` → `local` → **ISO Images** → **Upload**
+**Chemin :** `server56` → `local` → **ISO Images** → **Upload**
 
-Le fichier `ubuntu-24.04.x-live-server-amd64.iso` est téléversé dans le stockage local pour pouvoir être monté dans la VM.
-
-
+Le fichier `ubuntu-24.04.5-live-server-amd64.iso` est téléversé dans le stockage `local` pour pouvoir être monté dans la VM.
 
 ---
 
 ## 3. Création de la VM
 
-Assistant **Create VM**, avec les paramètres suivants :
+Assistant **Create VM** :
+
+**General** : nœud `server56`, VM ID proposé par Proxmox (premier numéro libre).
+
+![Onglet General](Images/02-proxmox-interface.png)
+
+**OS** : ISO `ubuntu-24.04.5-live-server-amd64.iso` dans le stockage `local`, type **Linux**, version **7.x - 2.6 Kernel**.
+
+![Onglet OS](Images/03-iso-images.png)
+
+**System** : paramètres par défaut, carte graphique *Default*, machine *i440fx*, BIOS *SeaBIOS*, contrôleur SCSI **VirtIO SCSI single**.
+
+![Onglet System](Images/04-upload-iso-ubuntu.png)
+
+Récapitulatif des paramètres :
 
 | Onglet | Paramètre | Valeur |
 | --- | --- | --- |
-| General | Nom / VM ID | `<NOM_VM>` / `<VM_ID>` |
-| OS | Image ISO | ubuntu-24.04.x-live-server-amd64.iso |
+| General | Nom / VM ID | **À COMPLÉTER** / **À COMPLÉTER** |
+| OS | Image ISO | ubuntu-24.04.5-live-server-amd64.iso |
+| System | Contrôleur SCSI / BIOS | VirtIO SCSI single / SeaBIOS |
 | Disks | Taille | 32 GiB |
-| CPU | Cœurs / Type | `<nb>` / `<type>` |
+| CPU | Cœurs / Type | **À COMPLÉTER** / **À COMPLÉTER** |
 | Memory | RAM | 4096 MiB |
 | Network | Bridge / Modèle | `vmbr0` / VirtIO (paravirtualized) |
 
-VirtIO est choisi parce que c'est un pilote paravirtualisé : il offre de meilleures performances réseau qu'une carte émulée (ex. Intel E1000).
-
-![Paramètres de la VM] https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/3.VMs/300153972/Images/03-iso-images.png?raw=true
+VirtIO est choisi parce que c'est un pilote paravirtualisé : il offre de meilleures performances qu'une carte émulée (ex. Intel E1000).
 
 ---
 
@@ -79,10 +91,10 @@ VirtIO est choisi parce que c'est un pilote paravirtualisé : il offre de meille
 
 | Étape de l'installateur | Choix |
 | --- | --- |
-| Réseau | Interface `ens18` détectée, IP temporaire par DHCP (`<IP_DHCP>`) |
+| Réseau | Interface `ens18` détectée (VirtIO), IP temporaire par DHCP |
 | Miroir | `http://ca.archive.ubuntu.com/ubuntu/` (test réussi) |
 | Stockage | Disque entier de 32 GiB avec LVM |
-| Profil | Utilisateur `<UTILISATEUR>`, hostname `<HOSTNAME>` |
+| Profil | Utilisateur **À COMPLÉTER**, hostname **À COMPLÉTER** |
 | SSH | **Install OpenSSH server** coché |
 
 À la fin de l'installation, l'ISO est retirée du lecteur CD/DVD virtuel (**Hardware** → **CD/DVD Drive** → *Do not use any media*) pour éviter que la VM redémarre sur l'installateur.
@@ -91,7 +103,7 @@ VirtIO est choisi parce que c'est un pilote paravirtualisé : il offre de meille
 
 ## 5. Premier démarrage et tests réseau
 
-Connexion avec `<UTILISATEUR>` dans la console Proxmox, puis :
+Connexion avec mon utilisateur dans la console Proxmox, puis :
 
 ```bash
 ip a                 # vérifier l'IP de ens18
@@ -99,8 +111,6 @@ ping -c 4 8.8.8.8    # tester l'accès Internet
 ```
 
 Résultat : 4 paquets reçus, 0 % de perte.
-
-![Premier démarrage et ping]
 
 ---
 
@@ -123,8 +133,6 @@ drwx------ ... .ssh
 
 Ces permissions sont obligatoires : si le dossier ou le fichier est accessible par d'autres utilisateurs, OpenSSH refuse la clé.
 
-![Permissions SSH]
-
 Vérification du service :
 
 ```bash
@@ -132,8 +140,6 @@ sudo systemctl status ssh
 ```
 
 Le service est `active (running)` et écoute sur le port 22.
-
-![Service SSH actif]
 
 ---
 
@@ -167,8 +173,6 @@ ip a
 
 > Netplan utilise le YAML : l'indentation se fait **uniquement avec des espaces**. Une tabulation ou un décalage provoque une erreur de syntaxe.
 
-![Configuration Netplan]
-
 ---
 
 ## 8. Validation du réseau
@@ -179,8 +183,6 @@ ping -c 4 google.com   # résolution DNS
 ```
 
 Les deux tests réussissent avec 0 % de perte : la passerelle, l'accès Internet, le DNS et l'IP statique sont fonctionnels.
-
-![Tests réseau]
 
 ---
 
@@ -194,25 +196,23 @@ ssh <UTILISATEUR>@<IP_STATIQUE>
 
 La connexion réussit : la VM est administrable à distance.
 
-![Connexion SSH depuis PowerShell]
-
 ---
 
 ## Configuration finale
 
 | Composant | Valeur |
 | --- | --- |
-| Nœud Proxmox | `<SERVEUR>` – Proxmox VE `<version>` |
-| VM | `<NOM_VM>` (ID `<VM_ID>`) |
-| OS | Ubuntu Server 24.04.x LTS |
+| Nœud Proxmox | `server56` (`10.7.237.200`) – Proxmox VE 9.2.2 |
+| VM | **À COMPLÉTER** (ID **À COMPLÉTER**) |
+| OS | Ubuntu Server 24.04.5 LTS |
 | Ressources | 4 Go RAM, 32 GiB disque (LVM) |
 | Réseau | `ens18`, VirtIO, bridge `vmbr0` |
-| Adresse IP | `<IP_STATIQUE>/23` |
-| Passerelle / DNS | `<PASSERELLE>` / 8.8.8.8 |
+| Adresse IP | **À COMPLÉTER**/23 |
+| Passerelle / DNS | **À COMPLÉTER** / 8.8.8.8 |
 | SSH | Actif, port 22, authentification par clé |
 
 ## 10. Conclusion
 
 La VM Ubuntu Server est installée sur Proxmox, configurée avec une adresse IP statique et accessible par SSH depuis Windows.
 
-Les difficultés rencontrées (type de CPU incompatible, syntaxe YAML) m'ont permis de comprendre trois points pratiques : les ressources d'un serveur partagé doivent être uniques, le CPU virtuel doit correspondre aux capacités du matériel réel, et la configuration Netplan doit être validée avant d'être appliquée.
+Les difficultés rencontrées (connexion SSH qui expire, type de CPU incompatible, syntaxe YAML) m'ont permis de comprendre plusieurs points pratiques : il faut être sur le bon réseau pour joindre le serveur, les ressources d'un serveur partagé (VM ID, IP) doivent être uniques, le CPU virtuel doit correspondre aux capacités du matériel réel, et la configuration Netplan doit être validée avant d'être appliquée.
