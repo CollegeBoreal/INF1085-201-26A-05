@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/datacentre.svg" alt="Illustration d'un datacentre" width="800">
+  <img src="images/IMG_7006.jpeg" alt="Illustration d'un datacentre" width="800">
 </p>
 
 <h1 align="center">🖥️ Diagnostic du serveur HP ProLiant</h1>
