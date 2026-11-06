@@ -227,6 +227,7 @@ nvme0n1                       259:0    0 953.9G  0 disk
 ```bash
 pvcreate /dev/nvme0n1p1
 ```
+>  Physical volume "/dev/nvme0n1p1" successfully created.
 
 ---
 
