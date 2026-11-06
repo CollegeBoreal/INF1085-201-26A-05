@@ -124,7 +124,7 @@ nvme smart-log /dev/nvme0n1 | grep temperature
 Exemple :
 
 ```text
-temperature				: 91 °F (306 K)
+temperature				: 80 °F (300 K)
 ```
 
 ---
