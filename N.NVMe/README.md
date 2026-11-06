@@ -150,8 +150,25 @@ Help:
    o   create a new empty MBR (DOS) partition table
    s   create a new empty Sun partition table
 
+Command (m for help): g
+Created a new GPT disklabel (GUID: DEFC724C-5E36-4F3D-9E76-2BCCBCEB924E).
 
-Command (m for help): 
+Command (m for help): n
+Partition number (1-128, default 1): 
+First sector (2048-2000409230, default 2048): 
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-2000409230, default 2000408575): 
+
+Created a new partition 1 of type 'Linux filesystem' and of size 953.9 GiB.
+Partition #1 contains a ntfs signature.
+
+Do you want to remove the signature? [Y]es/[N]o: Y
+
+The signature will be removed by a write command.
+
+Command (m for help): w
+The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Syncing disks.
 ```
 
 </details>
