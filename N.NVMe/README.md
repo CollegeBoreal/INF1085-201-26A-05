@@ -316,7 +316,7 @@ Exemple :
 
 # 🖥️ Ajouter le stockage dans Proxmox
 
-Interface Web :
+### Interface Web :
 
 ```text
 Datacenter
@@ -332,6 +332,13 @@ ID           : nvme-storage
 Volume Group : nvme-vg
 Thin Pool    : data
 ```
+
+### Ligne de commande:
+
+```bash
+pvesm add lvmthin nvme-storage --vgname nvme-vg --thinpool nvme-thinpool --content images,rootdir
+```
+
 
 ---
 
