@@ -257,8 +257,9 @@ lsblk
 Résultat attendu :
 
 ```text
-nvme0n1
-└─nvme0n1p1
+nvme0n1                       259:0    0 953.9G  0 disk 
+├─nvme0n1p1                   259:1    0    16M  0 part 
+└─nvme0n1p2                   259:2    0 953.9G  0 part
 ```
 
 ---
