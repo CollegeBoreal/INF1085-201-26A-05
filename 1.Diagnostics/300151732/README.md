@@ -64,7 +64,7 @@ Ce document :
 ## 🏢 Qu'est-ce qu'un datacentre ?
 
 <p align="center">
-  <img src="images/datacentre.svg" alt="Illustration d'un datacentre" width="700">
+  <img src="images/IMG_7006.jpeg" alt="Illustration d'un datacentre" width="350">
 </p>
 
 Un **datacentre** (ou **centre de données**) est une installation physique qui regroupe des **équipements informatiques** (serveurs, stockage, équipements réseau) et toute l'**infrastructure** nécessaire à leur fonctionnement continu. Il sert à **héberger des applications et des données** pour une organisation ou pour de nombreux clients, par exemple dans le cas des services infonuagiques.
