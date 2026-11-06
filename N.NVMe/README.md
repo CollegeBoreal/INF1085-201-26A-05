@@ -214,8 +214,7 @@ Résultat attendu :
 
 ```text
 nvme0n1                       259:0    0 953.9G  0 disk 
-├─nvme0n1p1                   259:1    0    16M  0 part 
-└─nvme0n1p2                   259:2    0 953.9G  0 part
+└─nvme0n1p1                   259:1    0 953.9G  0 part 
 ```
 
 ---
@@ -224,10 +223,9 @@ nvme0n1                       259:0    0 953.9G  0 disk
 
 ## Créer le volume physique
 
-Utiliser la partition la plus large `953.9G`
 
 ```bash
-pvcreate /dev/nvme0n1p2
+pvcreate /dev/nvme0n1p1
 ```
 
 ---
@@ -235,9 +233,9 @@ pvcreate /dev/nvme0n1p2
 ## Créer un groupe de volumes
 
 ```bash
-vgcreate nvme-vg /dev/nvme0n1p2
+vgcreate nvme-vg /dev/nvme0n1p1
 ```
-> Physical volume "/dev/nvme0n1p2" successfully created.
+> Physical volume "/dev/nvme0n1p1" successfully created.
 
 ---
 
