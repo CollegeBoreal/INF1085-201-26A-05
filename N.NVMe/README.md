@@ -268,8 +268,10 @@ nvme0n1                       259:0    0 953.9G  0 disk
 
 ## Créer le volume physique
 
+Utiliser la partition la plus large `953.9G`
+
 ```bash
-pvcreate /dev/nvme0n1p1
+pvcreate /dev/nvme0n1p2
 ```
 
 ---
@@ -277,8 +279,9 @@ pvcreate /dev/nvme0n1p1
 ## Créer un groupe de volumes
 
 ```bash
-vgcreate nvme-vg /dev/nvme0n1p1
+vgcreate nvme-vg /dev/nvme0n1p2
 ```
+> Physical volume "/dev/nvme0n1p2" successfully created.
 
 ---
 
@@ -286,6 +289,12 @@ vgcreate nvme-vg /dev/nvme0n1p1
 
 ```bash
 lvcreate -l 100%FREE -T nvme-vg/data
+```
+```text
+  Thin pool volume with chunk size 512.00 KiB can address at most 127.00 TiB of data.
+  WARNING: Pool zeroing and 512.00 KiB large chunk size slows down thin provisioning.
+  WARNING: Consider disabling zeroing (-Zn) or using smaller chunk size (<512.00 KiB).
+  Logical volume "data" created.
 ```
 
 ---
@@ -299,8 +308,8 @@ lvs
 Exemple :
 
 ```text
-LV    VG      Attr
-data  nvme-vg twi-a-tz--
+  LV             VG      Attr       LSize    Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  data           nvme-vg twi-a-tz-- <953.62g             0.00   10.42
 ```
 
 ---
