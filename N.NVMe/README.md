@@ -340,6 +340,12 @@ Thin Pool    : data
 ```bash
 pvesm status
 ```
+```lua
+Name                Type     Status     Total (KiB)      Used (KiB) Available (KiB)        %
+local                dir     active        80028220        13086836        62830436   16.35%
+local-lvm        lvmthin     active       175005696        45431478       129574217   25.96%
+nvme-storage     lvmthin     active       999940096               0       999940096    0.00%
+```
 
 ---
 
