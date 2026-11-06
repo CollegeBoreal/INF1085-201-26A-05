@@ -236,7 +236,7 @@ pvcreate /dev/nvme0n1p1
 ```bash
 vgcreate nvme-vg /dev/nvme0n1p1
 ```
-> Physical volume "/dev/nvme0n1p1" successfully created.
+>  Volume group "nvme-vg" successfully created
 
 ---
 
