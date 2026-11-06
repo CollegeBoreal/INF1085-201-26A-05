@@ -127,6 +127,16 @@ Exemple :
 temperature				: 80 °F (300 K)
 ```
 
+### Températures NVMe typiques
+
+| Température	| État |
+|-|-|
+| < 40 °C	 | ✅ Excellent
+| 40-50 °C | ✅ Normal
+| 50-60 °C | ⚠️ Chaud
+| 60-70 °C | ⚠️ Très chaud
+| > 70 °C  | ❌ Risque de throttling
+
 ---
 
 # 🗑️ Effacer les signatures existantes
