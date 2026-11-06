@@ -50,7 +50,7 @@ apt update
 apt install nvme-cli -y
 ```
 
-Afficher
+Afficher la liste
 
 ```bash
 nvme list
