@@ -291,7 +291,7 @@ Thin Pool    : data
 ### Ligne de commande:
 
 ```bash
-pvesm add lvmthin nvme-storage --vgname nvme-vg --thinpool nvme-thinpool --content images,rootdir
+pvesm add lvmthin nvme-storage --vgname nvme-vg --thinpool data --content images,rootdir
 ```
 
 
