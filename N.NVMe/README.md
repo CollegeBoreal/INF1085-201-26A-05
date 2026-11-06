@@ -19,6 +19,24 @@ Afficher les disques :
 ```bash
 lsblk
 ```
+<details><summary>🖨️ Output</summary>
+```lua
+NAME                         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+sda                            8:0    0 273.4G  0 disk 
+├─sda1                         8:1    0  1007K  0 part 
+├─sda2                         8:2    0     1G  0 part 
+└─sda3                         8:3    0 272.4G  0 part 
+  ├─pve-swap                 252:0    0     8G  0 lvm  [SWAP]
+  ├─pve-root                 252:1    0  78.1G  0 lvm  /
+  ├─pve-data_tmeta           252:2    0   1.7G  0 lvm  
+  │ └─pve-data-tpool         252:4    0 166.9G  0 lvm  
+  │   └─pve-data             252:5    0 166.9G  1 lvm  
+  └─pve-data_tdata           252:3    0 166.9G  0 lvm  
+    └─pve-data-tpool         252:4    0 166.9G  0 lvm  
+      └─pve-data             252:5    0 166.9G  1 lvm  
+nvme0n1                      259:0    0 953.9G  0 disk
+```
+</details>
 
 ou :
 
