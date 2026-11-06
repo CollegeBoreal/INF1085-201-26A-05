@@ -14,7 +14,7 @@ Apprendre à :
 
 # 🔍 Identifier le disque NVMe
 
-Afficher les disques :
+Afficher les disques : (i.e. nvme❔n❔)
 
 ```bash
 lsblk
@@ -39,7 +39,18 @@ nvme0n1                      259:0    0 953.9G  0 disk
 ```
 </details>
 
-ou :
+---
+
+# 📊 Vérifier l'état du NVMe
+
+Installer les outils NVMe :
+
+```bash
+apt update
+apt install nvme-cli -y
+```
+
+Afficher
 
 ```bash
 nvme list
@@ -53,16 +64,6 @@ Node                  Generic               SN                   Model          
 /dev/nvme0n1          /dev/ng0n1               AMD8N000711508N2M PC811 SK hynix 1024GB                    0x1          1.02  TB /   1.02  TB    512   B +  0 B   61002141
 ```
 
----
-
-# 📊 Vérifier l'état du NVMe
-
-Installer les outils NVMe :
-
-```bash
-apt update
-apt install nvme-cli -y
-```
 
 Afficher les informations SMART :
 
