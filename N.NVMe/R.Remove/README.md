@@ -7,7 +7,7 @@ Supprimer un stockage LVM-Thin ajouté précédemment avec :
 ```bash
 pvesm add lvmthin nvme-storage \
     --vgname nvme-vg \
-    --thinpool nvme-thinpool \
+    --thinpool data \
     --content images,rootdir
 ```
 
