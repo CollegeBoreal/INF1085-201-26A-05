@@ -20,6 +20,7 @@ Afficher les disques :
 lsblk
 ```
 <details><summary>🖨️ Output</summary>
+  
 ```lua
 NAME                         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
 sda                            8:0    0 273.4G  0 disk 
