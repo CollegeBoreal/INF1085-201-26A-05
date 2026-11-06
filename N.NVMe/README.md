@@ -82,7 +82,7 @@ temperature				: 91 °F (306 K)
 ```bash
 wipefs -a /dev/nvme0n1
 ```
-<details><summary>🪵 Output </summary>
+<details><summary>🖨️ Output </summary>
 
 ```lua
 /dev/nvme0n1: 2 bytes were erased at offset 0x000001fe (dos): 55 aa
