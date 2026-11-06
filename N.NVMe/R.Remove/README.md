@@ -89,7 +89,7 @@ vgremove nvme-vg
 # 💾 Supprimer le volume physique
 
 ```bash
-pvremove /dev/nvme0n1p2
+pvremove /dev/nvme0n1p1
 ```
 
 ---
@@ -99,7 +99,7 @@ pvremove /dev/nvme0n1p2
 Partition :
 
 ```bash
-wipefs -a /dev/nvme0n1p2
+wipefs -a /dev/nvme0n1p1
 ```
 
 Disque complet :
