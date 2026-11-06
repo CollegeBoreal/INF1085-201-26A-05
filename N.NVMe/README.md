@@ -70,7 +70,7 @@ nvme smart-log /dev/nvme0n1 | grep temperature
 Exemple :
 
 ```text
-temperature : 36 C
+temperature				: 91 °F (306 K)
 ```
 
 ---
@@ -82,6 +82,15 @@ temperature : 36 C
 ```bash
 wipefs -a /dev/nvme0n1
 ```
+<details><summary>🪵</summary>
+
+```lua
+/dev/nvme0n1: 2 bytes were erased at offset 0x000001fe (dos): 55 aa
+/dev/nvme0n1: 8 bytes were erased at offset 0x00000200 (gpt): 45 46 49 20 50 41 52 54
+/dev/nvme0n1: 8 bytes were erased at offset 0xee77a55e00 (gpt): 45 46 49 20 50 41 52 54
+/dev/nvme0n1: calling ioctl to re-read partition table: Success
+```
+</details>
 
 ---
 
