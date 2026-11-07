@@ -1,0 +1,1 @@
+- [ ] [CNBC: The Truth About How Data Centers Use Water And Power To Keep Cool](https://youtu.be/qxB2eeHud6Q?si=tBF4FHNxMWpCXSQ1)
