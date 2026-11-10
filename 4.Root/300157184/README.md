@@ -24,8 +24,7 @@ pveum user list
 
 Le compte `B300157184@pam` est créé et actif (`enable = 1`), à côté de `root@pam`.
 
-![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/42771926812c92e0952aa95d771ef481b5d1a746/4.Root/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-11-10%20152032.png)
-
+![images](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/42771926812c92e0952aa95d771ef481b5d1a746/4.Root/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-11-10%20152032.png)
 ## 2. 🔑 Donner le rôle Administrator
 
 ```bash
