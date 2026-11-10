@@ -46,7 +46,7 @@ ssh B300157184@10.7.237.200
 
 Je suis connecté au serveur `server56` avec mon propre compte, pas avec root.
 
-![Connexion SSH](images/03-ssh.png)
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/9982544c7446752c0ecd31f1577e5768e70c48b6/4.Root/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-11-10%20152104.png)
 
 ---
 
