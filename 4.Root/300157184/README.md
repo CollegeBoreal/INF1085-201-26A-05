@@ -1,4 +1,3 @@
-
 # 🔐 Comptes administrateurs Proxmox : bonnes pratiques
 
 | Champ | Valeur |
@@ -6,7 +5,7 @@
 | Étudiant | 300157184 (anta) |
 | Groupe | 4 — Participation #3 |
 | Compte Proxmox | `B300157184@pam` |
-| Serveur Proxmox | `10.7.237.200` |
+| Serveur Proxmox | `10.7.237.200` (server56) |
 | Poste client | `anta@10.7.236.187` |
 
 ## 🎯 Objectif
@@ -15,79 +14,40 @@ Sécuriser l'accès à Proxmox VE avec un compte administrateur individuel au li
 
 ---
 
-## 1. 👤 Créer l'utilisateur Linux
+## 1. 👤 Créer l'utilisateur et l'ajouter à Proxmox
 
 ```bash
 adduser B300157184
-id B300157184
-```
-
-> 💡 Debian refuse les majuscules par défaut. Si `adduser` affiche une erreur `NAME_REGEX` :
-> `adduser --allow-bad-names B300157184`
-
-![Création de l'utilisateur Linux](images/01-adduser.png)
-
-## 2. 🖥️ Ajouter l'utilisateur à Proxmox
-
-```bash
 pveum user add B300157184@pam
 pveum user list
 ```
 
-![Liste des utilisateurs Proxmox](images/02-user-list.png)
+Le compte `B300157184@pam` est créé et actif (`enable = 1`), à côté de `root@pam`.
 
-## 3. 🔑 Donner le rôle Administrator
+![pveum user list](images/01-user-list.png)
+
+## 2. 🔑 Donner le rôle Administrator
 
 ```bash
 pveum acl modify / --users B300157184@pam --roles Administrator
 pveum acl list
 ```
 
-> Ancienne syntaxe équivalente : `pveum aclmod / -user B300157184@pam -role Administrator`
+L'utilisateur a le rôle `Administrator` sur la racine `/`, avec propagation (`propagate = 1`) à tout le Datacenter.
 
-![ACL Administrator](images/03-acl-list.png)
+![pveum acl list](images/02-acl-list.png)
 
-## 4. 🌐 Connexion à l'interface Web
+## 3. 💻 Connexion SSH avec mon compte
 
-- URL : https://10.7.237.200:8006
-- Utilisateur : `B300157184`, royaume **Linux PAM standard authentication**
-
-![Connexion Web UI](images/04-webui.png)
-
-## 5. 💻 Connexion SSH avec clé publique
-
-Depuis le poste client `anta@10.7.236.187` :
+Depuis mon poste `anta@10.7.236.187` :
 
 ```bash
-ssh-keygen -t ed25519
-ssh-copy-id B300157184@10.7.237.200
 ssh B300157184@10.7.237.200
 ```
 
-✅ Aucun mot de passe n'est demandé.
+Je suis connecté au serveur `server56` avec mon propre compte, pas avec root.
 
-![Connexion SSH par clé](images/05-ssh-key.png)
-
-## 6. 🛡️ Accès sudo (pour utiliser `pveum` en SSH)
-
-Le rôle Administrator ne donne des droits que dans Proxmox, pas dans Linux. En root :
-
-```bash
-apt install sudo
-usermod -aG sudo B300157184
-```
-
-## 7. 🧪 Vérifications
-
-```bash
-pveum user list
-pveum role list
-pveum acl list
-```
-
-Dans le Web UI, le panneau **Tasks** affiche maintenant `B300157184@pam` comme auteur des actions.
-
-![Traçabilité dans Tasks](images/06-tasks.png)
+![Connexion SSH](images/03-ssh.png)
 
 ---
 
@@ -103,6 +63,6 @@ Dans le Web UI, le panneau **Tasks** affiche maintenant `B300157184@pam` comme a
 | Utiliser les ACL Proxmox | ✅ |
 
 - ✅ J'ai mon propre compte `B300157184@pam`
-- ✅ Mes actions sont traçables
-- ✅ Mon accès SSH utilise une clé ed25519
-- ✅ `root@pam` est réservé au dépannage, à la maintenance d'urgence et à la récupération
+- ✅ Il a le rôle Administrator via les ACL Proxmox
+- ✅ Je me connecte en SSH avec mon compte, mes actions sont traçables
+- ✅ `root@pam` est réservé au dépannage et aux urgences
