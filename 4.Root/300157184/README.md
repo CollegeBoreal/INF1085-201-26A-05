@@ -34,7 +34,7 @@ pveum acl list
 
 L'utilisateur a le rôle `Administrator` sur la racine `/`, avec propagation (`propagate = 1`) à tout le Datacenter.
 
-![pveum acl list](images/02-acl-list.png)
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/83689c5ba91a429080c2a9cdf91df1c7be18f8b0/4.Root/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-11-10%20152047.png)
 
 ## 3. 💻 Connexion SSH avec mon compte
 
