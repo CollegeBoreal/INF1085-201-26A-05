@@ -15,13 +15,13 @@ Documentation d'un travail pratique sur le matériel d'un serveur : ouverture du
 
 ## Les pièces démontées
 
-### Photo 1 — Le processeur dans la main
+### Photo 1 — Le processeur
 
 ![Le processeur dans la main](images/photo-01-processeur-main.jpg)
 
 Cette photo montre le **dessous d'un processeur**. Les petits points dorés sont les contacts : c'est par là que le processeur communique avec la carte mère quand il est installé dans son emplacement (le *socket*). Il faut toujours tenir le processeur par les bords et ne pas toucher les contacts avec les doigts.
 
-### Photo 2 — Les processeurs retirés et leurs dissipateurs
+### Photo 2 — Les processeurs et leurs dissipateurs
 
 ![Processeurs et dissipateurs](images/photo-02-processeurs-dissipateurs.jpg)
 
