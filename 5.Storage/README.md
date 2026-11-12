@@ -367,7 +367,7 @@ data
 Création :
 
 ```bash
-lvcreate -L 100G -n data nvme-vg
+lvcreate -l 100%FREE -T nvme-vg/data
 ```
 
 Vérification :
