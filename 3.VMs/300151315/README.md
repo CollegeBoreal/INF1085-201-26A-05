@@ -15,7 +15,7 @@ This guide documents how I created my own virtual machine running **Ubuntu Serve
 | VM name | `ayoubVM` |
 | CPU | 2 cores, type `host` |
 | Memory | 4 GB |
-| Disk | 32 GB on `local-lvm` (LVM, `/` = 15 GB, `/boot` = 2 GB) |
+| Disk | 32 GB, moved to `nvme-storage` (LVM, `/` = 30 GB after `lvextend`, `/boot` = 2 GB) |
 | Network | VirtIO on bridge `vmbr0`, interface `ens18` in the VM |
 | VM IP | `10.7.236.196/23` (static, was `.166` until an IP conflict, see step 9) |
 | VM user | `ayoub` |
@@ -208,6 +208,12 @@ SSH to `10.7.236.166` was refused even though `sshd` was running in the VM. Comp
 | My PC | `arp -a \| findstr 10.7.236.166` | `ea-b9-f3-fa-25-e5` |
 | Proxmox host | `ip neigh show 10.7.236.166` | `ea:b9:f3:fa:25:e5` |
 
+<img src="images/17-ip-a-avant.png" width="700">
+
+`sshd` was running and listening on port 22 inside the VM:
+
+<img src="images/21-ssh-status.png" width="700">
+
 `grep -ril "ea:b9:f3:fa:25:e5" /etc/pve/` on `server197` found nothing, so it is not a VM of our group: it is another device on the network (random Wi-Fi style MAC).
 
 I checked that `10.7.236.196` was free from the Proxmox host (`ping` → *Destination Host Unreachable*, `ip neigh` → `FAILED`), then changed the VM's IP from the console:
@@ -219,6 +225,8 @@ sudo grep -r 196 /etc/netplan/
 sudo netplan apply
 ip a
 ```
+
+<img src="images/22-netplan-196.png" width="700">
 
 <img src="images/16-nouvelle-ip.png" width="700">
 
@@ -238,6 +246,10 @@ cat ~/.ssh/authorized_keys
 ```
 
 <img src="images/15-cle-prof.png" width="800">
+
+The key was already there once (added on Oct 15), so the duplicate line was removed with `sort -u ~/.ssh/authorized_keys -o ~/.ssh/authorized_keys`:
+
+<img src="images/23-cle-df.png" width="800">
 
 | Item | Value |
 |---|---|
@@ -267,3 +279,42 @@ qm config 101           # show the VM configuration
 | Mirror test fails | Wrong IP, gateway or DNS | **Back** to the network screen and fix the values |
 | SSH to the VM refused although `sshd` is running | Another device was using the VM's IP (`10.7.236.166`) | Compare MACs (`arp -a`, `ip neigh`), pick a free IP, change it in `/etc/netplan/*.yaml` |
 | Forgot the VM user / password | Typed in the console with a US keyboard during install | GRUB → *Advanced options* → *recovery mode* → `root`, then `ls /home` and `passwd ayoub` |
+
+## Recovering the VM user and password
+
+The user name was not written down and the password typed during the install (US keyboard in the console) no longer matched. From the Proxmox console: **Hard Reset**, **Esc** to open GRUB, *Advanced options for Ubuntu* → *(recovery mode)* → **root**:
+
+<img src="images/18-recovery-menu.png" width="600">
+
+```bash
+ls /home                      # ayoub
+mount -o remount,rw /
+passwd ayoub
+reboot
+```
+
+<img src="images/19-ls-home.png" width="600">
+
+SSH was then enabled so it starts at every boot:
+
+```bash
+sudo systemctl enable --now ssh
+```
+
+<img src="images/20-ssh-enable.png" width="800">
+
+## Using the whole disk
+
+The Ubuntu installer only gave 15 GB to `/` and left 15 GB free in `ubuntu-vg`. I extended the logical volume and the file system online (no reboot):
+
+```bash
+sudo vgs                                                  # VFree 15.00g
+sudo lvextend -r -l +100%FREE /dev/ubuntu-vg/ubuntu-lv    # / goes from 15 GB to 30 GB
+df -h /
+```
+
+## Final state of the VM
+
+Disk on `nvme-storage`, old `local-lvm` copy removed, network card `BC:24:11:03:57:03`:
+
+<img src="images/24-hardware-final.png" width="800">

@@ -114,3 +114,24 @@ Les VM font beaucoup de petites lectures et écritures en même temps. Le NVMe a
 - ✅ Disque déplacé de `local-lvm` vers `nvme-storage`
 - ✅ Configuration mise à jour (`qm config 101`)
 - ✅ VM opérationnelle sur le stockage NVMe
+
+## 5. Supprimer l'ancien disque
+Avant : la ligne **Unused Disk 0** (`local-lvm:vm-101-disk-0`) dans *Hardware*.
+
+<img src="images/11-unused-disk-avant.png" width="800">
+
+Une fois la VM vérifiée sur le NVMe (connexion SSH, disque étendu), j'ai supprimé l'ancienne copie restée sur `local-lvm` :
+
+```
+qm disk unlink 101 --idlist unused0 --force
+qm config 101            # plus de ligne unused0
+pvesm list local-lvm     # vm-101-disk-0 n'apparaît plus
+```
+
+Résultat : `Logical volume "vm-101-disk-0" successfully removed.` La VM 101 n'utilise plus que `nvme-storage`.
+
+<img src="images/10-ancien-disque-supprime.png" width="700">
+
+Après : dans *Hardware*, il ne reste que **Hard Disk (scsi0)** sur `nvme-storage`.
+
+<img src="images/12-hardware-apres.png" width="800">
