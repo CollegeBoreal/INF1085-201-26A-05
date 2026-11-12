@@ -48,8 +48,8 @@
 | 27 | [300157184](../300157184/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/275812708?s=460&v=4' width=20 height=20></image>](https://github.com/topanta) | :1st_place_medal: | :heavy_check_mark: | 🥉 | 1️⃣ Courage - On continue la documentation |
 | 28 | [300157275](../300157275/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/307787126?s=460&v=4' width=20 height=20></image>](https://github.com/benkarayahia01-hue) | :x: | :x: | :x: | 0️⃣ Rien à corriger |
 | 29 | [300157301](../300157301/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/258898045?s=460&v=4' width=20 height=20></image>](https://github.com/Amhn25) | :x: | :x: | :x: | 0️⃣ Rien à corriger |
-| 30 | [300157330](../300157330/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/231571164?s=460&v=4' width=20 height=20></image>](https://github.com/toufikmekbel) | :2nd_place_medal: | :x: | :x: | 0️⃣ Rien à corriger |
+| 30 | [300157330](../300157330/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/231571164?s=460&v=4' width=20 height=20></image>](https://github.com/toufikmekbel) | :2nd_place_medal: | :heavy_check_mark: | :x: | 0️⃣ Rien à corriger |
 | 31 | [300157374](../300157374/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/255961683?s=460&v=4' width=20 height=20></image>](https://github.com/yanisna) | :x: | :x: | :x: | 0️⃣ Rien à corriger |
 | 32 | [300157416](../300157416/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/232939450?s=460&v=4' width=20 height=20></image>](https://github.com/lounisyounes) | :x: | :x: | :x: | 0️⃣ Rien à corriger |
 | 33 | [300157424](../300157424/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/258873685?s=460&v=4' width=20 height=20></image>](https://github.com/MA-JID-06) | :x: | :x: | :x: | 0️⃣ Rien à corriger |
-| :abacus: | \$\frac{13}{33}\$ = 39.39% | \$\displaystyle\sum_{i=1}^{33} s_i\$ = 13 |
+| :abacus: | \$\frac{14}{33}\$ = 42.42% | \$\displaystyle\sum_{i=1}^{33} s_i\$ = 14 |
