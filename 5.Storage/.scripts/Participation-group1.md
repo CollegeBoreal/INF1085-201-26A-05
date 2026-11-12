@@ -26,8 +26,8 @@
 | 2 | [300147065](../300147065/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/266599103?s=460&v=4' width=20 height=20></image>](https://github.com/Ahmedboreal) | :x: | :x: |  |  | 🏙️  ubuntu@10.7.236.162  |
 | 3 | [300150411](../300150411/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/211593030?s=460&v=4' width=20 height=20></image>](https://github.com/brhnkess) | :x: | :x: |  |  | 🏙️  ubuntu@10.7.236.163  |
 | 4 | [300150477](../300150477/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/195692630?s=460&v=4' width=20 height=20></image>](https://github.com/Trafalgar-D-Low) | :x: | :x: |  |  | 🏙️  trafalgar@10.7.236.164  |
-| 5 | [300150564](../300150564/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/102555452?s=460&v=4' width=20 height=20></image>](https://github.com/wassimbnr) | :x: | :x: |  |  | 🏙️  ouassim@10.7.236.165  |
+| 5 | [300150564](../300150564/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/102555452?s=460&v=4' width=20 height=20></image>](https://github.com/wassimbnr) | :2nd_place_medal: | :heavy_check_mark: |  |  | 🏙️  ouassim@10.7.236.165  |
 | 6 | [300151315](../300151315/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/329685188?s=460&v=4' width=20 height=20></image>](https://github.com/toumiayoub1111-spec) | :x: | :x: |  |  | 🏙️  ubuntu@10.7.236.166  |
 | 7 | [300151449](../300151449/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/231569522?s=460&v=4' width=20 height=20></image>](https://github.com/abderrahimalaoui) | :x: | :x: |  |  | 🏙️  ubuntu@10.7.236.167  |
 | 8 | [300151496](../300151496/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/236670164?s=460&v=4' width=20 height=20></image>](https://github.com/anisouhocine) | :x: | :x: |  |  | 🏙️  anishcn@10.7.236.168  |
-| :abacus: | \$\frac{0}{8}\$ = 0% | \$\displaystyle\sum_{i=1}^{8} s_i\$ = 0 |
+| :abacus: | \$\frac{1}{8}\$ = 12.5% | \$\displaystyle\sum_{i=1}^{8} s_i\$ = 1 |
