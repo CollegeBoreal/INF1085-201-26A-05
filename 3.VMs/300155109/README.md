@@ -1,4 +1,4 @@
-# Laboratoire 3 — Virtualisation et configuration d'un serveur Ubuntu
+# Laboratoire 3 — Virtualisation 
 
 **Étudiante :** Alexia Kabore  
 **Numéro de dossier :** 300155109  
