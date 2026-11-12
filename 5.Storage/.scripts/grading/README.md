@@ -1,12 +1,12 @@
 # Setup
 
-## :one: LMS Assignment ID = 65
+## :one: LMS Assignment ID = 76
 
 ```json
 {
-  "id": 65,
-  "cmid": 75,
-  "name": "3.VMs"
+  "id": 76,
+  "cmid": 86,
+  "name": "5.Storage"
 }
 ```
 
@@ -38,7 +38,7 @@ curl -X POST "https://${LMS_URL}/webservice/rest/server.php" \
 -d "wstoken=${API_SYNC_TOKEN}" \
 -d "wsfunction=core_grading_get_definitions" \
 -d "moodlewsrestformat=json" \
--d "cmids[0]=75" \
+-d "cmids[0]=86" \
 -d "areaname=submissions" | jq .
 ```
 ```
@@ -52,47 +52,47 @@ curl -X POST "https://${LMS_URL}/webservice/rest/server.php" \
 {
   "areas": [
     {
-      "cmid": 75,
-      "contextid": 749,
+      "cmid": 86,
+      "contextid": 796,
       "component": "mod_assign",
       "areaname": "submissions",
       "activemethod": "rubric",
       "definitions": [
         {
-          "id": 64,
+          "id": 75,
           "method": "rubric",
-          "name": "3.VMs",
-          "description": "3.VMs",
+          "name": "5.Storage",
+          "description": "5.Storage",
           "descriptionformat": 1,
           "status": 20,
           "copiedfromid": null,
-          "timecreated": 1792433616,
+          "timecreated": 1794506777,
           "usercreated": 3,
-          "timemodified": 1792433661,
+          "timemodified": 1794506804,
           "usermodified": 3,
           "timecopied": 0,
           "rubric": {
             "rubric_criteria": [
               {
-                "id": 265,
+                "id": 298,
                 "sortorder": 1,
                 "description": "README.md",
                 "descriptionformat": 1,
                 "levels": [
                   {
-                    "id": 667,
+                    "id": 777,
                     "score": 0,
                     "definition": "❌",
                     "definitionformat": 1
                   },
                   {
-                    "id": 668,
+                    "id": 778,
                     "score": 1,
                     "definition": "🥈",
                     "definitionformat": 1
                   },
                   {
-                    "id": 669,
+                    "id": 779,
                     "score": 2,
                     "definition": "🥇",
                     "definitionformat": 1
@@ -100,19 +100,19 @@ curl -X POST "https://${LMS_URL}/webservice/rest/server.php" \
                 ]
               },
               {
-                "id": 266,
+                "id": 299,
                 "sortorder": 2,
                 "description": "images",
                 "descriptionformat": 1,
                 "levels": [
                   {
-                    "id": 670,
+                    "id": 780,
                     "score": 0,
                     "definition": "❌",
                     "definitionformat": 1
                   },
                   {
-                    "id": 671,
+                    "id": 781,
                     "score": 1,
                     "definition": "✔️",
                     "definitionformat": 1
@@ -120,37 +120,37 @@ curl -X POST "https://${LMS_URL}/webservice/rest/server.php" \
                 ]
               },
               {
-                "id": 267,
+                "id": 300,
                 "sortorder": 3,
                 "description": "Appréciation",
                 "descriptionformat": 1,
                 "levels": [
                   {
-                    "id": 672,
+                    "id": 782,
                     "score": 0,
                     "definition": "❌",
                     "definitionformat": 1
                   },
                   {
-                    "id": 673,
+                    "id": 783,
                     "score": 1,
                     "definition": "🥉",
                     "definitionformat": 1
                   },
                   {
-                    "id": 674,
+                    "id": 784,
                     "score": 2,
                     "definition": "🥈",
                     "definitionformat": 1
                   },
                   {
-                    "id": 675,
+                    "id": 785,
                     "score": 3,
                     "definition": "🥇",
                     "definitionformat": 1
                   },
                   {
-                    "id": 676,
+                    "id": 786,
                     "score": 4,
                     "definition": "🏆",
                     "definitionformat": 1
