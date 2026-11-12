@@ -46,7 +46,7 @@ Les ressources matérielles suivantes lui ont été attribuées : un processeur 
 
 **Capture 1 — Configuration matérielle de la VM**
 
-![Configuration matérielle de la VM](images/01-proxmox-vm.png)
+![Configuration matérielle de la VM](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/3.VMs/300155109/images/vm%20capture%201.png?raw=true)
 
 ## 3. Installation d'Ubuntu Server
 
@@ -56,11 +56,11 @@ Après l'installation, le démarrage a été configuré pour utiliser le disque 
 
 **Capture 2 — Installation d'Ubuntu Server**
 
-![Installation Ubuntu](images/02-installation-ubuntu.png)
+![Installation Ubuntu](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/3.VMs/300155109/images/vm%20capture%202.png?raw=true)
 
 **Capture 3 — Connexion à Ubuntu Server**
 
-![Connexion Ubuntu](images/03-connexion-ubuntu.png)
+![Connexion Ubuntu](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/3.VMs/300155109/images/vm%20capture%203.png?raw=true)
 
 ## 4. Vérification des ressources et du réseau
 
@@ -74,11 +74,8 @@ L'interface réseau utilisée par Ubuntu est `ens18`.
 
 **Capture 4 — Vérification de l'adresse IP**
 
-![Adresse IP](images/04-adresse-ip.png)
+![Adresse IP](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/3.VMs/300155109/images/vm%20capture%205.png?raw=true)
 
-**Capture 5 — Vérification de la mémoire**
-
-![Mémoire vive](images/05-memoire.png)
 
 ## 5. Configuration du service SSH
 
@@ -98,9 +95,6 @@ Pour permettre son démarrage automatique avec le système, la commande suivante
 sudo systemctl enable ssh
 ```
 
-**Capture 6 — Vérification du service SSH**
-
-![Service SSH actif](images/06-service-ssh.png)
 
 ## 6. Configuration de l'accès par clé publique
 
@@ -119,7 +113,7 @@ Cette configuration permet au détenteur de la clé privée correspondante de s'
 
 **Capture 7 — Présence de la clé publique dans authorized_keys**
 
-![Clé publique SSH](images/07-cle-publique.png)
+![Clé publique SSH](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/3.VMs/300155109/images/vm%20capture%206.png?raw=true)
 
 ## 7. Configuration de l'adresse IP statique
 
@@ -145,11 +139,11 @@ Cette configuration sera validée après son application et après les tests de 
 
 **Capture 8 — Configuration Netplan**
 
-![Configuration Netplan](images/08-netplan.png)
+![Configuration Netplan](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/3.VMs/300155109/images/vm%20capture%206.png?raw=true)
 
 **Capture 9 — Vérification de la nouvelle adresse IP et de la passerelle**
 
-![Vérification réseau](images/09-verification-reseau.png)
+![Vérification réseau](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/3.VMs/300155109/images/vm%20capture%205.png?raw=true)
 
 ## 8. Conclusion
 
