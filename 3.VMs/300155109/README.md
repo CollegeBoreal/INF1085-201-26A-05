@@ -56,7 +56,7 @@ Après l'installation, le démarrage a été configuré pour utiliser le disque 
 
 **Capture 2 — Installation d'Ubuntu Server**
 
-![Installation Ubuntu](images/02-installation-ubuntu.png)
+![Installation Ubuntu](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/3.VMs/300155109/images/vm%20capture%202.png?raw=true)
 
 **Capture 3 — Connexion à Ubuntu Server**
 
