@@ -60,7 +60,7 @@ Après l'installation, le démarrage a été configuré pour utiliser le disque 
 
 **Capture 3 — Connexion à Ubuntu Server**
 
-![Connexion Ubuntu](images/03-connexion-ubuntu.png)
+![Connexion Ubuntu](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/3.VMs/300155109/images/vm%20capture%203.png?raw=true)
 
 ## 4. Vérification des ressources et du réseau
 
