@@ -55,6 +55,12 @@ Le rôle `Administrator` est attribué sur `/`.
 Connexion à `https://10.7.236.197:8006` avec `B300141685@pam` (realm Linux PAM).
 
 ![connexion web](images/05-connexion-web.png)
+### 6️⃣ Connexion SSH
+Commande : `ssh B300141685@10.7.236.197`
+
+Connexion SSH réussie avec le compte individuel.
+
+![ssh](images/06-ssh.png)
 
 ---
 
