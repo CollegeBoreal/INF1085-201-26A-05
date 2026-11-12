@@ -113,7 +113,7 @@ Cette configuration permet au détenteur de la clé privée correspondante de s'
 
 **Capture 7 — Présence de la clé publique dans authorized_keys**
 
-![Clé publique SSH](images/07-cle-publique.png)
+![Clé publique SSH](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/3.VMs/300155109/images/vm%20capture%206.png?raw=true)
 
 ## 7. Configuration de l'adresse IP statique
 
@@ -139,7 +139,7 @@ Cette configuration sera validée après son application et après les tests de 
 
 **Capture 8 — Configuration Netplan**
 
-![Configuration Netplan](images/08-netplan.png)
+![Configuration Netplan](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/3.VMs/300155109/images/vm%20capture%206.png?raw=true)
 
 **Capture 9 — Vérification de la nouvelle adresse IP et de la passerelle**
 
