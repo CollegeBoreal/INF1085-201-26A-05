@@ -1,3 +1,26 @@
+function Write-LabParticipationHeader {
+    Write-Output "# Participation"
+    Write-Output ""
+
+    Write-Output "| Table des matières            | Description                                             |"
+    Write-Output "|-------------------------------|---------------------------------------------------------|"
+    Write-Output "| :a: [Présence](#a-présence)   | L'étudiant.e a fait son travail    :heavy_check_mark:   |"
+    Write-Output "| :b: [Précision](#b-précision) | L'étudiant.e a réussi son travail  :tada:               |"
+
+    Write-Output ""
+    Write-Output "## Légende"
+    Write-Output ""
+    Write-Output "| Signe              | Signification                       |"
+    Write-Output "|--------------------|-------------------------------------|"
+    Write-Output "| ❌                 | Rien dans `README.md`               |"
+    Write-Output "| 🥉                 | Composants matériels détaillés      |"
+    Write-Output "| 🥈                 | Écran POST ou BIOS affiché          |"
+    Write-Output "| 🥇                 | Configuration/formatage des disques |"
+    Write-Output "| 🏆                 | `README.md` impeccable              |"
+
+}
+
+
 function Write-ConfigurationSection {
     param(
         [string]$Server
@@ -6,9 +29,9 @@ function Write-ConfigurationSection {
     Write-Output "## :gear: Configuration"
     Write-Output ""
 
-    Write-Output "| Windows Server 2022 Datacenter            | User/Pwd                   |"
-    Write-Output "|-------------------------------------------|----------------------------|"
-    Write-Output "| ${Server}                                 | Administrator/Boreal@2️⃣02️⃣6 |"
+    Write-Output "| Proxmox PVE 9.2       | User/Pwd          |"
+    Write-Output "|-------------------    |-------------------|"
+    Write-Output "| ${Server}             | root/Boreal@2️⃣02️⃣6 |"
     Write-Output ""
 
 }
@@ -41,9 +64,10 @@ function Write-LabStudentRow {
         [string]$ReadmePath,
         [hashtable]$Checks,
         [hashtable]$FeedbackLookup = @{}
-    )
-
+    )    
+    
     if ($FeedbackLookup.Count -gt 0) {
+
 
         $Feedback = $FeedbackLookup[$StudentID]
 

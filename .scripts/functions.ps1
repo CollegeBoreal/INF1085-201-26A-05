@@ -51,7 +51,7 @@ function Write-PresenceHeader {
 
     if ($FeedbackLookup.Count -gt 0) {
         Write-Output "|:hash:| Boréal :id: | README.md | images | Appréciation | Commentaires |"
-        Write-Output "|------|-------------|-----------|--------|--------------|--------------|"
+        Write-Output "|------|-------------|-----------|--------|---------|--------------|"
     }
     else {
         Write-Output "|:hash:| Boréal :id: | README.md | images |"

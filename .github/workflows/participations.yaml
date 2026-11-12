@@ -26,6 +26,8 @@ jobs:
             "1.Diagnostics"
             "2.Proxmox"
             "3.VMs"
+            "4.Root"
+            "5.Storage"
           )
 
           foreach ($chapter in $chapters) {
@@ -47,6 +49,9 @@ jobs:
         run: |
           $chapters = @(
             "0.PlanDeCours"
+            "1.Diagnostics"
+            "2.Proxmox"
+            "3.VMs"
           )
 
           foreach ($chapter in $chapters) {
