@@ -559,6 +559,29 @@ nvme-storage:vm-100-disk-0  raw     images  21474836480 100
 
 Le disque `vm-100-disk-0` (20 Go = 21 474 836 480 octets) apparaît bien dans `nvme-storage`, rattaché à la VM 100.
 
+### Supprimer l'ancien disque inutilisé
+
+Le professeur a validé le travail : tout est correct, il reste seulement à supprimer le disque inutilisé (`unused0`, l'ancien disque sur `local-lvm`).
+
+```
+qm set 100 --delete unused0
+```
+
+Résultat :
+
+```
+update VM 100: -delete unused0
+  Logical volume "vm-100-disk-0" successfully removed.
+```
+
+Vérification — `qm config 100` ne montre plus la ligne `unused0`, seulement le disque actif :
+
+```
+scsi0: nvme-storage:vm-100-disk-0,size=20G
+```
+
+![Suppression de l'ancien disque inutilisé (unused0)](images/qm-delete-unused0.png)
+
 ### Résumé
 
 Avant :
@@ -648,6 +671,7 @@ Le NVMe est beaucoup plus rapide qu'un HDD ou un SSD SATA (PCI Express, latence 
 - ✅ Configuration mise à jour (`scsi0: nvme-storage:vm-100-disk-0,size=20G`)
 - ✅ VM opérationnelle (en marche pendant et après le déplacement)
 - ✅ Stockage NVMe utilisé (`pvesm list nvme-storage` : disque présent, VMID 100)
+- ✅ Ancien disque supprimé (`unused0`, `local-lvm:vm-100-disk-0` — supprimé à la demande du professeur, volume effacé)
 
 ---
 
