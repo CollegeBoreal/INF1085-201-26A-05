@@ -234,4 +234,3 @@ Après la suppression, j’ai vérifié que :
 
 ![Vérification du stockage de la VM 197](images/Screenshot%202026-11-12%20160723.png)
 
-> **Attention :** supprimer un disque inutilisé supprime son volume et les données qu’il contient. Il faut vérifier son contenu et disposer d’une sauvegarde avant de le supprimer.
