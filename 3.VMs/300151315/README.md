@@ -17,7 +17,8 @@ This guide documents how I created my own virtual machine running **Ubuntu Serve
 | Memory | 4 GB |
 | Disk | 32 GB on `local-lvm` (LVM, `/` = 15 GB, `/boot` = 2 GB) |
 | Network | VirtIO on bridge `vmbr0`, interface `ens18` in the VM |
-| VM IP | `10.7.236.166/23` (static) |
+| VM IP | `10.7.236.196/23` (static, was `.166` until an IP conflict, see step 9) |
+| VM user | `ayoub` |
 | Gateway | `10.7.237.1` |
 | DNS | `1.1.1.1`, `8.8.8.8` |
 
@@ -133,7 +134,7 @@ I replaced it with my assigned static address: `ens18` → **Edit IPv4** → **M
 | Field | Value |
 |---|---|
 | Subnet | `10.7.236.0/23` |
-| Address | `10.7.236.166` |
+| Address | `10.7.236.166` (changed to `.196` later, see step 9) |
 | Gateway | `10.7.237.1` |
 | Name servers | `1.1.1.1,8.8.8.8` |
 
@@ -184,20 +185,65 @@ Then press **Enter** in the console so the VM boots from its disk.
 From PowerShell on my computer:
 
 ```bash
-ping 10.7.236.166
-ssh <username>@10.7.236.166
+ping 10.7.236.196
+ssh ayoub@10.7.236.196
 ```
 
 Inside the VM:
 
 ```bash
 hostname          # ayoubvm
-ip -4 addr        # 10.7.236.166/23 on ens18
+ip -4 addr        # 10.7.236.196/23 on ens18
 ping -c 3 1.1.1.1
 lsb_release -a    # Ubuntu 24.04.5 LTS
 ```
 
-![SSH connection to the VM](images/14-vm-ssh.png)
+### 9. IP conflict: moving from `.166` to `.196`
+
+SSH to `10.7.236.166` was refused even though `sshd` was running in the VM. Comparing MAC addresses showed that another device was answering on that IP:
+
+| Where | Command | MAC seen for `10.7.236.166` |
+|---|---|---|
+| Inside my VM | `ip a` | `bc:24:11:03:57:03` (my VM) |
+| My PC | `arp -a \| findstr 10.7.236.166` | `ea-b9-f3-fa-25-e5` |
+| Proxmox host | `ip neigh show 10.7.236.166` | `ea:b9:f3:fa:25:e5` |
+
+`grep -ril "ea:b9:f3:fa:25:e5" /etc/pve/` on `server197` found nothing, so it is not a VM of our group: it is another device on the network (random Wi-Fi style MAC).
+
+I checked that `10.7.236.196` was free from the Proxmox host (`ping` → *Destination Host Unreachable*, `ip neigh` → `FAILED`), then changed the VM's IP from the console:
+
+```bash
+sudo loadkeys fr                                                  # French keyboard in the console
+sudo sed -i 's/10.7.236.166/10.7.236.196/' /etc/netplan/*.yaml
+sudo grep -r 196 /etc/netplan/
+sudo netplan apply
+ip a
+```
+
+<img src="images/16-nouvelle-ip.png" width="700">
+
+### 10. Professor's SSH key
+
+The professor's public key ("Clé du prof" on the 3.VMs page) is added to my user `ayoub` so he can connect with `ssh -i <his key> ayoub@10.7.236.196`:
+
+```bash
+ssh ayoub@10.7.236.196
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+echo "ssh-rsa AAAAB3...vvLRP5N b300098957@ramena" >> ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+ls -ld ~/.ssh                    # drwx------
+ls -l ~/.ssh/authorized_keys     # -rw-------
+cat ~/.ssh/authorized_keys
+```
+
+<img src="images/15-cle-prof.png" width="800">
+
+| Item | Value |
+|---|---|
+| VM user | `ayoub` |
+| VM IP | `10.7.236.196` |
+| Key | `b300098957@ramena` in `/home/ayoub/.ssh/authorized_keys` |
 
 ## Useful commands (on the Proxmox host)
 
@@ -219,3 +265,5 @@ qm config 101           # show the VM configuration
 | Wrong characters in the installer (`/`, `,`) | Console uses a US keyboard, PC uses FRA | Check each field before saving |
 | Back on a previous installer screen | **Esc** was pressed | Press **Done** to move forward again |
 | Mirror test fails | Wrong IP, gateway or DNS | **Back** to the network screen and fix the values |
+| SSH to the VM refused although `sshd` is running | Another device was using the VM's IP (`10.7.236.166`) | Compare MACs (`arp -a`, `ip neigh`), pick a free IP, change it in `/etc/netplan/*.yaml` |
+| Forgot the VM user / password | Typed in the console with a US keyboard during install | GRUB → *Advanced options* → *recovery mode* → `root`, then `ls /home` and `passwd ayoub` |
