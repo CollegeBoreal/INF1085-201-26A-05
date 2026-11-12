@@ -218,3 +218,20 @@ La capture montre également des messages du noyau concernant une tâche bloqué
 - Le stockage `nvme-storage` est apparu comme actif dans Proxmox.
 - Le disque de la VM 133 a été déplacé vers le nouveau stockage.
 - La configuration finale de la VM indique que `scsi0` utilise `nvme-storage`.
+- ---
+
+## 12. Vérification et nettoyage des anciens disques de la VM 197
+
+J’ai vérifié que la VM 197 était en cours d’exécution et j’ai affiché les volumes associés à cette VM sur `local-lvm`.
+
+La capture montre ensuite la suppression de trois disques marqués comme inutilisés : `unused0`, `unused1` et `unused2`.
+
+Après la suppression, j’ai vérifié que :
+
+- La VM 197 était toujours en cours d’exécution.
+- Son disque actif `scsi0` était sur `nvme-storage`.
+- Le disque actif avait une taille de 32 Gio.
+
+![Vérification du stockage de la VM 197](images/Screenshot%202026-11-12%20160723.png)
+
+> **Attention :** supprimer un disque inutilisé supprime son volume et les données qu’il contient. Il faut vérifier son contenu et disposer d’une sauvegarde avant de le supprimer.
