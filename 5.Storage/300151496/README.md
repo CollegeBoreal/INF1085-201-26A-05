@@ -20,7 +20,7 @@
 - Ajouter un disque NVMe comme stockage pour les machines virtuelles.
 - Déplacer le disque d'une machine virtuelle vers le stockage NVMe.
 
-Le travail s'est fait en deux temps, comme l'a expliqué le professeur : une partie en **groupe** (préparer le disque NVMe : partition, PV, VG et Thin Pool), puis une partie **individuelle** (ajouter le stockage à Proxmox et déplacer le disque de ma propre VM).
+Quand je suis arrivé sur le serveur, la préparation du disque NVMe (partition, PV, VG et Thin Pool) était déjà en place. J'ai fait le reste moi-même : ajouter le stockage à Proxmox et déplacer le disque de ma propre VM. J'étais en avance par rapport à mon groupe, qui n'avait encore rien fait.
 
 ---
 
@@ -262,7 +262,7 @@ nvme0n1
 └── nvme0n1p1 953.9G
 ```
 
-> **Remarque importante (travail de groupe) :** quand je suis arrivé sur le serveur, cette étape était déjà faite : `nvme0n1p1` (953,9 Go) existait déjà, comme le montre le `lsblk` ci-dessus. Je n'ai donc **pas** relancé `fdisk` — recréer une table GPT aurait effacé la partition et tout ce qu'elle contient.
+> **Remarque importante :** quand je suis arrivé sur le serveur, cette étape était déjà faite : `nvme0n1p1` (953,9 Go) existait déjà, comme le montre le `lsblk` ci-dessus. Je n'ai donc **pas** relancé `fdisk` — recréer une table GPT aurait effacé la partition et tout ce qu'elle contient.
 
 ---
 
@@ -363,7 +363,7 @@ Vérification :
 lvs
 ```
 
-> **Remarque (travail de groupe) :** comme pour la partition, le PV (`/dev/nvme0n1p1`), le VG (`nvme-vg`) et le Thin Pool (`data`, 953,6 Go) existaient déjà sur le serveur. Je les ai vérifiés avec `lsblk` au lieu de les recréer.
+> **Remarque :** comme pour la partition, le PV (`/dev/nvme0n1p1`), le VG (`nvme-vg`) et le Thin Pool (`data`, 953,6 Go) existaient déjà sur le serveur. Je les ai vérifiés avec `lsblk` au lieu de les recréer.
 
 ---
 
@@ -585,7 +585,7 @@ nvme-storage
 | --- | --- | --- | --- |
 | 1 | `ssh root@10.7.236.197` → `Connection timed out` | Le port SSH (22) ne répond pas depuis mon portable, même à l'école : le réseau Wi-Fi ne laisse pas passer le SSH vers le serveur | Passer par le navigateur : interface web Proxmox `https://10.7.236.197:8006`, puis le Shell du nœud `server197` (utilisateur `root@pam`) |
 | 2 | `qm move_disk` collé → `command not found` (`^[[200~qm` puis `~qm`) | Le collage dans le Shell du navigateur a ajouté des caractères parasites devant la commande | Taper la commande à la main au clavier, sans la coller |
-| 3 | Le NVMe semblait « à préparer » (fdisk, PV, VG) alors qu'il était déjà prêt | La préparation avait déjà été faite en groupe avant mon arrivée | Vérifier d'abord avec `lsblk` : `nvme0n1p1`, le VG `nvme-vg` et le Thin Pool `data` existaient déjà — ne surtout pas relancer `fdisk`, qui aurait tout effacé |
+| 3 | Le NVMe semblait « à préparer » (fdisk, PV, VG) alors qu'il était déjà prêt | La préparation était déjà en place à mon arrivée sur le serveur | Vérifier d'abord avec `lsblk` : `nvme0n1p1`, le VG `nvme-vg` et le Thin Pool `data` existaient déjà — ne surtout pas relancer `fdisk`, qui aurait tout effacé |
 
 ![Échec SSH (port 22) depuis le portable](images/ssh-timeout.png)
 
@@ -639,7 +639,7 @@ Le NVMe est beaucoup plus rapide qu'un HDD ou un SSD SATA (PCI Express, latence 
 
 - ✅ Identifier les disques présents dans Linux (`lsblk` : `sda` 273,4 Go et `nvme0n1` 953,9 Go)
 - ✅ Comprendre l'organisation du stockage (disque → partition → LVM → stockage Proxmox → disque de VM)
-- ✅ Créer un PV, un VG et un LV (préparés en groupe : PV `/dev/nvme0n1p1`, VG `nvme-vg`, Thin Pool `data` — vérifiés avec `lsblk`)
+- ✅ Créer un PV, un VG et un LV (déjà en place à mon arrivée : PV `/dev/nvme0n1p1`, VG `nvme-vg`, Thin Pool `data` — vérifiés avec `lsblk`)
 - ✅ Comprendre le fonctionnement de LVM-Thin (allocation à la demande)
 - ✅ Ajouter un disque NVMe à Proxmox (`pvesm add lvmthin nvme-storage`, vérifié : actif, 953,6 Go)
 - ✅ Vérifier les stockages avec `pvesm status`
@@ -677,7 +677,7 @@ qm config 100
 pvesm list nvme-storage
 ```
 
-### Procédure complète de préparation du NVMe (leçon — déjà faite en groupe sur ce serveur)
+### Procédure complète de préparation du NVMe (leçon — déjà en place sur ce serveur)
 
 ```
 # Créer la table GPT et la partition (fdisk : g, n, w)
