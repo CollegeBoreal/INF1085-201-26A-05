@@ -46,7 +46,7 @@ Les ressources matérielles suivantes lui ont été attribuées : un processeur 
 
 **Capture 1 — Configuration matérielle de la VM**
 
-![Configuration matérielle de la VM](images/01-proxmox-vm.png)
+![Configuration matérielle de la VM](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/main/3.VMs/300155109/images/vm%20capture%201.png?raw=true)
 
 ## 3. Installation d'Ubuntu Server
 
