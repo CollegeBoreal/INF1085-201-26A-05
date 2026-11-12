@@ -15,7 +15,7 @@ This guide documents how I created my own virtual machine running **Ubuntu Serve
 | VM name | `ayoubVM` |
 | CPU | 2 cores, type `host` |
 | Memory | 4 GB |
-| Disk | 32 GB, moved to `nvme-storage` (LVM, `/` = 30 GB after `lvextend`, `/boot` = 2 GB) |
+| Disk | 32 GB (LVM, `/` = 30 GB after `lvextend`, `/boot` = 2 GB); see 5.Storage for the move to NVMe |
 | Network | VirtIO on bridge `vmbr0`, interface `ens18` in the VM |
 | VM IP | `10.7.236.196/23` (static, was `.166` until an IP conflict, see step 9) |
 | VM user | `ayoub` |
@@ -313,8 +313,3 @@ sudo lvextend -r -l +100%FREE /dev/ubuntu-vg/ubuntu-lv    # / goes from 15 GB to
 df -h /
 ```
 
-## Final state of the VM
-
-Disk on `nvme-storage`, old `local-lvm` copy removed, network card `BC:24:11:03:57:03`:
-
-<img src="images/24-hardware-final.png" width="800">
