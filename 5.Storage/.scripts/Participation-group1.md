@@ -22,7 +22,7 @@
 
 |:hash:| Boréal :id: | README.md | images | Appréc. | Commentaires | :link: IP |
 |------|-------------|-----------|--------|---------|--------------|-----------|
-| 1 | [300141685](../300141685/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/157196575?s=460&v=4' width=20 height=20></image>](https://github.com/soulemaneBRY) | :2nd_place_medal: | :heavy_check_mark: |  |  | 🏙️  ubuntu@10.7.236.161  |
+| 1 | [300141685](../300141685/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/157196575?s=460&v=4' width=20 height=20></image>](https://github.com/soulemaneBRY) | :1st_place_medal: | :heavy_check_mark: |  |  | 🏙️  ubuntu@10.7.236.161  |
 | 2 | [300147065](../300147065/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/266599103?s=460&v=4' width=20 height=20></image>](https://github.com/Ahmedboreal) | :x: | :x: |  |  | 🏙️  ubuntu@10.7.236.162  |
 | 3 | [300150411](../300150411/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/211593030?s=460&v=4' width=20 height=20></image>](https://github.com/brhnkess) | :x: | :x: |  |  | 🏙️  ubuntu@10.7.236.163  |
 | 4 | [300150477](../300150477/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/195692630?s=460&v=4' width=20 height=20></image>](https://github.com/Trafalgar-D-Low) | :x: | :x: |  |  | 🏙️  trafalgar@10.7.236.194  |
