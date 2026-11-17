@@ -1,32 +1,34 @@
  # 300155927
 
-# Installation d'Ubuntu Server 24.04 LTS — Compte-rendu
+# 🐧 Installation d'Ubuntu Server 24.04 LTS — Compte-rendu
 
 Documentation de l'installation d'Ubuntu Server sur une machine virtuelle hébergée sur le nœud **server46** (Proxmox VE).
 
-## Configuration retenue
+## ⚙️ Configuration retenue
 
 | Paramètre | Valeur |
 |---|---|
 | Nœud Proxmox | `server46` (`10.7.236.199`) |
 | VM ID / nom | `109` / `Garvey` |
-| RAM | 2,00 Gio (4096 Mo) |
-| CPU | 2 (1 socket, 2 cores) |
+| RAM | 4,00 Gio (4096 Mo) |
+| CPU | 4 (1 socket, 4 cores) |
 | Nom du serveur | `ubuntu` |
 | Nom d'utilisateur | `garvey200` |
 | Version | Ubuntu **24.04.5 LTS** (noyau 6.8.0-146-generic, x86_64) |
 | Type d'installation | Ubuntu Server (installation complète, pas minimisée) |
-| Interface réseau | `ens18` (Virtio, MAC `bc:24:11:f4:5c:7b`) |
-| Adresse IPv4 finale | `10.7.236.181` (DHCPv4, /23 — la capture de l'étape 11 montrait encore `10.7.237.140`) |
+| Interface réseau | `ens18` (Virtio — MAC `bc:24:11:f4:5c:7b` sur les captures d'installation, `BC:24:11:76:09:0E` sur la VM 109 actuelle) |
+| Adresse IPv4 | Statique `10.7.236.181/23` sur `ens18` (confirmé le 2026-11-12 ; DHCP `10.7.237.138/23` puis `10.7.237.140` pendant l'installation, adresse DHCP retirée) |
+| Passerelle | `10.7.236.1` (route par défaut, dans le fichier netplan) |
+| DNS | `8.8.8.8` |
 | Proxy | Aucun |
 | Miroir d'archives | `http://ca.archive.ubuntu.com/ubuntu/` (version *noble*) |
 | Disque | 50 Go (`local-lvm:vm-109-disk-0`, vu comme 32 Go pendant l'installation) |
-| Réseau (Proxmox) | `virtio`, bridge `vmbr0` |
+| Réseau (Proxmox) | `virtio=BC:24:11:76:09:0E`, bridge `vmbr0` |
 | Partitionnement | LVM : `/` 14,996 Go (ext4), `/boot` 2,000 Go (ext4) |
 | Ubuntu Pro | Ignoré (peut être activé plus tard avec `pro attach`) |
 | Snaps | Aucun sélectionné |
 
-## Création de la machine virtuelle (Proxmox VE)
+## 🖥️ Création de la machine virtuelle (Proxmox VE)
 
 La VM a été créée en ligne de commande avec `qm`, depuis **PowerShell sur Windows** via SSH vers le nœud Proxmox.
 
@@ -41,7 +43,8 @@ ssh root@10.7.236.199
 ```bash
 qm create 109 --name Garvey --ostype l26 \
   --memory 4096 --sockets 1 --cores 4 \
-  --net0 virtio,bridge=vmbr0
+  --scsihw lsi53c895a \
+  --net0 virtio=BC:24:11:76:09:0E,bridge=vmbr0
 ```
 
 ### 3. Ajout du disque de 50 Go
@@ -53,7 +56,8 @@ qm set 109 --scsi0 local-lvm:50
 ### 4. Montage de l'ISO Ubuntu Server 24.04
 
 ```bash
-qm set 109 --ide2 <local>:iso/<ubuntu-24.04.3-live-server-amd64.iso,media=cdrom 
+qm set 109 --ide2 <STOCKAGE>:iso/<nom-iso>.iso,media=cdrom
+```
 
 ### 5. Démarrage de la VM
 
@@ -72,40 +76,42 @@ qm stop 109      # arrêt forcé
 qm shutdown 109  # arrêt propre
 ```
 
-## Étapes de l'installation
+> ⚠️ Remplace `<STOCKAGE>` et `<nom-iso>` par le stockage et le nom exact du fichier ISO dans ton environnement.
 
-### 1. Type d'installation
+## 📋 Étapes de l'installation
+
+### 1. 💿 Type d'installation
 Choix de **Ubuntu Server** (installation complète avec l'ensemble de paquets recommandé).
 
 ![Type d'installation](images/etape-01-type-installation.jpg)
 
-### 2. Configuration réseau
+### 2. 🌐 Configuration réseau
 L'interface `ens18` est configurée en DHCPv4 (`10.7.237.138/23` pendant l'installation).
 
 ![Configuration réseau](images/etape-02-configuration-reseau.jpg)
 
-### 3. Configuration du proxy
+### 3. 🔌 Configuration du proxy
 Aucun proxy nécessaire : le champ est laissé vide.
 
 ![Configuration du proxy](images/etape-03-configuration-proxy.jpg)
 
-### 4. Miroir d'archives Ubuntu
+### 4. 📦 Miroir d'archives Ubuntu
 Miroir canadien `http://ca.archive.ubuntu.com/ubuntu/` — le test du miroir est réussi (`noble`, `noble-updates`, `noble-backports`).
 
 ![Miroir Ubuntu](images/etape-04-miroir-ubuntu.jpg)
 
-### 5. Stockage guidé
+### 5. 💾 Stockage guidé
 Utilisation du disque entier de 32 Go, configuré comme **groupe LVM** (sans chiffrement LUKS).
 
 ![Stockage guidé](images/etape-05-stockage-guide.jpg)
 
-### 6. Résumé du système de fichiers
+### 6. 📂 Résumé du système de fichiers
 - `/` : 14,996 Go, ext4, volume logique LVM (`ubuntu-vg`)
 - `/boot` : 2,000 Go, ext4, partition du disque local
 
 ![Résumé du système de fichiers](images/etape-06-resume-systeme-fichiers.jpg)
 
-### 7. Configuration du profil
+### 7. 👤 Configuration du profil
 - Nom : Garvey
 - Nom du serveur : `ubuntu`
 - Nom d'utilisateur : `garvey200`
@@ -113,27 +119,27 @@ Utilisation du disque entier de 32 Go, configuré comme **groupe LVM** (sans chi
 
 ![Configuration du profil](images/etape-07-configuration-profil.jpg)
 
-### 8. Ubuntu Pro
+### 8. 🛡️ Ubuntu Pro
 Option **« Skip for now »** : Ubuntu Pro n'est pas activé pendant l'installation.
 
 ![Ubuntu Pro](images/etape-08-ubuntu-pro.jpg)
 
-### 9. Snaps serveur
+### 9. 📦 Snaps serveur
 Aucun snap sélectionné.
 
 ![Snaps serveur](images/etape-09-snaps-serveur.jpg)
 
-### 10. Installation du système
+### 10. ⚙️ Installation du système
 Le programme d'installation (Subiquity/Curtin) configure le stockage, APT et installe le système.
 
 ![Installation du système](images/etape-10-installation-systeme.jpg)
 
-### 11. Connexion réussie
+### 11. ✅ Connexion réussie
 Premier démarrage : connexion avec `garvey200`. Le système affiche Ubuntu **24.04.5 LTS**, adresse IPv4 `10.7.237.140`, charge système 0.69, 13 % de mémoire utilisée.
 
 ![Connexion réussie](images/etape-11-connexion-reussie.jpg)
 
-## Vérifications post-installation
+## 🔍 Vérifications post-installation
 
 ```bash
 # Vérifier la version
@@ -149,4 +155,59 @@ df -h
 apt list --upgradable
 ```
 
+## 🌐 Adresse IP statique — Netplan
+
+Après l'installation, l'adresse IP est passée en statique dans le fichier `/etc/netplan/50-cloud-init.yaml` :
+
+```bash
+# 1. Sauvegarder le fichier d'origine
+sudo cp /etc/netplan/50-cloud-init.yaml /etc/netplan/50-cloud-init.yaml.bak
+
+# 2. Modifier le fichier
+sudo nano /etc/netplan/50-cloud-init.yaml
+
+# 3. Afficher le fichier pour vérifier
+sudo cat /etc/netplan/50-cloud-init.yaml
+```
+
+Contenu du fichier :
+
+```yaml
+network:
+  version: 2
+  ethernets:
+    ens18:
+      dhcp4: false
+      addresses:
+        - 10.7.236.181/23
+      routes:
+        - to: default
+          via: 10.7.236.1
+      nameservers:
+        addresses:
+          - 8.8.8.8
+```
+
+- `dhcp4: false` : l'adresse DHCP est désactivée ;
+- `addresses` : l'adresse statique `10.7.236.181/23` ;
+- `routes` : la route par défaut passe par la passerelle `10.7.236.1` ;
+- `nameservers` : le serveur DNS est `8.8.8.8`.
+
+![Configuration réseau statique](images/etape-12-configuration-reseau-statique.png)
+
+## 🔑 Vérification de la clé SSH
+
+Pour vérifier quelles clés SSH sont autorisées à se connecter à la VM :
+
+```bash
+# Lister le dossier .ssh
+ls -la ~/.ssh/
+
+# Afficher les clés autorisées
+cat ~/.ssh/authorized_keys
+```
+
+Le dossier contient le fichier `authorized_keys` (399 octets). Il contient **une seule clé** : son commentaire est `b300098957@ramena` — c'est la clé du professeur (confirmé le 2026-11-16). (La clé complète n'est pas copiée ici, seulement le commentaire qui dit à qui elle appartient.)
+
+![Clé SSH autorisée](images/etape-13-cle-ssh-autorisee.png)
 
