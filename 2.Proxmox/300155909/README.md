@@ -99,9 +99,6 @@ Le contrôleur a affiché un message **Invalid Drive Movement**, indiquant que l
 
 J’ai accepté de supprimer l’ancienne configuration afin de pouvoir créer une nouvelle grappe.
 
-![Erreur Invalid Drive Movement](images/06-orca-invalid-drive-movement.png)
-
-*Figure 6 – Message Invalid Drive Movement.*
 
 J’ai ensuite créé un volume logique en RAID 5 d’une capacité de 293,56 Go.
 
