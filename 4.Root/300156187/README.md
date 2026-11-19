@@ -91,3 +91,5 @@ Les captures sont dans le dossier [`images/`](images/) :
 
 ![Création de l'utilisateur](images/Création_doer.png)
 ![Configuration des droits sudo et vérifications](images/Création_doer_1.png)
+
+© 2026 Idir Islam Chili — Tous droits réservés
