@@ -1,18 +1,46 @@
+function Write-LabParticipationHeader {
+    Write-Output "# Participation"
+    Write-Output ""
+
+    Write-Output "| Table des matières            | Description                                             |"
+    Write-Output "|-------------------------------|---------------------------------------------------------|"
+    Write-Output "| :a: [Présence](#a-présence)   | L'étudiant.e a fait son travail    :heavy_check_mark:   |"
+    Write-Output "| :b: [Précision](#b-précision) | L'étudiant.e a réussi son travail  :tada:               |"
+
+    Write-Output ""
+    Write-Output "## Légende"
+    Write-Output ""
+    Write-Output "| Colonne            | Signification                       |"
+    Write-Output "|--------------------|-------------------------------------|"
+    Write-Output "| 📑                 | Fichier `README.md`                 |"
+    Write-Output "| 🖼️                 | Répertoire `images`                 |"
+    Write-Output "| 💯                 | Appréciation                        |"
+    Write-Output "| 💬                 | Commentaires                        |"
+    Write-Output ""
+    Write-Output "| Appréciation       | Signification                       |"
+    Write-Output "|--------------------|-------------------------------------|"
+    Write-Output "| ❌                 | Rien dans `README.md`               |"
+    Write-Output "| 🥉                 | Utilisateur créé                    |"
+    Write-Output "| 🥈                 | Assigné Administrateur              |"
+    Write-Output "| 🥇                 | Clé SSH étudiant créé               |"
+    Write-Output "| 🏆                 | `README.md` impeccable              |"
+
+}
 function Write-ConfigurationSection {
     param(
         [string]$Server
     )
 
+    Write-Output ""
     Write-Output "## :gear: Configuration"
     Write-Output ""
 
-    Write-Output "| Proxmox V9.2           | User/Pwd                   |"
-    Write-Output "|------------------------|----------------------------|"
-    Write-Output "| ${Server}              | root/Boreal@2️⃣02️⃣6          |"
+    Write-Output "| Proxmox V9.2                        | User/Pwd                   |"
+    Write-Output "|-------------------------------------|----------------------------|"
+    Write-Output "| [${Server}](https://${Server}:8006) | root/Boreal@2️⃣02️⃣6          |"
     Write-Output ""
 
 }
-
 
 function Write-LabHeader {
     param(
@@ -24,12 +52,12 @@ function Write-LabHeader {
     Write-Output ""
 
     if ($FeedbackLookup.Count -gt 0) {
-        Write-Output "|:hash:| Boréal :id: | README.md | images | Appréciation | Commentaires | :link: IP |"
-        Write-Output "|------|-------------|-----------|--------|--------------|--------------|-----------|"
+        Write-Output "|:hash:| Boréal :id: | 📑 | 🖼️ | 💯 | 💬 | :link: IP |"
+        Write-Output "|------|-------------|----|---|----|----|-----------|"
     }
     else {
-        Write-Output "|:hash:| Boréal :id: | README.md | images | :link: IP |"
-        Write-Output "|------|-------------|-----------|--------|-----------|"
+        Write-Output "|:hash:| Boréal :id: | 📑 | 🖼️ | :link: IP |"
+        Write-Output "|------|-------------|----|---|-----------|"
     }
 }
 
