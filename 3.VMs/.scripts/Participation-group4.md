@@ -30,4 +30,4 @@
 | 6 | [300157330](../300157330/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/231571164?s=460&v=4' width=20 height=20></image>](https://github.com/toufikmekbel) | :x: | :x: | :x: | 0️⃣ Rien à corriger | 🏙️  ubuntu@10.7.236.190  |
 | 7 | [300157374](../300157374/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/255961683?s=460&v=4' width=20 height=20></image>](https://github.com/yanisna) | :x: | :x: | :x: | 0️⃣ Rien à corriger | 🏙️  ubuntu@10.7.236.191  |
 | 8 | [300157416](../300157416/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/232939450?s=460&v=4' width=20 height=20></image>](https://github.com/lounisyounes) | :x: | :x: | :x: | 0️⃣ Rien à corriger | 🏙️  ubuntu@10.7.236.192  |
-| :abacus: | \$\frac{1}{8}\$ = 12.5% | \$\displaystyle\sum_{i=1}^{8} s_i\$ = 1 |
+| :abacus: | \$\displaystyle\sum_{i=1}^{8} s_i\$ = 1 📈 12.5% |

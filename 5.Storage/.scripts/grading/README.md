@@ -10,26 +10,7 @@
 }
 ```
 
-## :two: Rubric Definition CMID = 72
-
-- [ ] PWSH
-
-```powershell
-$body = @{
-    wstoken            = $env:API_SYNC_TOKEN
-    wsfunction         = 'core_grading_get_definitions'
-    moodlewsrestformat = 'json'
-    'cmids[0]'         = '75'
-    areaname           = 'submissions'
-}
-
-Invoke-RestMethod `
-    -Uri "https://$env:LMS_URL/webservice/rest/server.php" `
-    -Method Post `
-    -Body $body `
-    -ContentType 'application/x-www-form-urlencoded' |
-    ConvertTo-Json -Depth 100
-```
+## :two: Rubric Definition CMID = 86
 
 - [ ] bash
 
