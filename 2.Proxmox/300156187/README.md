@@ -178,3 +178,5 @@ L’écran suivant confirme le chargement de l’installateur et de l’image `i
 </div>   
 
 ---
+
+© 2026 Idir Islam Chili — Tous droits réservés
