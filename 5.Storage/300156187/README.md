@@ -406,3 +406,5 @@ Le NVMe est beaucoup plus rapide qu'un HDD ou un SSD SATA, donc les VM démarren
 Le labo est terminé. ✅ Le stockage NVMe est créé et fonctionne, et le disque de ma VM 103 est passé de `local-lvm` à `nvme-storage` sans arrêter la VM. La VM tourne toujours normalement après le déplacement. 🟢
 
 Ce que j'ai appris : comment identifier un disque sous Linux, comment créer une partition GPT, comment fonctionne LVM (PV, VG, LV, Thin Pool), et comment ajouter un stockage à Proxmox et y déplacer une VM. C'est un travail d'équipe aussi, parce que le stockage est partagé par tout le groupe — maintenant que je l'ai créé, les autres peuvent migrer leur VM à leur tour. 👥🚀
+
+© 2026 Idir Islam Chili — Tous droits réservés
