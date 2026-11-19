@@ -30,6 +30,10 @@ pveum aclmod / \
     -user B🆔@pam \
     -role Administrator
 Vérifier :
+<image src=images/proxmox-acl-permissions-administrator-ro-1.png
+ width=50% height=50% > </image>
+<image src=images/proxmox-acl-permissions-administrator-ro-4.png
+ width=50% height=50% > </image>
 
 pveum acl list
 🌐 Connexion à l'interface Web
@@ -47,6 +51,8 @@ Mot de passe : ********
 ssh B🆔@10.7.237.197
 🔐 Utiliser une clé SSH
 ⚠️ 
+<image src=images/proxmox-ve-web-interface-login-screensho-2.webp
+ width=50% height=50% > </image>
 
 Créer une paire de clés :
 
