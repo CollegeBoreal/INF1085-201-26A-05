@@ -1,26 +1,41 @@
-\# Création d'une VM sur Proxmox : walid (300156615)
+# Création d'une VM sur Proxmox : walid (300156615)
 
-\*\*Cours :\*\* INF1085, Administration Linux
+**Cours :** INF1085, Administration Linux
+**Serveur :** server46 (10.7.236.199), Proxmox VE 9.2.2
+**VM visée :** 184, nommée walid
 
-\*\*Serveur :\*\* server46 (10.7.236.199), Proxmox VE 9.2.2
+## 1. Accès au serveur
 
-\## 1. Connexion à Proxmox
+Le serveur Proxmox n'est pas joignable depuis le Wi-Fi général du collège. Avec l'adresse 10.7.140.81, le ping vers la passerelle (10.7.237.1) et vers le serveur (10.7.236.199) expirait, et `Test-NetConnection` sur le port 22 répondait `TcpTestSucceeded : False`.
 
-Je me suis connecté au serveur avec SSH, puis à l'interface web (https://10.7.236.199:8006) avec le compte root et le domaine Linux PAM. Le serveur n'est joignable que depuis le Wi-Fi du laboratoire (réseau 10.7.236.0/23). Depuis le Wi-Fi général, le ping et SSH expirent.
+Après m'être connecté au Wi-Fi du laboratoire, mon PC a reçu l'adresse 10.7.236.153 (passerelle 10.7.237.1). Le test du port 22 est passé à `True` et SSH a fonctionné.
 
-\## 2. Terminal Proxmox (Shell)
+| Situation | Adresse du PC | Accès au serveur |
+|---|---|---|
+| Wi-Fi général | 10.7.140.81 | Non (délai dépassé) |
+| Wi-Fi du laboratoire | 10.7.236.153 | Oui |
 
-J'ai utilisé le terminal intégré de l'interface web pour vérifier les ISO (`pvesm list local --content iso`) et les VM (`qm list`).
+J'ai aussi créé une paire de clés SSH (`ssh-keygen -t ed25519`) pour l'accès aux VM.
 
-!\[Terminal Proxmox](images/01-shell-proxmox.jpeg)
+## 2. Inventaire du serveur
 
-\*\*Problème rencontré :\*\* les commandes collées affichaient des caractères parasites (`^\[\[200\~` au début et `\~` à la fin), donc `qm list\~` était refusée (« unknown command »). Cause : le mode de collage du terminal du navigateur (bracketed paste). Solution : `bind 'set enable-bracketed-paste off'`
+J'ai utilisé le terminal intégré de l'interface web (`https://10.7.236.199:8006`, domaine Linux PAM) pour inspecter le serveur.
 
-\## 3. Template cloud-init (VM 9000)
+![Terminal Proxmox](images/01-shell-proxmox.jpeg)
 
-J'ai d'abord téléchargé l'image Ubuntu 22.04 (cloud image) et créé la VM 9000 (ubuntu-jammy-template). Son disque, importé sur local-lvm, fait 2252 Mo.
+![qm list et ISO disponibles](images/03-qm-list-iso.png)
 
-!\[VM 9000](images/02-template-9000.jpeg)
+- `qm list` : le serveur héberge déjà des VM d'autres étudiants (identifiants 100 à 109). L'identifiant 184 est libre.
+- `pvesm status` : deux stockages, `local` (répertoire) et `local-lvm` (LVM-thin).
+- `pvesm list local --content iso` : deux ISO disponibles, Kali Linux 2026.2 et Ubuntu Server 24.04.3.
+
+![Vue Datacenter](images/04-datacenter-vms.png)
+
+## 3. Première tentative : template cloud-init (VM 9000)
+
+J'ai d'abord suivi la méthode du cours : télécharger l'image cloud Ubuntu 22.04 (694 Mo, téléchargée en 18 secondes) puis créer un template, la VM 9000 (`ubuntu-jammy-template`).
+
+![VM 9000](images/02-template-9000.jpeg)
 
 | Élément | Valeur |
 |---|---|
@@ -31,21 +46,46 @@ J'ai d'abord téléchargé l'image Ubuntu 22.04 (cloud image) et créé la VM 90
 | Disque (scsi0) | local-lvm:vm-9000-disk-0, 2252 Mo |
 | Réseau (net0) | VirtIO, bridge vmbr0 |
 
-\*\*Problèmes rencontrés :\*\*
+## 4. Problèmes rencontrés et solutions
 
-\- Un deuxième import du disque s'est bloqué (processus qm importdisk figé). Je l'ai arrêté avec kill.
+| # | Problème | Cause | Solution |
+|---|---|---|---|
+| 1 | `ssh` et `ping` vers le serveur expiraient | PC sur le Wi-Fi général (10.7.140.x), un autre réseau que les serveurs (10.7.236.0/23) | Connexion au Wi-Fi du laboratoire, puis `Test-NetConnection 10.7.236.199 -Port 22` pour vérifier |
+| 2 | Mot de passe root refusé deux fois | Mot de passe mal saisi | Retapé avec soin, connexion réussie à la troisième tentative |
+| 3 | La commande `qm` n'est pas reconnue | Elle existe seulement sur le serveur. Ma connexion SSH s'était coupée (`Connection reset`) et j'étais revenu sur mon PC | Reconnexion avec `ssh root@10.7.236.199`, puis commande sur le serveur |
+| 4 | Le terminal s'est figé pendant l'import du disque | Plusieurs commandes collées pendant que `qm importdisk` travaillait | Fermeture du terminal, reconnexion, puis vérification avec `qm list` et `qm config 9000` |
+| 5 | La VM 9000 existait sans disque attaché ni lecteur cloud-init | Les commandes suivant l'import n'avaient pas été exécutées | Attachement du disque existant (`vm-9000-disk-0`) avec `qm set` |
+| 6 | Un deuxième `qm importdisk` est resté bloqué (processus en veille) | Import lancé alors que le disque existait déjà | Arrêt avec `kill` et `pkill`, puis `qm unlock 9000` |
+| 7 | `pvesm free` est resté figé | Il attendait un verrou LVM (commande `vgs` en attente) | Ctrl+C, je n'ai pas insisté car ce disque en trop n'était pas nécessaire |
+| 8 | Les commandes collées dans le terminal web étaient refusées (`^[[200~` au début, `~` à la fin) | Mode de collage du terminal du navigateur (bracketed paste) | `bind 'set enable-bracketed-paste off'` |
 
-\- La commande pvesm free a gelé pendant que LVM attendait un verrou. Je l'ai interrompue avec Ctrl+C.
+![Import bloqué](images/05-import-bloque.png)
 
-\- Le template restait incomplet (pas de lecteur cloud-init, démarrage réglé sur le réseau).
+**Ce que j'ai fait pour éviter d'autres problèmes :**
+- Utiliser `qm list` avant de créer une VM, pour ne pas prendre l'identifiant d'un autre étudiant ni toucher à leurs VM.
+- Laisser les commandes longues finir avant d'en taper d'autres.
+- Choisir une méthode plus simple (VM créée à partir de l'ISO Ubuntu déjà présente sur le serveur) quand le template est devenu trop long à réparer.
 
-J'ai donc choisi une méthode plus simple : créer la VM directement à partir de l'ISO Ubuntu Server déjà présente sur le serveur (ubuntu-24.04.3-live-server-amd64.iso).
+## 5. Création de la VM 184 (walid)
 
-\## 4. Création de la VM 184 (walid)
+**Configuration prévue :**
 
-À compléter après la création de la VM.
+| Élément | Valeur |
+|---|---|
+| Identifiant / nom | 184 / walid |
+| Processeur | 1 cœur, type kvm64 |
+| Mémoire | 2048 Mo |
+| Disque | 20 Go sur local-lvm |
+| ISO | ubuntu-24.04.3-live-server-amd64.iso |
+| Réseau | VirtIO, bridge vmbr0 |
+| Démarrage | CD-ROM puis disque |
 
-\## Conclusion
+Commande : `qm create 184 --name walid --memory 2048 --cores 1 --cpu kvm64 --ostype l26 --scsihw virtio-scsi-pci --scsi0 local-lvm:20 --ide2 local:iso/ubuntu-24.04.3-live-server-amd64.iso,media=cdrom --net0 virtio,bridge=vmbr0 --boot 'order=ide2;scsi0'`
 
-J'ai appris à me connecter à un serveur Proxmox, à vérifier ses ISO et ses VM, et à diagnostiquer des blocages (import de disque figé, collage dans le terminal). La création de la VM finale sera ajoutée une fois terminée.
+À compléter : résultat de `qm config 184`, installation d'Ubuntu Server, adresse IP et connexion SSH.
 
+## Conclusion
+
+J'ai appris à joindre un serveur Proxmox depuis le bon réseau, à inspecter ses VM, ses stockages et ses ISO, et à diagnostiquer des blocages (collage dans le terminal, import de disque figé, verrou LVM). La méthode par template cloud-init m'a pris beaucoup de temps à cause des blocages, donc je suis passé à une création à partir d'une ISO.
+
+À compléter : résultat final de la VM 184 et ce que j'ai retenu.
