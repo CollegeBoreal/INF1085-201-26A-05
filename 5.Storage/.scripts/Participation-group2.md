@@ -7,10 +7,21 @@
 
 ## Légende
 
-| Signe              | Signification                 |
-|--------------------|-------------------------------|
-| :heavy_check_mark: | Prêt à être corrigé           |
-| :x:                | Fichier inexistant            |
+| Colonne            | Signification                       |
+|--------------------|-------------------------------------|
+| 📑                 | Fichier README.md                 |
+| 🖼️                 | Répertoire images                 |
+| 💯                 | Appréciation                        |
+| 💬                 | Commentaires                        |
+
+| Appréciation       | Signification                       |
+|--------------------|-------------------------------------|
+| ❌                 | Rien dans README.md               |
+| 🥉                 | NVMe Storage Créé                   |
+| 🥈                 | VM Storage assigné à NVMe           |
+| 🥇                 | Local LVM Storage libéré            |
+| 🏆                 | README.md impeccable              |
+
 ## :gear: Configuration
 
 | Proxmox V9.2                        | User/Pwd                   |
@@ -20,8 +31,8 @@
 
 ## :a: Présence
 
-|:hash:| Boréal :id: | README.md | images | Appréc. | Commentaires | :link: IP |
-|------|-------------|-----------|--------|---------|--------------|-----------|
+|:hash:| Boréal :id: | 📑 | 🖼️ | 💯 | 💬 | :link: IP |
+|------|-------------|----|---|----|----|-----------|
 | 1 | [300151505](../300151505/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/232939190?s=460&v=4' width=20 height=20></image>](https://github.com/300151505) | :x: | :x: | :x: | :x: à corriger | 🏙️  ubuntu@10.7.236.169  |
 | 2 | [300151609](../300151609/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/231497021?s=460&v=4' width=20 height=20></image>](https://github.com/Ramzi34000) | :1st_place_medal: | :heavy_check_mark: | :x: | :x: à corriger | 🏙️  ramzi@10.7.236.170  |
 | 3 | [300151732](../300151732/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/231499758?s=460&v=4' width=20 height=20></image>](https://github.com/nabil17581) | :x: | :x: | :x: | :x: à corriger | 🏙️  ubuntu@10.7.236.171  |

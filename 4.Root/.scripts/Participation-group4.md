@@ -7,21 +7,32 @@
 
 ## Légende
 
-| Signe              | Signification                 |
-|--------------------|-------------------------------|
-| :heavy_check_mark: | Prêt à être corrigé           |
-| :x:                | Fichier inexistant            |
+| Colonne            | Signification                       |
+|--------------------|-------------------------------------|
+| 📑                 | Fichier README.md                 |
+| 🖼️                 | Répertoire images                 |
+| 💯                 | Appréciation                        |
+| 💬                 | Commentaires                        |
+
+| Appréciation       | Signification                       |
+|--------------------|-------------------------------------|
+| ❌                 | Rien dans README.md               |
+| 🥉                 | Utilisateur créé                    |
+| 🥈                 | Assigné Administrateur              |
+| 🥇                 | Clé SSH étudiant créé               |
+| 🏆                 | README.md impeccable              |
+
 ## :gear: Configuration
 
-| Proxmox V9.2           | User/Pwd                   |
-|------------------------|----------------------------|
-| 10.7.236.200              | root/Boreal@2️⃣02️⃣6          |
+| Proxmox V9.2                        | User/Pwd                   |
+|-------------------------------------|----------------------------|
+| [10.7.236.200](https://10.7.236.200:8006) | root/Boreal@2️⃣02️⃣6          |
 
 
 ## :a: Présence
 
-|:hash:| Boréal :id: | README.md | images | Appréciation | Commentaires | :link: IP |
-|------|-------------|-----------|--------|--------------|--------------|-----------|
+|:hash:| Boréal :id: | 📑 | 🖼️ | 💯 | 💬 | :link: IP |
+|------|-------------|----|---|----|----|-----------|
 | 1 | [300156967](../300156967/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/231502729?s=460&v=4' width=20 height=20></image>](https://github.com/malika2714) | :x: | :x: | :x: | :x: à corriger | 🏙️  ubuntu@10.7.236.185  |
 | 2 | [300157117](../300157117/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/266407954?s=460&v=4' width=20 height=20></image>](https://github.com/lounisrayan) | :x: | :x: | :x: | :x: à corriger | 🏙️  ubuntu@10.7.236.186  |
 | 3 | [300157184](../300157184/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/275812708?s=460&v=4' width=20 height=20></image>](https://github.com/topanta) | :1st_place_medal: | :heavy_check_mark: | :x: | :x: à corriger | 🏙️  anta@10.7.236.187  |

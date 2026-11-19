@@ -7,10 +7,21 @@
 
 ## Légende
 
-| Signe              | Signification                 |
-|--------------------|-------------------------------|
-| :heavy_check_mark: | Prêt à être corrigé           |
-| :x:                | Fichier inexistant            |
+| Colonne            | Signification                       |
+|--------------------|-------------------------------------|
+| 📑                 | Fichier README.md                 |
+| 🖼️                 | Répertoire images                 |
+| 💯                 | Appréciation                        |
+| 💬                 | Commentaires                        |
+
+| Appréciation       | Signification                       |
+|--------------------|-------------------------------------|
+| ❌                 | Rien dans README.md               |
+| 🥉                 | NVMe Storage Créé                   |
+| 🥈                 | VM Storage assigné à NVMe           |
+| 🥇                 | Local LVM Storage libéré            |
+| 🏆                 | README.md impeccable              |
+
 ## :gear: Configuration
 
 | Proxmox V9.2                        | User/Pwd                   |
@@ -20,8 +31,8 @@
 
 ## :a: Présence
 
-|:hash:| Boréal :id: | README.md | images | Appréc. | Commentaires | :link: IP |
-|------|-------------|-----------|--------|---------|--------------|-----------|
+|:hash:| Boréal :id: | 📑 | 🖼️ | 💯 | 💬 | :link: IP |
+|------|-------------|----|---|----|----|-----------|
 | 1 | [300141685](../300141685/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/157196575?s=460&v=4' width=20 height=20></image>](https://github.com/soulemaneBRY) | :1st_place_medal: | :heavy_check_mark: | :x: | :x: à corriger | 🏙️  ubuntu@10.7.236.161  |
 | 2 | [300147065](../300147065/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/266599103?s=460&v=4' width=20 height=20></image>](https://github.com/Ahmedboreal) | :x: | :x: | :x: | :x: à corriger | 🏙️  ubuntu@10.7.236.162  |
 | 3 | [300150411](../300150411/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/211593030?s=460&v=4' width=20 height=20></image>](https://github.com/brhnkess) | :x: | :x: | :x: | :x: à corriger | 🏙️  ubuntu@10.7.236.163  |

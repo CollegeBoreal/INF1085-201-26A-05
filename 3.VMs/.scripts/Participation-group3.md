@@ -7,10 +7,21 @@
 
 ## Légende
 
-| Signe              | Signification                 |
-|--------------------|-------------------------------|
-| :heavy_check_mark: | Prêt à être corrigé           |
-| :x:                | Fichier inexistant            |
+| Colonne            | Signification                       |
+|--------------------|-------------------------------------|
+| 📑                 | Fichier README.md                 |
+| 🖼️                 | Répertoire images                 |
+| 💯                 | Appréciation                        |
+| 💬                 | Commentaires                        |
+
+| Appréciation       | Signification                       |
+|--------------------|-------------------------------------|
+| ❌                 | Rien dans README.md               |
+| 🥉                 | VM Crée                             |
+| 🥈                 | Addresse IP assignée                |
+| 🥇                 | Accessible par Clé du prof          |
+| 🏆                 | README.md impeccable              |
+
 ## :gear: Configuration
 
 | Proxmox V9.2                        | User/Pwd                   |
@@ -20,8 +31,8 @@
 
 ## :a: Présence
 
-|:hash:| Boréal :id: | README.md | images | Appréc. | Commentaires | :link: IP |
-|------|-------------|-----------|--------|---------|--------------|-----------|
+|:hash:| Boréal :id: | 📑 | 🖼️ | 💯 | 💬 | :link: IP |
+|------|-------------|----|---|----|----|-----------|
 | 1 | [300155109](../300155109/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/231572626?s=460&v=4' width=20 height=20></image>](https://github.com/AlexiaKabore) | :1st_place_medal: | :heavy_check_mark: | :x: | 0️⃣ Rien à corriger | 🏙️  alexia@10.7.236.177  |
 | 2 | [300155466](../300155466/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/232940163?s=460&v=4' width=20 height=20></image>](https://github.com/rekhilahana34-tech) | :x: | :x: | :x: | 0️⃣ Rien à corriger | 🏙️  ubuntu@10.7.236.178  |
 | 3 | [300155524](../300155524/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/236676877?s=460&v=4' width=20 height=20></image>](https://github.com/Berihan-1995) | :x: | :x: | :x: | 0️⃣ Rien à corriger | 🏙️  ubuntu@10.7.236.179  |

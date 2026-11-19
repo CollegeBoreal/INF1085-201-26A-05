@@ -7,10 +7,21 @@
 
 ## Légende
 
-| Signe              | Signification                 |
-|--------------------|-------------------------------|
-| :heavy_check_mark: | Prêt à être corrigé           |
-| :x:                | Fichier inexistant            |
+| Colonne            | Signification                       |
+|--------------------|-------------------------------------|
+| 📑                 | Fichier README.md                 |
+| 🖼️                 | Répertoire images                 |
+| 💯                 | Appréciation                        |
+| 💬                 | Commentaires                        |
+
+| Appréciation       | Signification                       |
+|--------------------|-------------------------------------|
+| ❌                 | Rien dans README.md               |
+| 🥉                 | NVMe Storage Créé                   |
+| 🥈                 | VM Storage assigné à NVMe           |
+| 🥇                 | Local LVM Storage libéré            |
+| 🏆                 | README.md impeccable              |
+
 ## :gear: Configuration
 
 | Proxmox V9.2                        | User/Pwd                   |
@@ -20,7 +31,7 @@
 
 ## :a: Présence
 
-|:hash:| Boréal :id: | README.md | images | Appréc. | Commentaires | :link: IP |
-|------|-------------|-----------|--------|---------|--------------|-----------|
+|:hash:| Boréal :id: | 📑 | 🖼️ | 💯 | 💬 | :link: IP |
+|------|-------------|----|---|----|----|-----------|
 | 1 | [300157424](../300157424/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/258873685?s=460&v=4' width=20 height=20></image>](https://github.com/MA-JID-06) | :x: | :x: | :x: | :x: à corriger | 🏙️  ubuntu@10.7.236.193  |
 | :abacus: | \$\displaystyle\sum_{i=1}^{1} s_i\$ = 0 📈 0% |
