@@ -48,6 +48,7 @@ Le module de mémoire cache associé au contrôleur RAID est repéré dans le se
 
 🧪 Partie 2 — Tests des composants
 🟢 Étape 6 — Premier démarrage avec un processeur
+![BIOS avec 16 Go de RAM](images/WhatsApp%20Image%202026-11-19%20at%2000.33.23.jpeg)
 Dans le modèle, le premier test utilise un processeur et une barrette de RAM de 16 Go. L'écran de démarrage indique :
 
 16 GB Installed
