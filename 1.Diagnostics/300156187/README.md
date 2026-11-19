@@ -145,3 +145,5 @@ Une fois le RAID 5 sélectionné (et validé sans erreur), le système affiche u
 * Le second processeur (Proc 2) a été testé mais n'a pas été reconnu par le système ; un seul processeur reste installé dans la configuration actuelle.
 * Le formatage et la configuration des disques s'effectuent exclusivement via l'utilitaire accessible via `F8` au démarrage du serveur, avant le chargement du système d'exploitation.
 * Le déplacement d'un disque entre deux démarrages a déclenché une erreur de « mouvement de disque invalide » — veillez toujours à remettre chaque disque dans sa baie d'origine pour éviter de perdre la configuration RAID existante.
+
+© 2026 Idir Islam Chili — Tous droits réservés
