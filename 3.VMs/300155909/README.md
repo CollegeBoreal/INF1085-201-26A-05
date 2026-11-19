@@ -1,129 +1,128 @@
-# 300155909
-# Documentation - Machine virtuelle Proxmox
+# TP – Configuration de base d’un serveur Ubuntu
 
-## 1. Connexion au serveur Proxmox
+## 1. Objectif du TP
 
-```bash
-ssh root@10.7.237.200
-```
+Installer et configurer un serveur Ubuntu dans une machine virtuelle sur Proxmox, puis vérifier les paramètres de base du système et activer l’accès SSH.
 
-## 2. Vérification du stockage
+## 2. Environnement de travail
 
-```bash
-pvesm status
-```
+- **Hyperviseur :** Proxmox VE
+- **Système d’exploitation :** Ubuntu Server 24.04.5 LTS
+- **Nom du serveur :** ubuntu-sever
+- **Nom d’utilisateur :** rahma
+- **Interface réseau :** ens18
+- **Adresse IPv4 :** 10.7.237.147/23
+- **Fuseau horaire :** America/Toronto
+- **Langue du système :** Français canadien (fr_CA.UTF-8)
+- **Service distant :** OpenSSH Server
 
-## 3. Création du dossier de travail
+## 3. Configuration réalisée
 
-```bash
-mkdir rahma
-cd rahma
-```
-
-## 4. Vérification de l'adresse IP
+### 3.1 Mise à jour du système
 
 ```bash
-hostname -I
+sudo apt update
+sudo apt upgrade -y
 ```
 
-## 5. Vérification du stockage ISO
+### 3.2 Configuration du fuseau horaire
 
 ```bash
-pvesm list local --content iso
+sudo timedatectl set-timezone America/Toronto
+timedatectl
 ```
 
-## 6. Accès au répertoire des images ISO
+Le fuseau horaire a été configuré sur `America/Toronto`.
+
+### 3.3 Configuration du clavier
+
+Le modèle de clavier MacBook/MacBook Pro a été sélectionné. La disposition choisie est `French (Canada)` et l’option `No compose key` a été conservée.
+
+### 3.4 Configuration de la langue
 
 ```bash
-cd /var/lib/vz/template/iso/
+sudo locale-gen fr_CA.UTF-8
+sudo update-locale LANG=fr_CA.UTF-8
 ```
 
-## 7. Test de la connexion Internet
+La locale française canadienne a été générée et définie comme langue du système.
+
+### 3.5 Vérification du réseau
 
 ```bash
-ping -c 3 8.8.8.8
+ip a
 ```
 
-## 8. Configuration du DNS
+L’interface réseau `ens18` possède l’adresse IPv4 `10.7.237.147/23`.
+
+### 3.6 Installation et activation du service SSH
 
 ```bash
-cp /etc/resolv.conf /etc/resolv.conf.bak
-printf "nameserver 1.1.1.1\nnameserver 8.8.8.8\n" > /etc/resolv.conf
+sudo apt install openssh-server -y
+sudo systemctl enable --now ssh
+sudo systemctl status ssh
 ```
 
-## 9. Vérification de la résolution DNS
+Le service SSH est actif et activé au démarrage. Il écoute sur le port TCP 22.
+
+### 3.7 Test de connexion SSH locale
 
 ```bash
-ping -c 3 enterprise.proxmox.com
+ssh localhost
 ```
 
-## 10. Recherche des images ISO disponibles
+La connexion SSH locale a été testée avec succès. La commande `exit` permet de fermer la session SSH.
+
+## 4. Vérifications finales
+
+Les commandes suivantes permettent de vérifier la configuration :
 
 ```bash
-curl -s https://enterprise.proxmox.com/iso/ | grep -o 'proxmox-ve_[^"]*\.iso' | sort -u
+hostnamectl
+timedatectl
+locale
+ip a
+sudo systemctl status ssh
 ```
 
-## 11. Téléchargement de l'ISO Proxmox
+## 5. Conclusion
 
-```bash
-curl -L -O https://enterprise.proxmox.com/iso/proxmox-ve_9.2-1.iso
-```
+La configuration de base du serveur Ubuntu a été réalisée dans Proxmox. Le fuseau horaire a été configuré, la locale française canadienne a été générée, l’interface réseau a été vérifiée et le service SSH a été activé. Une connexion SSH locale a également été testée.
 
-## 12. Vérification du stockage après le téléchargement
+## 6. Captures d’écran
 
-```bash
-pvesm status
-```
+Ajouter les captures d’écran démontrant :
 
-## 13. Obtention du prochain ID disponible
+- La configuration du clavier et de la langue.
+- Le fuseau horaire `America/Toronto`.
+- L’adresse IP du serveur.
+- L’état actif du service SSH.
+- Le test de connexion SSH locale.
+  ## Captures d'écran
 
-```bash
-pvesh get /cluster/nextid
-```
+### Capture 1
+![Capture 1](images/WhatsApp%20Image%202026-10-01%20at%2016.54.45.jpeg)
 
-## 14. Création du pool de ressources
+### Capture 2
+![Capture 2](images/WhatsApp%20Image%202026-10-01%20at%2016.55.35.jpeg)
 
-```bash
-pvesh create /pools --poolid rahma
-```
+### Capture 3
+![Capture 3](images/WhatsApp%20Image%202026-10-01%20at%2016.56.42.jpeg)
 
-## 15. Création de la machine virtuelle
+### Capture 4
+![Capture 4](images/WhatsApp%20Image%202026-10-08%20at%2018.41.51%20(1).jpeg)
 
-```bash
-qm create 100 \
-  --name ayoubVM \
-  --pool rahma \
-  --memory 8192 \
-  --cores 4 \
-  --cpu host \
-  --ostype l26 \
-  --scsihw virtio-scsi-single \
-  --scsi0 local-lvm:64 \
-  --ide2 local:iso/proxmox-ve_9.2-1.iso,media=cdrom \
-  --net0 virtio,bridge=vmbr0 \
-  --boot order='scsi0;ide2'
-```
+### Capture 5
+![Capture 5](images/WhatsApp%20Image%202026-10-08%20at%2018.41.51%20(2).jpeg)
 
-## 16. Démarrage de la machine virtuelle
+### Capture 6
+![Capture 6](images/WhatsApp%20Image%202026-10-08%20at%2018.41.51%20(4).jpeg)
 
-```bash
-qm start 100
-```
+### Capture 7
+![Capture 7](images/WhatsApp%20Image%202026-10-08%20at%2018.41.51%20(6).jpeg)
 
-## Configuration de la machine virtuelle
+### Capture 8
+![Capture 8](images/WhatsApp%20Image%202026-10-08%20at%2018.41.51%20(7).jpeg)
 
-| Paramètre | Valeur |
-|---|---|
-| Nom | ayoubVM |
-| VM ID | 100 |
-| Mémoire | 8 GB |
-| CPU | 4 cores |
-| Disque | 64 GB |
-| Stockage | local-lvm |
-| Réseau | VirtIO |
-| Bridge | vmbr0 |
-| ISO | Proxmox VE 9.2-1 |
-
-## Résultat
-
-La machine virtuelle `ayoubVM` a été créée et démarrée avec succès sur le serveur Proxmox.
+### Capture 9
+![Capture 9](images/WhatsApp%20Image%202026-10-08%20at%2018.41.51.jpeg)
