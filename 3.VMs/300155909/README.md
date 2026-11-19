@@ -1,5 +1,21 @@
 # TP – Configuration de base d’un serveur Ubuntu
 
+```
+how to change IP address in Ubuntu using 
+
+
+Hyperviseur : Proxmox VE
+Système d’exploitation : Ubuntu Server 24.04.5 LTS
+Nom du serveur : ubuntu-sever
+Nom d’utilisateur : rahma
+Interface réseau : ens18
+Adresse IPv4 : 10.7.237.147/23
+Fuseau horaire : America/Toronto
+Langue du système : Français canadien (fr_CA.UTF-8)
+Service distant : OpenSSH Server
+gateway : 10.7.237.1
+```
+
 ## 1. Objectif du TP
 
 Installer et configurer un serveur Ubuntu dans une machine virtuelle sur Proxmox, puis vérifier les paramètres de base du système et activer l’accès SSH.
