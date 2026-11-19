@@ -1,7 +1,7 @@
 #300151609
 Tous les administrateurs utilisent :
 
-root@pam
+root@
 Problèmes :
 
 ❌ Impossible de savoir qui a effectué une modification
@@ -11,9 +11,7 @@ Problèmes :
 ✅ Bonne pratique
 Créer un compte par administrateur :
 
-djamel@pam
-alice@pam
-bob@pam
+
 Chaque administrateur possède son propre compte.
 
 👤 Créer un utilisateur Linux
@@ -38,27 +36,27 @@ pveum acl list
 Accéder à :
 
 https://IP_DU_SERVEUR:8006
-Exemple :
+
 
 https://10.7.237.200:8006
-Connexion :
+
 
 Utilisateur : B🆔@pam
 Mot de passe : ********
 💻 Connexion SSH
-ssh B🆔@10.7.237.200
+ssh B🆔@10.7.237.197
 🔐 Utiliser une clé SSH
-⚠️ Si tu as déjà une clé publique (i.e. ma_cle.pub) refère toi à 🔐
+⚠️ 
 
 Créer une paire de clés :
 
 ssh-keygen -t ed25519
 Copier la clé sur le serveur :
 
-ssh-copy-id B🆔@10.7.237.200
+ssh-copy-id B🆔@10.7.237.197
 Tester :
 
-ssh B🆔@10.7.237.200
+ssh B🆔@10.7.237.197
 ✅ Aucun mot de passe ne devrait être demandé.
 
 🚨 Le compte root
@@ -91,7 +89,7 @@ Lister les permissions :
 pveum acl list
 Tester SSH :
 
-ssh B🆔@10.7.237.200
+ssh B🆔@10.7.237.197
 🎓 Résultat attendu
 ✅ Chaque administrateur possède son propre compte
 
