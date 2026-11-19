@@ -205,7 +205,7 @@ Cette étape confirmait que le contrôleur RAID présentait le volume logique au
 
 J’ai ensuite lancé le processus d’installation de Proxmox VE 9.2.
 
-![Installation en cours](images/17-installation-in-progress.png)
+![Installation en cours](2.Proxmox/300155909/images/17-installation-in-progress.png)
 
 *Figure 17 – Installation de Proxmox VE en cours.*
 
