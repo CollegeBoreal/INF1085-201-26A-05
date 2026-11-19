@@ -225,7 +225,7 @@ unable to install initramfs
 mount: /target/sys/firmware/efi/efivars: no mount point specified.
 ```
 
-![Erreur initramfs](images/18-error-bootloader-initramfs.jpg)
+![Erreur initramfs](images/18-error-bootloader-initramfs.png)
 
 *Figure 18 – Erreur lors de la configuration du chargeur d’amorçage.*
 
@@ -243,7 +243,7 @@ Lors d’une deuxième tentative d’installation, une nouvelle erreur est appar
 unable to initialize physical volume /dev/sda3
 ```
 
-![Erreur LVM](images/19-error-physical-volume-sda3.jpg)
+![Erreur LVM](images/19-error-physical-volume-sda3.png)
 
 *Figure 19 – Erreur d’initialisation du volume physique /dev/sda3.*
 
