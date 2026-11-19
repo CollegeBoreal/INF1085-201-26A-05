@@ -93,9 +93,7 @@ Les opérations effectuées :
 5. Sélection du niveau RAID 5.
 6. Enregistrement de la configuration avec F8.
 
-![Contrôleur RAID](images/05-smart-array-p410i-controller.png)
 
-*Figure 5 – Détection du contrôleur HP Smart Array P410i.*
 
 Le contrôleur a affiché un message **Invalid Drive Movement**, indiquant que les disques provenaient d'une autre configuration RAID.
 
