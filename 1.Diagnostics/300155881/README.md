@@ -57,6 +57,12 @@ Intel Xeon E5540 @ 2.53 GHz
 La touche F9 donne accès à l'utilitaire de configuration. L'écran ROM-Based Setup Utility affiche Proc 2 Not Installed.
 
 
+### Vérification du BIOS avec 64 Go de RAM
+
+Lors d'un autre démarrage, j'ai observé que le serveur HP ProLiant détectait 64 Go de RAM et un processeur Intel Xeon E5620 à 2,40 GHz avec quatre cœurs activés.
+![Mon BIOS avec 64 Go de RAM](images/WhatsApp%20Image%202026-11-19%20at%2000.33.52.jpeg)
+
+
 
 🟢 Étape 7 — Deuxième démarrage avec deux processeurs
 Dans le deuxième test du modèle, deux processeurs et une barrette RAM de 16 Go sont installés. Le BIOS indique 16384 MB Memory Configured et détecte Processor 1 ainsi que Processor 2.
