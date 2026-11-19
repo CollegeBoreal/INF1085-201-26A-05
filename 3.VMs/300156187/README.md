@@ -112,3 +112,5 @@ VM **104 (idirVM)** créée dans le pool **b300156187**, démarrée, avec Ubuntu
 Server 24.04 installé et fonctionnel (connexion vérifiée avec l'utilisateur
 `idir`). Le DNS du serveur partagé n'a pas été modifié et aucune ISO déjà
 présente n'a été retéléchargée.
+
+© 2026 Idir Islam Chili — Tous droits réservés
