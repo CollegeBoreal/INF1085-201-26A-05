@@ -30,4 +30,4 @@
 | 6 | [300153676](../300153676/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/255968971?s=460&v=4' width=20 height=20></image>](https://github.com/lyes-ik) | :x: | :x: | :x: | :x: à corriger | 🏙️  ubuntu@10.7.236.174  |
 | 7 | [300154023](../300154023/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/267740367?s=460&v=4' width=20 height=20></image>](https://github.com/silaje123) | :x: | :x: | :x: | :x: à corriger | 🏙️  ubuntu@10.7.236.175  |
 | 8 | [300155086](../300155086/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/200866288?s=460&v=4' width=20 height=20></image>](https://github.com/ynsakliii) | :x: | :x: | :x: | :x: à corriger | 🏙️  ubuntu@10.7.236.176  |
-| :abacus: | \$\frac{0}{8}\$ = 0% | \$\displaystyle\sum_{i=1}^{8} s_i\$ = 0 |
+| :abacus: | \$\displaystyle\sum_{i=1}^{8} s_i\$ = 0 📈 0% |

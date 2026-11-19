@@ -30,4 +30,4 @@
 | 6 | [300151315](../300151315/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/329685188?s=460&v=4' width=20 height=20></image>](https://github.com/toumiayoub1111-spec) | :1st_place_medal: | :heavy_check_mark: | :x: | :x: à corriger | 🏙️  ayoub@10.7.236.196  |
 | 7 | [300151449](../300151449/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/231569522?s=460&v=4' width=20 height=20></image>](https://github.com/abderrahimalaoui) | :x: | :x: | :x: | :x: à corriger | 🏙️  ubuntu@10.7.236.167  |
 | 8 | [300151496](../300151496/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/236670164?s=460&v=4' width=20 height=20></image>](https://github.com/anisouhocine) | :1st_place_medal: | :heavy_check_mark: | :x: | :x: à corriger | 🏙️  anishcn@10.7.236.168  |
-| :abacus: | \$\frac{4}{8}\$ = 50% | \$\displaystyle\sum_{i=1}^{8} s_i\$ = 4 |
+| :abacus: | \$\displaystyle\sum_{i=1}^{8} s_i\$ = 4 📈 50% |
