@@ -1,0 +1,123 @@
+# nom : bouamara
+# prenom: madjid
+# id : 300157424
+
+#  Création d’une machine virtuelle Linux avec Proxmox
+
+##  Description
+
+Dans ce laboratoire, j’ai créé et configuré une machine virtuelle Linux sur un serveur Proxmox VE.
+
+L’objectif est de comprendre les principales étapes de création d’une VM : récupération d’une image ISO, création de la VM, configuration des ressources, installation du système et vérification du fonctionnement.
+
+---
+
+##  Objectifs
+
+* Comprendre le fonctionnement de Proxmox VE.
+* Créer une machine virtuelle.
+* Utiliser une image ISO pour installer Linux.
+* Configurer le processeur et la mémoire.
+* Configurer le stockage.
+* Configurer l’interface réseau.
+* Démarrer et gérer une VM.
+* Diagnostiquer une erreur de démarrage.
+* Vérifier que la machine virtuelle fonctionne correctement.
+
+---
+
+## Environnement
+
+| Élément | Configuration |
+| :--- | :--- |
+| **Hyperviseur** | Proxmox VE |
+| **Nœud** | server56 |
+| **VM ID** | 106 |
+| **Nom de la VM** | anta |
+| **Système** | Linux |
+| **CPU** | 1 socket / 1 core |
+| **RAM** | 2 Go |
+| **Disque** | 32 Go |
+| **BIOS** | SeaBIOS |
+| **Réseau** | VirtIO |
+
+---
+
+## 1. Récupération de l’image ISO
+
+La première étape consiste à récupérer l’image ISO de la distribution Linux choisie. L’image ISO est utilisée comme support d’installation du système d’exploitation.
+
+* **Distribution utilisée :** Ubuntu
+
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/4e964b2f4fc040ac666e81d7606b81adc0ba7e08/3.VMs/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-10-01%20212003.png)
+---
+
+## 2.  Ajouter l’ISO dans Proxmox
+
+Après avoir récupéré l’image ISO, elle est ajoutée au stockage disponible dans Proxmox. L’ISO sera ensuite utilisée lors de la création de la machine virtuelle.
+
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/4766830eace9b1b16822fadd5fc4ad4f8f878376/3.VMs/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-10-01%20214048.png)
+---
+
+## 🖥️ Création de la machine virtuelle
+
+Dans Proxmox, une nouvelle machine virtuelle est créée.
+
+* **VM ID :** 106
+* **Nom :** anta
+
+---
+
+## 4. Configuration du processeur
+
+La VM est configurée avec un seul processeur virtuel.
+
+* **Sockets :** 1
+* **Cores :** 1
+
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/414de648c2316e36ba258e366a6593aa237b716c/3.VMs/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-10-01%20215545.png)
+
+---
+
+## 5. Configuration de la mémoire
+
+La mémoire RAM attribuée à la VM est :
+
+* **RAM :** 2048 MiB (2GIB)
+
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/0c8232d0e5feb14daec8b3a0eb9cece629c6597f/3.VMs/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-10-01%20220055.png)
+---
+
+## 6. Configuration du disque
+
+Un disque virtuel de 32 Go est configuré pour la machine virtuelle.
+
+* **Disque :** 32 Go
+
+
+
+## 7.  Configuration réseau
+
+Une interface réseau virtuelle est configurée pour permettre à la VM de communiquer avec le réseau.
+
+* **Interface :** VirtIO
+
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/3b387013d9189a2851542135c618afca74971eaa/3.VMs/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-10-01%20220809.png)
+
+---
+
+## 8.  Démarrage de la VM
+
+Une fois la configuration terminée, la machine virtuelle est démarrée avec le bouton **Start**.
+
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/138b9037cc256bb83bc2e92d969d278a24ba161d/3.VMs/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-10-01%20221046.png)
+
+---
+
+## 9.  Erreur rencontrée
+
+Lors du premier démarrage, la VM n’a pas démarré correctement. L’erreur affichée par Proxmox était liée à QEMU/KVM et à une fonctionnalité du processeur.
+
+```text
+host doesn't support requested feature: CPUID[...].AES
+TASK ERROR: start failed: QEMU exited with code 1
