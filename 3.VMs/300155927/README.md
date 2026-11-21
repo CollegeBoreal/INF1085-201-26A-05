@@ -76,7 +76,7 @@ qm stop 109      # arrêt forcé
 qm shutdown 109  # arrêt propre
 ```
 
-> ⚠️ Remplace `<STOCKAGE>` et `<nom-iso>` par le stockage et le nom exact du fichier ISO dans ton environnement.
+
 
 ## 📋 Étapes de l'installation
 
