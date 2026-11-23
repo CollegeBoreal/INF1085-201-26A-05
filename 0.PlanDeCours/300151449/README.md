@@ -1,64 +1,110 @@
+# INF1085 – Administration Linux
 
+## Informations de l'étudiant
 
-@"
+- **Nom :** MOHTARAM EL ALAOUI
+- **Prénom :** Abderrahim
+- **Numéro étudiant :** 300151449
+- **Programme :** Techniques des systèmes informatiques (TSIQ)
+- **Établissement :** Collège Boréal
+- **Cours :** INF1085 – Administration Linux
 
-\# TP GitHub - Administration Linux
+---
 
+## Participation 0 – Plan de cours
 
+### Introduction
 
-\## Informations de l'etudiant
+Cette section présente les ressources documentaires et les illustrations liées au cours INF1085 – Administration Linux.
 
+### Objectifs
 
+- Découvrir l'environnement Linux.
+- Comprendre les bases de l'administration système.
+- Utiliser les commandes Linux.
+- Comprendre la gestion des fichiers et des répertoires.
+- Découvrir les outils d'administration Linux.
 
-\- Nom : MOHTARAM EL ALAOUI
+---
 
-\- Prenom : Abderrahim
+## Captures d'écran et illustrations
 
-\- Numero etudiant : 300151449
+Les illustrations ci-dessous proviennent de documents partagés dans le cadre du cours et servent de support documentaire.
 
-\- Cours : INF1085 - Administration Linux
+### Image 1
 
-\- College : College Boreal
+![Image 1](images/21004063.jpg)
 
+### Image 2
 
+![Image 2](images/IMG_2702.jpg)
 
-\## Presentation
+### Image 3
 
+![Image 3](images/IMG_2705.jpg)
 
+### Image 4
 
-Ce repertoire contient mes travaux pratiques
+![Image 4](images/IMG_2706.jpg)
 
-du cours d'administration Linux.
+### Image 5
 
+![Image 5](images/IMG_2707.jpg)
 
+### Image 6
 
-\## Objectifs
+![Image 6](images/IMG_2711.jpg)
 
+### Image 7
 
+![Image 7](images/IMG_2714.jpg)
 
-\- Installer et configurer Linux
+### Image 8
 
-\- Administrer les utilisateurs et groupes
+![Image 8](images/IMG_2717.jpg)
 
-\- Gerer les fichiers et permissions
+### Image 9
 
-\- Configurer les services reseau
+![Image 9](images/IMG_2718.jpg)
 
-\- Securiser un serveur Linux
+### Image 10
 
-\- Automatiser les taches avec Bash
+![Image 10](images/IMG_2719.jpg)
 
+### Image 11
 
+![Image 11](images/IMG_2720.jpg)
 
-\## Captures d'ecran
+### Image 12
 
+![Image 12](images/IMG_2722.jpg)
 
+### Image 13
 
-Les captures de mes travaux pratiques
+![Image 13](images/IMG_2723.jpg)
 
-seront ajoutees dans le dossier images.
+### Image 14
 
-"@ | Set-Content -Path README.md -Encoding UTF8
+![Image 14](images/IMG_2724.jpg)
 
+### Image 15
 
+![Image 15](images/IMG_2725.jpg)
 
+### Image 16
+
+![Image 16](images/IMG_2726.jpg)
+
+### Image 17
+
+![Image 17](images/IMG_2727.jpg)
+
+### Image 18
+
+![Image 18](images/IMG_2728.jpg)
+
+---
+
+## Conclusion
+
+Cette participation rassemble les ressources documentaires et visuelles associées à la présentation du cours INF1085 – Administration Linux.
