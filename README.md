@@ -46,3 +46,9 @@ INF 1085-201 Administration Linux
 - 📈 Surveiller les performances et l'état du système.
 - 📝 Documenter les modifications et procédures.
 - 🤖 Automatiser la surveillance et certaines opérations administratives.
+
+# 📚 References
+
+```
+=[[1]]*,02+[[[[2]]]]*,08+[[3]]*,1+[[4]]*,2+[[5]]*,2+[[6]]*,2+[[7]]*,2
+```
