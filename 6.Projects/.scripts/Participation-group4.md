@@ -1,0 +1,44 @@
+# Participation
+
+| Table des matières            | Description                                             |
+|-------------------------------|---------------------------------------------------------|
+| :a: [Présence](#a-présence)   | L'étudiant.e a fait son travail    :heavy_check_mark:   |
+| :b: [Précision](#b-précision) | L'étudiant.e a réussi son travail  :tada:               |
+
+## Légende
+
+| Colonne            | Signification                       |
+|--------------------|-------------------------------------|
+| 📑                 | Fichier README.md                 |
+| 🖼️                 | Répertoire images                 |
+| 💯                 | Appréciation                        |
+| 💬                 | Commentaires                        |
+
+| Appréciation       | Signification                       |
+|--------------------|-------------------------------------|
+| ❌                 | Rien dans README.md               |
+| 🥉                 | NVMe Storage Créé                   |
+| 🥈                 | VM Storage assigné à NVMe           |
+| 🥇                 | Local LVM Storage libéré            |
+| 🏆                 | README.md impeccable              |
+
+## :gear: Configuration
+
+| Proxmox V9.2                        | User/Pwd                   |
+|-------------------------------------|----------------------------|
+| [10.7.236.200](https://10.7.236.200:8006) | root/Boreal@2️⃣02️⃣6          |
+
+
+## :a: Présence
+
+|:hash:| Boréal :id: | 📑 | 🖼️ | 💯 | 💬 | :link: IP |
+|------|-------------|----|---|----|----|-----------|
+| 1 | [300156967](../300156967/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/231502729?s=460&v=4' width=20 height=20></image>](https://github.com/malika2714) | :x: | :x: | :x: | :x: à corriger | 🏙️  ubuntu@10.7.236.185  |
+| 2 | [300157117](../300157117/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/266407954?s=460&v=4' width=20 height=20></image>](https://github.com/lounisrayan) | :x: | :x: | :x: | :x: à corriger | 🏙️  ubuntu@10.7.236.186  |
+| 3 | [300157184](../300157184/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/275812708?s=460&v=4' width=20 height=20></image>](https://github.com/topanta) | :x: | :x: | :x: | :x: à corriger | 🏙️  anta@10.7.236.187  |
+| 4 | [300157275](../300157275/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/307787126?s=460&v=4' width=20 height=20></image>](https://github.com/benkarayahia01-hue) | :x: | :x: | :x: | :x: à corriger | 🏙️  ubuntu@10.7.236.188  |
+| 5 | [300157301](../300157301/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/258898045?s=460&v=4' width=20 height=20></image>](https://github.com/Amhn25) | :x: | :x: | :x: | :x: à corriger | 🏙️  ubuntu@10.7.236.189  |
+| 6 | [300157330](../300157330/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/231571164?s=460&v=4' width=20 height=20></image>](https://github.com/toufikmekbel) | :x: | :x: | :x: | :x: à corriger | 🏙️  ubuntu@10.7.236.190  |
+| 7 | [300157374](../300157374/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/255961683?s=460&v=4' width=20 height=20></image>](https://github.com/yanisna) | :x: | :x: | :x: | :x: à corriger | 🏙️  ubuntu@10.7.236.191  |
+| 8 | [300157416](../300157416/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/232939450?s=460&v=4' width=20 height=20></image>](https://github.com/lounisyounes) | :x: | :x: | :x: | :x: à corriger | 🏙️  ubuntu@10.7.236.192  |
+| :abacus: | \$\displaystyle\sum_{i=1}^{8} s_i\$ = 0 📈 0% |

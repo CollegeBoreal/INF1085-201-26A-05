@@ -28,6 +28,7 @@ jobs:
             "3.VMs"
             "4.Root"
             "5.Storage"
+            "6.Projects"
           )
 
           foreach ($chapter in $chapters) {
@@ -54,6 +55,7 @@ jobs:
             "3.VMs"
             "4.Root"
             "5.Storage"
+            "6.Projects"
           )
 
           foreach ($chapter in $chapters) {

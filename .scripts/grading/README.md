@@ -77,6 +77,11 @@ curl -X POST "https://${LMS_URL}/webservice/rest/server.php" \
   "cmid": 86,
   "name": "5.Storage"
 }
+{
+  "id": 82,
+  "cmid": 92,
+  "name": "6.Projects"
+}
 
 ```
 
