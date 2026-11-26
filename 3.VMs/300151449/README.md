@@ -64,3 +64,106 @@ ssh ubuntu@10.7.236.167
 La machine virtuelle Ubuntu est operationnelle.
 La connexion SSH depuis Windows a ete testee avec succes.
 La validation par le professeur reste a confirmer.
+
+## Captures d'ecran
+
+### 01-proxmox-dashboard
+
+![01-proxmox-dashboard.png](images/01-proxmox-dashboard.png)
+
+### 02-vm-general
+
+![02-vm-general.png](images/02-vm-general.png)
+
+### 03-ubuntu-iso
+
+![03-ubuntu-iso.png](images/03-ubuntu-iso.png)
+
+### 04-vm-system
+
+![04-vm-system.png](images/04-vm-system.png)
+
+### 05-vm-disks
+
+![05-vm-disks.png](images/05-vm-disks.png)
+
+### 06-vm-cpu
+
+![06-vm-cpu.png](images/06-vm-cpu.png)
+
+### 07-vm-memory
+
+![07-vm-memory.png](images/07-vm-memory.png)
+
+### 08-vm-network
+
+![08-vm-network.png](images/08-vm-network.png)
+
+### 09-vm-confirm
+
+![09-vm-confirm.png](images/09-vm-confirm.png)
+
+### 10-vm-created
+
+![10-vm-created.png](images/10-vm-created.png)
+
+### 15-ubuntu-language
+
+![15-ubuntu-language.png](images/15-ubuntu-language.png)
+
+### 16-ubuntu-keyboard
+
+![16-ubuntu-keyboard.png](images/16-ubuntu-keyboard.png)
+
+### cnx.ssh
+
+![cnx.ssh.png](images/cnx.ssh.png)
+
+
+## Commandes de verification
+
+### Configuration reseau Ubuntu
+
+```bash
+ip -4 addr show ens18
+ip route
+sudo netplan get
+```
+
+### Verification du service SSH
+
+```bash
+sudo systemctl status ssh
+sudo sshd -t
+```
+
+### Verification de la cle publique
+
+```bash
+ls -la ~/.ssh
+ssh-keygen -lf ~/.ssh/authorized_keys
+```
+
+### Test SSH local
+
+```bash
+ssh ubuntu@localhost
+```
+
+### Tests depuis Windows PowerShell
+
+```powershell
+ping 10.7.236.167
+Test-NetConnection 10.7.236.167 -Port 22
+ssh ubuntu@10.7.236.167
+```
+
+### Verification apres connexion SSH
+
+```bash
+whoami
+hostname
+uptime
+ip -4 addr show ens18
+```
+
