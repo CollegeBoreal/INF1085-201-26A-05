@@ -18,7 +18,7 @@
  width=50% height=50% > </image>
 
 <image src=images/Screenshot%202026-11-26%20164804.png
- width=50% height=50% > </image>
+ width=100% height=50% > </image>
 
  <image src=images/Screenshot%202026-11-26%20164852.png
  width=100% height=50% > </image>
