@@ -16,6 +16,9 @@ le **Wiki d'Anis**, accessible à http://10.7.236.168/mediawiki/.
 Le wiki contient une page d'accueil personnalisée et trois pages :
 **Linux**, **Proxmox** et **MediaWiki**.
 
+Le wiki est bilingue : chaque page existe en français et en arabe
+(voir section 6).
+
 ## 2. Architecture
 
 | Élément | Détail |
@@ -216,10 +219,109 @@ du wiki.
 
 ![Page MediaWiki](images/page-mediawiki.png)
 
-## 6. Conclusion
+## 6. Amélioration : le wiki en français et en arabe
+
+Après la première version du wiki, le professeur a suggéré d'ajouter
+une deuxième langue au wiki. Le kabyle (la langue maternelle de
+l'étudiant) a d'abord été envisagé, puis l'arabe a été choisi à la
+place. Les raisons de ce choix sont expliquées ci-dessous.
+
+### Pourquoi l'arabe et pas le kabyle
+
+Le kabyle est une langue surtout orale : son vocabulaire technique
+informatique n'est pas standardisé. Pour des termes comme « serveur »,
+« base de données », « virtualisation », « système d'exploitation » ou
+« mémoire vive », il n'existe pas d'équivalent kabyle établi — il
+faudrait emprunter les mots français ou inventer des traductions, sans
+pouvoir vérifier qu'elles sont correctes. De plus, le kabyle s'écrit
+avec des caractères spéciaux (ɣ, ɛ, ḥ, ṭ, ḍ) difficiles à taper sur un
+clavier standard et qui peuvent mal s'afficher.
+
+L'arabe, au contraire, possède un vocabulaire technique complet et
+standardisé, utilisé dans la documentation informatique et dans
+Wikipédia en arabe (l'une des plus grandes versions de Wikipédia).
+L'étudiant lit et écrit l'arabe couramment, donc chaque traduction a
+pu être relue et vérifiée. MediaWiki affiche l'arabe de droite à
+gauche automatiquement, sans aucune configuration.
+
+### Comment les pages arabes ont été créées
+
+Chaque page française a une version arabe, créée comme une sous-page
+dont le nom se termine par `/ar` (le code de langue de l'arabe) :
+
+| Page française | Page arabe |
+|---|---|
+| Accueil | Accueil/ar |
+| Linux | Linux/ar |
+| Proxmox | Proxmox/ar |
+| MediaWiki | MediaWiki/ar |
+
+Méthode pour chaque page : rechercher le nom dans le wiki, cliquer sur
+« Créer la page », coller le texte arabe (traduction fidèle de la page
+française), puis « Enregistrer la page ». Aucune extension n'est
+nécessaire : les liens entre les langues sont de simples liens wiki.
+
+En haut de chaque page arabe, une ligne renvoie vers la version
+française, par exemple pour l'accueil :
+
+`''النسخة الفرنسية : [[Accueil|Français]]''`
+
+En haut de chaque page française, une ligne renvoie vers la version
+arabe, par exemple pour l'accueil :
+
+`''Version en arabe : [[Accueil/ar|العربية]]''`
+
+Le visiteur voit donc le lien de l'autre langue dès qu'il ouvre une
+page, et peut passer d'une langue à l'autre en un clic.
+
+### Correction : la casse des noms de pages
+
+Les pages arabes ont d'abord été créées avec une majuscule :
+`Linux/Ar`, `Proxmox/Ar`, `MediaWiki/Ar`, et la page d'accueil avec
+une faute d'orthographe : `Acceuil/Ar`. Résultat : les liens entre
+les pages s'affichaient en rouge (pages introuvables), car MediaWiki
+distingue les majuscules des minuscules dans les noms de pages.
+
+Correction : les quatre pages ont été renommées avec l'outil
+« Renommer » (menu « Outils de la page ») en minuscules, avec
+l'orthographe corrigée pour l'accueil : `Accueil/ar`, `Linux/ar`,
+`Proxmox/ar`, `MediaWiki/ar`. Après le renommage, tous les liens sont
+devenus bleus.
+
+### Page d'accueil en arabe
+
+La page d'accueil en arabe reprend la structure de la version
+française : présentation du projet, caractéristiques de la machine
+virtuelle et liens vers les trois autres pages arabes.
+
+![Page d'accueil en arabe](images/page-accueil-ar.png)
+
+### Page Linux en arabe
+
+La page Linux en arabe présente le système d'exploitation, la
+distribution Ubuntu Server 24.04, les caractéristiques de la VM
+AnisHcn et les services installés.
+
+![Page Linux en arabe](images/page-linux-ar.png)
+
+### Page Proxmox en arabe
+
+La page Proxmox en arabe présente la plateforme de virtualisation,
+le serveur du groupe et le rôle de Proxmox dans le projet.
+
+![Page Proxmox en arabe](images/page-proxmox-ar.png)
+
+### Page MediaWiki en arabe
+
+La page MediaWiki en arabe présente le logiciel wiki, son
+installation et son fonctionnement.
+
+![Page MediaWiki en arabe](images/page-mediawiki-ar.png)
+
+## 7. Conclusion
 
 Le projet est terminé et vérifié à chaque étape : Apache, MariaDB, PHP,
-MediaWiki et le contenu sont en place. Les deux points qui restent à régler
-avec le professeur sont le conflit d'adresse IP (10.7.236.168 utilisée par
-un autre appareil) et l'absence de proxy officiel pour les téléchargements
-de la VM.
+MediaWiki et le contenu sont en place, en français et en arabe. Les deux
+points qui restent à régler avec le professeur sont le conflit d'adresse
+IP (10.7.236.168 utilisée par un autre appareil) et l'absence de proxy
+officiel pour les téléchargements de la VM.
