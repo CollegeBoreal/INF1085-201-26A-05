@@ -1,19 +1,19 @@
-#  Lab 5.Storage – Déplacer une machine virtuelle vers le stockage NVMe
+# 🧪 Lab 5.Storage – Déplacer une machine virtuelle vers le stockage NVMe
 
-** Étudiante :** 300157184
-** Serveur :** server56 — Proxmox VE 9.2.2
-** VM :** 100 (VM-300157184)
-** Accès SSH :** `ssh anta@10.7.236.206`
+**🆔 Étudiante :** 300157184
+**🖥️ Serveur :** server56 — Proxmox VE 9.2.2
+**💻 VM :** 100 (VM-300157184)
+**🔑 Accès SSH :** `ssh anta@10.7.236.206`
 
 ---
 
-##  Objectif
+## 🎯 Objectif
 
 Déplacer le disque de ma machine virtuelle de `local-lvm` vers `nvme-storage` afin d'améliorer les performances.
 
 ---
 
-##  Vérifier le disque actuel de la VM
+## 1️⃣ Vérifier le disque actuel de la VM
 
 Dans **VM 100 → Hardware**, le disque `scsi0` se trouve sur `local-lvm` :
 
@@ -25,7 +25,7 @@ scsi0: local-lvm:vm-100-disk-0,iothread=1,size=32G
 
 ---
 
-## 2️ Déplacer le disque vers nvme-storage
+## 2️⃣ Déplacer le disque vers nvme-storage
 
 **Hardware → Hard Disk (scsi0) → Disk Action → Move Storage**
 
@@ -42,7 +42,7 @@ qm move_disk 100 scsi0 nvme-storage --delete 1
 
 ---
 
-## Copie du disque
+## 3️⃣ Copie du disque
 
 La copie de 32 GiB s'est faite en environ 1 minute, puis l'ancien volume a été supprimé :
 
@@ -58,7 +58,7 @@ TASK OK
 
 ---
 
-##  Vérifier le résultat
+## 4️⃣ Vérifier le résultat
 
 ```bash
 qm config 100
@@ -97,4 +97,3 @@ local-lvm                nvme-storage
 - ✅ Configuration mise à jour (`scsi0: nvme-storage:vm-100-disk-0`)
 - ✅ VM opérationnelle (`status: running`)
 - ✅ Stockage NVMe utilisé
-- 
