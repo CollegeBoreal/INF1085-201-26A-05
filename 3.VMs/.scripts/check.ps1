@@ -60,16 +60,14 @@ $md += "## Legende"
 $md += ""
 $md += "| Symbole | Signification |"
 $md += "|----------|-------------|"
-$md += "| :heavy_check_mark: | Service SSH actif |"
+$md += "| :white_check_mark: | Service SSH actif |"
 $md += "| :x: | Service SSH arrêté |"
 $md += "| :no_entry: | Connexion SSH impossible |"
-$md += "| :tada: | SSH fonctionnel |"
-$md += "| :warning: | Service SSH inactif |"
 $md += ""
 $md += "## :b: Precision"
 $md += ""
-$md += "| # | Boreal :id: | :link: IP | :lock: SSH | :white_check_mark: Check |"
-$md += "|---|-------------|-----------|------------|--------------------------|"
+$md += "| # | Boreal :id: | :link: IP | :lock: SSH |"
+$md += "|---|-------------|-----------|------------|"
 
 # --------------------------------------
 # Validation
@@ -113,24 +111,23 @@ for ($i = 0; $i -lt $STUDENTS.Count; $i++) {
 
         if ($SSHStatus -eq "active") {
 
-            $SSHIcon = ":heavy_check_mark:"
-            $Result  = ":tada:"
+            $SSHIcon = ":white_check_mark:"
 
             $SuccessCount++
         }
         else {
 
             $SSHIcon = ":x:"
-            $Result  = ":warning:"
+
         }
 
-        $md += "| $Counter | [$StudentID](../$StudentID/README.md) :point_right: $url | $ServerIP | $SSHIcon | $Result |"
+        $md += "| $Counter | [$StudentID](../$StudentID/README.md) :point_right: $url | $AdminIP@$ServerIP | $SSHIcon |"
     }
     catch {
 
         Write-Host "Échec SSH vers $AdminIP@$ServerIP" -ForegroundColor Red
 
-        $md += "| $Counter | [$StudentID](../$StudentID/README.md) :point_right: $url | $ServerIP | :no_entry: | :no_entry: |"
+        $md += "| $Counter | [$StudentID](../$StudentID/README.md) :point_right: $url | $AdminIP@$ServerIP | :no_entry:  |"
     }
 
     $Counter++
@@ -154,7 +151,7 @@ else {
     $Percentage = 0
 }
 
-$md += "| :abacus: | `$\displaystyle\sum_{i=1}^{$TotalStudents} s_i$ = $SuccessCount :chart_with_upwards_trend: = $Percentage% | | | | | | | | |"
+$md += "| :abacus: | `$\displaystyle\sum_{i=1}^{$TotalStudents} s_i$ = $SuccessCount :chart_with_upwards_trend: = $Percentage% | | |"
 
 # --------------------------------------
 # Export
