@@ -188,6 +188,34 @@ Le **Wiki d'Anis** fonctionne à http://10.7.236.168/mediawiki/ :
 page d'accueil personnalisée, trois pages de contenu, recherche,
 historique des modifications, compte administrateur `anishcn`.
 
+### Page Linux
+
+La page Linux présente le système d'exploitation de la machine virtuelle :
+le noyau Linux, la distribution Ubuntu Server 24.04 (sans interface
+graphique, administrée par SSH), les caractéristiques de la VM AnisHcn
+et les services installés (Apache 2, MariaDB 10.11, PHP 8.3).
+
+![Page Linux](images/page-linux.png)
+
+### Page Proxmox
+
+La page Proxmox présente la plateforme de virtualisation : le serveur
+du groupe (10.7.236.197), les caractéristiques de la machine virtuelle
+AnisHcn et le rôle de Proxmox dans le projet (héberger la VM sur laquelle
+tournent Linux, Apache, MariaDB, PHP et MediaWiki).
+
+![Page Proxmox](images/page-proxmox.png)
+
+### Page MediaWiki
+
+La page MediaWiki présente le logiciel wiki : son installation
+(MediaWiki 1.46.2, archive téléchargée, extraction, base wikidb,
+installateur web), son fonctionnement (wikitexte, base de données
+MariaDB, serveur Apache avec PHP) et les liens vers les autres pages
+du wiki.
+
+![Page MediaWiki](images/page-mediawiki.png)
+
 ## 6. Conclusion
 
 Le projet est terminé et vérifié à chaque étape : Apache, MariaDB, PHP,
