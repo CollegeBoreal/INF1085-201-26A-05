@@ -39,7 +39,7 @@ Commande équivalente :
 qm move_disk 100 scsi0 nvme-storage --delete 1
 ```
 
-![Move disk](images/02-move-disk.png)
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/adf5191c9f0bcdf44e42077fe7c42e4a836ba253/5.Storage/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-11-26%20143238.png)
 
 ---
 
