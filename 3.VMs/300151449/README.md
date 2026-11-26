@@ -1,500 +1,241 @@
-﻿# 🖥️ Création d'une VM Ubuntu Server sur Proxmox VE
+# 🖥️ Laboratoire 3 — Création d'une VM Ubuntu Server sur Proxmox VE
 
-**Nom :** Abderrahim  
+**Étudiant :** Abderrahim  
 **Matricule :** 300151449  
-**Cours :** INF1085  
+**Cours :** INF1085
 
 ---
 
 ## 🎯 Objectif
 
-Créer et configurer une machine virtuelle Ubuntu Server 24.04.5 LTS sur Proxmox VE, configurer une adresse IP statique et permettre son administration à distance avec SSH.
+Créer une machine virtuelle Ubuntu Server 24.04.5 LTS sur Proxmox, configurer une adresse IP statique et permettre son administration à distance avec SSH.
 
 ---
 
-## 🔐 Étape 1 — Connexion au serveur Proxmox
+## 🌐 Étape 1 — Accès à Proxmox
 
-Connexion à l'interface Web du serveur Proxmox :
+Accès à l'interface de gestion du serveur `server197`, dont l'adresse IP est `10.7.236.197`.
 
-https://10.7.236.197:8006
-
-- **Serveur :** server197
-- **Adresse IP :** 10.7.236.197
-- **Port :** 8006
-
-La connexion à l'interface Proxmox a réussi.
+<img src="./images/01-proxmox-dashboard.png" width="350">
 
 ---
 
 ## 🖥️ Étape 2 — Création de la machine virtuelle
 
-Création de la machine virtuelle Abderrahim-Ubuntu sur le serveur server197.
-
-- **VM ID :** 103
 - **Nom :** Abderrahim-Ubuntu
-- **Système :** Ubuntu Server 24.04.5 LTS
+- **VM ID :** 103
+
+<img src="./images/02-vm-general.png" width="350">
 
 ---
 
-## 📀 Étape 3 — Installation du système d'exploitation
+## 📀 Étape 3 — Sélection de l'image ISO
 
-Installation d'Ubuntu Server 24.04.5 LTS à partir d'une image ISO.
+Sélection d'Ubuntu Server 24.04.5 LTS comme système d'exploitation.
 
-Le système Ubuntu Server a été installé et démarré correctement.
-
----
-
-## ⚙️ Étape 4 — Configuration du processeur
-
-La machine virtuelle utilise deux cœurs de processeur virtuels.
-
-- **CPU :** 2 cœurs
+<img src="./images/03-ubuntu-iso.png" width="350">
 
 ---
 
-## 💾 Étape 5 — Configuration de la mémoire et du stockage
+## ⚙️ Étape 4 — Configuration du système
 
-Les ressources suivantes ont été attribuées à la machine virtuelle :
+Configuration des paramètres système de la machine virtuelle.
 
-- **RAM :** 4 Go
-- **Disque virtuel :** 20 Go
-
----
-
-## 🌐 Étape 6 — Configuration de la carte réseau
-
-La carte réseau virtuelle utilise les paramètres suivants :
-
-- **Modèle :** VirtIO
-- **Bridge :** vmbr0
-- **Interface Ubuntu :** ens18
+<img src="./images/04-vm-system.png" width="350">
 
 ---
 
-## 👤 Étape 7 — Configuration du compte utilisateur
+## 💾 Étape 5 — Configuration du disque
 
-Un compte utilisateur a été créé pour administrer Ubuntu Server.
+Attribution d'un espace disque de **20 Go**.
 
-- **Utilisateur :** ubuntu
-- **Nom de la machine :** ubuntu-bderrahim
+<img src="./images/05-vm-disks.png" width="350">
 
-Vérification :
+---
+
+## 🔧 Étape 6 — Configuration du processeur
+
+Attribution de **2 cœurs** à la machine virtuelle.
+
+<img src="./images/06-vm-cpu.png" width="350">
+
+---
+
+## 🧠 Étape 7 — Configuration de la mémoire
+
+Attribution de **4 Go de RAM**.
+
+<img src="./images/07-vm-memory.png" width="350">
+
+---
+
+## 🌐 Étape 8 — Configuration de la carte réseau
+
+La machine virtuelle utilise le bridge `vmbr0`.
+
+<img src="./images/08-vm-network.png" width="350">
+
+---
+
+## 📋 Étape 9 — Confirmation des paramètres
+
+Vérification de la configuration avant la création de la VM.
+
+<img src="./images/09-vm-confirm.png" width="350">
+
+---
+
+## 🟢 Étape 10 — Machine virtuelle créée
+
+La VM **103 (Abderrahim-Ubuntu)** est créée sur le serveur Proxmox.
+
+<img src="./images/10-vm-created.png" width="350">
+
+---
+
+## 🐧 Étape 11 — Installation d'Ubuntu Server
+
+### Sélection de la langue
+
+<img src="./images/15-ubuntu-language.png" width="350">
+
+### Configuration du clavier
+
+<img src="./images/16-ubuntu-keyboard.png" width="350">
+
+L'installation d'Ubuntu Server est réussie. ✅
+
+---
+
+## 📡 Étape 12 — Configuration de l'adresse IP statique
+
+| Paramètre | Valeur |
+|---|---|
+| Interface | `ens18` |
+| Adresse IP | `10.7.236.167/23` |
+| Passerelle | `10.7.237.1` |
+| DNS | `8.8.8.8` |
+| DHCP | Désactivé |
+
+Commandes de vérification du réseau :
 
 ```bash
-whoami
-hostname
-```
-
----
-
-## 🐧 Étape 8 — Démarrage d'Ubuntu Server
-
-Après l'installation, la machine virtuelle démarre correctement.
-
-La connexion avec l'utilisateur ubuntu fonctionne.
-
----
-
-## 📡 Étape 9 — Vérification de l'interface réseau
-
-La configuration réseau a été vérifiée avec les commandes :
-
-```bash
-ip a
 ip -4 addr show ens18
 ip route
-```
-
-L'interface réseau utilisée est ens18.
-
----
-
-## 🌐 Étape 10 — Configuration de l'adresse IP statique
-
-La machine virtuelle utilise une adresse IP statique afin de faciliter son administration à distance.
-
-Configuration Netplan :
-
-```yaml
-network:
-  version: 2
-  ethernets:
-    ens18:
-      dhcp4: false
-      addresses:
-        - 10.7.236.167/23
-      routes:
-        - to: default
-          via: 10.7.237.1
-      nameservers:
-        addresses:
-          - 8.8.8.8
-```
-
-Vérification :
-
-```bash
 sudo netplan get
-ip -4 addr show ens18
-```
-
-Adresse IP finale :
-
-```text
-10.7.236.167/23
 ```
 
 ---
 
-## 🛣️ Étape 11 — Vérification de la table de routage
+## 🔑 Étape 13 — Configuration de la clé SSH
 
-```bash
-ip route
-```
+Une clé publique RSA est présente dans `~/.ssh/authorized_keys`.
 
-La passerelle configurée est :
-
-```text
-10.7.237.1
-```
-
----
-
-## 🔗 Étape 12 — Test de communication avec Proxmox
-
-```bash
-ping -c 4 10.7.236.197
-```
-
-Résultat observé : 0 % de perte de paquets.
-
-La communication entre la machine virtuelle et le serveur Proxmox fonctionne.
-
----
-
-## 🌍 Étape 13 — Vérification de la passerelle
-
-```bash
-ping -c 40 10.7.237.1
-```
-
-Résultat observé :
-
-- 40 paquets transmis
-- 15 paquets reçus
-- 62,5 % de perte de paquets
-
-La passerelle répond, mais la communication présente des pertes.
-
----
-
-## ⚠️ Étape 14 — Test de la connexion Internet
-
-```bash
-ping -c 4 8.8.8.8
-```
-
-Le test de connectivité ICMP vers Internet n'a pas réussi.
-
-Le DNS est configuré, mais son fonctionnement reste à confirmer.
-
-Ce problème n'empêche pas la connexion SSH depuis le réseau local.
-
----
-
-## 🔐 Étape 15 — Vérification du serveur OpenSSH
-
-Le service SSH permet d'administrer la machine virtuelle à distance.
-
-```bash
-sudo systemctl status ssh
-```
-
-Résultat :
-
-```text
-Active: active (running)
-```
-
-Le service SSH est actif et accessible sur le port 22.
-
----
-
-## ⚙️ Étape 16 — Vérification de la configuration SSH
-
-```bash
-sudo sshd -t
-```
-
-Aucune erreur de configuration n'a été affichée.
-
-Le service SSH a également été redémarré pendant le diagnostic.
-
-```bash
-sudo systemctl restart ssh
-```
-
----
-
-## 🔑 Étape 17 — Configuration de la clé publique SSH
-
-Une clé publique RSA est présente dans le fichier :
-
-```text
-~/.ssh/authorized_keys
-```
-
-Identifiant de la clé :
-
-```text
-b300098957@ramena
-```
+- **Utilisateur :** `ubuntu`
+- **Identifiant de la clé :** `b300098957@ramena`
+- **Permissions du dossier `.ssh` :** 700
+- **Permissions du fichier `authorized_keys` :** 600
 
 Vérification :
 
 ```bash
 ls -la ~/.ssh
-cat ~/.ssh/authorized_keys
+ssh-keygen -lf ~/.ssh/authorized_keys
 ```
-
-La correspondance avec la clé officielle du professeur reste à confirmer.
 
 ---
 
-## 🛡️ Étape 18 — Vérification des permissions SSH
+## 🔐 Étape 14 — Vérification du service SSH
 
-Les permissions observées sont :
+Le service OpenSSH est actif et le port 22 est accessible.
 
-```text
-drwx------  .ssh
--rw-------  authorized_keys
+```bash
+sudo systemctl status ssh
+sudo sshd -t
 ```
 
-- Dossier .ssh : 700
-- Fichier authorized_keys : 600
-
-Ces permissions sont correctes pour l'authentification SSH par clé publique.
-
----
-
-## 🧪 Étape 19 — Test SSH local
-
-Une connexion SSH locale a été effectuée :
+Test de connexion locale :
 
 ```bash
 ssh ubuntu@localhost
 ```
 
-Résultat : connexion réussie.
-
-Ce test confirme le fonctionnement local du serveur SSH.
+Le test SSH local est réussi. ✅
 
 ---
 
-## ⚠️ Étape 20 — Difficultés rencontrées
+## 💻 Étape 15 — Tests depuis Windows PowerShell
 
-Pendant le laboratoire, plusieurs problèmes ont été rencontrés :
-
-- Difficultés de connexion à Proxmox.
-- Utilisation d'adresses IP incorrectes pendant les premiers tests.
-- Connexion SSH interrompue.
-- Pertes de paquets vers la passerelle.
-
-### 🔧 Solutions
-
-- Vérification de l'adresse IP du serveur Proxmox.
-- Vérification de l'adresse IP de la machine virtuelle.
-- Vérification de la configuration Netplan.
-- Vérification et redémarrage du service SSH.
-- Tests de connectivité depuis Windows.
-
-La connexion SSH depuis Windows a finalement réussi.
-
----
-
-## 💻 Étape 21 — Vérification du réseau depuis Windows
-
-Depuis Windows PowerShell :
+Vérification de la connectivité et du port SSH :
 
 ```powershell
 ping 10.7.236.167
-```
-
-Résultat :
-
-```text
-Paquets envoyés : 4
-Paquets reçus : 4
-Paquets perdus : 0
-Perte : 0 %
-```
-
-La machine virtuelle est accessible depuis Windows.
-
----
-
-## 🔌 Étape 22 — Vérification du port SSH
-
-```powershell
 Test-NetConnection 10.7.236.167 -Port 22
 ```
 
-Résultat :
+**Résultats :** 0 % de perte de paquets et test du port 22 positif.
 
-```text
-TcpTestSucceeded : True
-```
-
-Le port 22 est accessible depuis mon ordinateur.
-
----
-
-## 🚀 Étape 23 — Connexion SSH depuis Windows PowerShell
+Connexion à distance :
 
 ```powershell
 ssh ubuntu@10.7.236.167
 ```
 
-La connexion a été effectuée avec succès.
+<img src="./images/cnx.ssh.png" width="350">
 
-Le système affiche :
+La connexion SSH depuis Windows est réussie. ✅
 
-```text
-Welcome to Ubuntu 24.04.5 LTS
+Commandes de vérification après connexion :
+
+```bash
+whoami
+hostname
+uptime
+ip -4 addr show ens18
 ```
-
-Invite de commandes Ubuntu :
-
-```text
-ubuntu@ubuntu-bderrahim:~$
-```
-
-La machine virtuelle peut maintenant être administrée à distance depuis Windows.
 
 ---
 
-## 📋 Étape 24 — Configuration finale
+## 📋 Configuration finale
 
 | Composant | Configuration |
 |---|---|
-| Matricule | 300151449 |
 | Serveur Proxmox | server197 |
-| IP Proxmox | 10.7.236.197 |
+| IP Proxmox | `10.7.236.197` |
+| VM | Abderrahim-Ubuntu |
 | VM ID | 103 |
-| Nom de la VM | Abderrahim-Ubuntu |
 | Système | Ubuntu Server 24.04.5 LTS |
-| Utilisateur | ubuntu |
-| CPU | 2 cœurs |
+| Utilisateur | `ubuntu` |
+| Processeur | 2 cœurs |
 | RAM | 4 Go |
 | Disque | 20 Go |
-| Interface | ens18 |
-| Carte réseau | VirtIO |
-| Bridge | vmbr0 |
-| Adresse IP | 10.7.236.167/23 |
-| Masque | 255.255.254.0 |
-| Passerelle | 10.7.237.1 |
-| DNS | 8.8.8.8 |
-| SSH | Actif, port 22 |
+| Bridge | `vmbr0` |
+| Interface réseau | `ens18` |
+| Adresse IP | `10.7.236.167/23` |
+| Passerelle | `10.7.237.1` |
+| DNS | `8.8.8.8` |
+| DHCP | Désactivé |
+| SSH | Actif — port 22 |
 
 ---
 
-## 🔑 Étape 25 — Accès pour le professeur
+## 🧪 Résultats des tests
 
-Commande de connexion :
-
-```bash
-ssh ubuntu@10.7.236.167
-```
-
-Une clé publique RSA est présente dans authorized_keys.
-
-La validation de la connexion par le professeur reste à confirmer.
-
----
-
-## 📊 Résultats des vérifications
-
-- [x] Création de la machine virtuelle
-- [x] Installation Ubuntu Server
-- [x] Configuration du réseau
-- [x] Configuration IP statique
-- [x] Service OpenSSH actif
-- [x] Présence d'une clé publique SSH
-- [x] Permissions SSH correctes
-- [x] Connexion SSH locale
-- [x] Ping depuis Windows
-- [x] Port 22 accessible
-- [x] Connexion SSH depuis Windows
-- [ ] Validation SSH par le professeur
-- [ ] Validation Internet et DNS
+| Test | Résultat |
+|---|---|
+| Installation Ubuntu | ✅ Réussie |
+| Adresse IP statique | ✅ Réussie |
+| SSH local | ✅ Réussi |
+| Ping depuis Windows | ✅ 0 % de perte |
+| Test du port 22 | ✅ True |
+| SSH depuis Windows | ✅ Réussi |
+| Accès du professeur | ⏳ À confirmer |
+| Internet et DNS | ⏳ À confirmer |
 
 ---
 
-## ✅ Étape 26 — Conclusion
+## ✅ Conclusion
 
-La machine virtuelle Ubuntu Server 24.04.5 LTS a été créée et configurée sur Proxmox.
+La machine virtuelle Ubuntu Server 24.04.5 LTS est opérationnelle sur Proxmox. Elle dispose d'une adresse IP statique et d'un service SSH fonctionnel.
 
-Elle utilise une adresse IP statique 10.7.236.167/23.
-
-Malgré les difficultés rencontrées pendant la configuration réseau, la connexion SSH depuis Windows PowerShell a été effectuée avec succès.
-
-Ce laboratoire m'a permis de développer mes compétences en virtualisation, en administration Linux, en configuration réseau et en diagnostic des problèmes de connexion.
-
-La validation de l'accès du professeur et de la connectivité Internet reste à confirmer.
-
----
-
-## 📸 Captures d'écran du laboratoire
-
-### 01-proxmox-dashboard
-
-<img src="./images/01-proxmox-dashboard.png" width="350">
-
-### 02-vm-general
-
-<img src="./images/02-vm-general.png" width="350">
-
-### 03-ubuntu-iso
-
-<img src="./images/03-ubuntu-iso.png" width="350">
-
-### 04-vm-system
-
-<img src="./images/04-vm-system.png" width="350">
-
-### 05-vm-disks
-
-<img src="./images/05-vm-disks.png" width="350">
-
-### 06-vm-cpu
-
-<img src="./images/06-vm-cpu.png" width="350">
-
-### 07-vm-memory
-
-<img src="./images/07-vm-memory.png" width="350">
-
-### 08-vm-network
-
-<img src="./images/08-vm-network.png" width="350">
-
-### 09-vm-confirm
-
-<img src="./images/09-vm-confirm.png" width="350">
-
-### 10-vm-created
-
-<img src="./images/10-vm-created.png" width="350">
-
-### 15-ubuntu-language
-
-<img src="./images/15-ubuntu-language.png" width="350">
-
-### 16-ubuntu-keyboard
-
-<img src="./images/16-ubuntu-keyboard.png" width="350">
-
-### cnx.ssh
-
-<img src="./images/cnx.ssh.png" width="350">
-
+Les tests de connectivité depuis Windows et la connexion SSH ont réussi. L'accès du professeur ainsi que les tests Internet et DNS restent à confirmer.
