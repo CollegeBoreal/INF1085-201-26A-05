@@ -21,7 +21,7 @@ Dans **VM 100 → Hardware**, le disque `scsi0` se trouve sur `local-lvm` :
 scsi0: local-lvm:vm-100-disk-0,iothread=1,size=32G
 ```
 
-![Hardware avant](images/01-hardware-avant.png)
+![images alt](https://github.com/CollegeBoreal/INF1085-201-26A-05/blob/b3fcbca1f8d92dcc5a48c4e3195e713724f14412/5.Storage/300157184/images/Capture%20d%E2%80%99%C3%A9cran%202026-11-26%20142957.png)
 
 ---
 
