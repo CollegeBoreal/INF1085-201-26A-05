@@ -2,12 +2,16 @@
 
 Lyes Medjahed · 300153676 · Groupe 2
 
-Le labo demande un compte Linux personnel enregistré dans le domaine PAM de Proxmox, le rôle Administrator et une connexion SSH par clé. Le compte prévu par la convention du cours est `B300153676@pam`.
+Sur le serveur Proxmox `server198` (`10.7.236.198`), j’ai vérifié mon compte et ses droits.
 
-| Vérification sur l’hôte | Résultat à chercher |
+| Commande | Résultat |
 | --- | --- |
-| `id B300153676` | UID et groupes du compte Linux |
-| `pveum user list` | Entrée B300153676@pam |
-| `pveum acl list` | Rôle Administrator associé au compte sur / |
+| `id B300153676` | Le compte Linux existe. Son UID et son GID sont 1001. |
+| `pveum user list` | Mon compte Proxmox est enregistré sous `B300153676@pam`. |
+| `pveum acl list` | Mon compte a le rôle `Administrator` sur `/`, avec propagation. |
 
-Le test de connexion se fait depuis le poste étudiant avec `ssh B300153676@10.7.236.198`. L’existence du compte, ses droits et le test par clé restent à confirmer au labo.
+## Connexion SSH par clé
+
+Depuis PowerShell, je me suis connecté au serveur avec ma clé SSH. La commande distante `whoami` a affiché `B300153676`.
+
+![Connexion SSH par clé à server198 et résultat de whoami](connexion-ssh.png)
