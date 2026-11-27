@@ -134,7 +134,7 @@ for ($i = 0; $i -lt $STUDENTS.Count; $i++) {
 
         $ServerFound = $ACLCache[$ExpectedUser]
         
-        $PveUrl = "https://$ServerFound:8006"
+        $PveUrl = "https://$($ServerFound):8006"
 
         $Status = ":white_check_mark:"
 
