@@ -2,7 +2,7 @@
 
 **INF1085 · 300151835**
 
-1. Confirmer le serveur, le disque d’installation et l’IP attribués. Le réseau du labo est `10.7.236.0/23`, la passerelle `10.7.237.1` et le DNS `8.8.8.8`.
+1. Confirmer le disque d’installation sur le serveur du groupe 2. Le réseau du labo est `10.7.236.0/23`, la passerelle `10.7.237.1` et le DNS `8.8.8.8`.
 2. Sur le serveur attribué, démarrer l’ISO de Proxmox VE 9 avec les paramètres validés en classe. Choisir le disque système confirmé, configurer le nom d’hôte et le réseau, puis installer et redémarrer.
 3. Ouvrir l’interface HTTPS sur le port 8006. Dans le terminal de l’hôte, relever les valeurs affichées.
 
@@ -28,6 +28,23 @@ lsmod
 5. `cat /proc/cmdline` affiche les paramètres réellement transmis au noyau.
 
 **À relever** — version, IP, sockets, processeurs logiques, RAM, disques et paramètres de démarrage.
+
+## Paramètres du groupe 2
+
+| Paramètre | Valeur du cours |
+| --- | --- |
+| Hôte Proxmox | `10.7.236.198/23` |
+| Passerelle | `10.7.237.1` |
+| DNS | `8.8.8.8` |
+| Interface de gestion | [Proxmox VE](https://10.7.236.198:8006) |
+
+Les paramètres de dépannage `nomodeset acpi=off` figurent dans la procédure du DL360 G6. Après le démarrage, vérifier les paramètres actifs et le nombre de CPU détectés.
+
+```bash
+cat /proc/cmdline
+cat /sys/devices/system/cpu/online
+lscpu
+```
 
 ## Captures
 
