@@ -33,5 +33,5 @@
 
 |:hash:| Boréal :id: | 📑 | 🖼️ | 💯 | 💬 | :link: IP |
 |------|-------------|----|---|----|----|-----------|
-| 1 | [300157424](../300157424/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/258873685?s=460&v=4' width=20 height=20></image>](https://github.com/MA-JID-06) | :2nd_place_medal: | :heavy_check_mark: | :x: | :x: à corriger | 🏙️  ubuntu@10.7.236.193  |
+| 1 | [300157424](../300157424/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/258873685?s=460&v=4' width=20 height=20></image>](https://github.com/MA-JID-06) | :2nd_place_medal: | :heavy_check_mark: | 🛑 | 1️⃣ Plagiat détecté | 🏙️  ubuntu@10.7.236.193  |
 | :abacus: | \$\displaystyle\sum_{i=1}^{1} s_i\$ = 1 📈 100% |
