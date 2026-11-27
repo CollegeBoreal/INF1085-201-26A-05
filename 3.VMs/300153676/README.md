@@ -16,10 +16,10 @@ J’ai ouvert une session avec le compte `lyes` sur `ubuntuserver`. La console a
 
 ## Configuration demandée au laboratoire
 
-| Paramètre | Valeur indiquée dans la fiche du groupe 2 |
+| Paramètre | Valeur |
 | --- | --- |
 | Hôte Proxmox | `10.7.236.198` |
-| Adresse attribuée à ma VM | `10.7.236.174` |
+| Adresse de ma VM validée par le professeur | `10.7.237.162` |
 | Compte pour la connexion SSH | `ubuntu` |
 
-Il reste à vérifier sur Proxmox le numéro de cette VM et son rattachement à l’hôte du groupe. L’adresse affichée dans la console diffère de l’adresse attribuée. L’accès SSH à `ubuntu@10.7.236.174` avec la clé du professeur reste à confirmer.
+Il reste à vérifier sur Proxmox le numéro de cette VM et son rattachement à l’hôte du groupe. L’accès SSH à `ubuntu@10.7.237.162` avec la clé du professeur reste à confirmer.
