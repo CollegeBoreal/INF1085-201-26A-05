@@ -1,9 +1,9 @@
 # 🖥️ Installation de Proxmox VE 9 sur un HP ProLiant DL360 G6
 
-**Souleymane Barry · 300141685 · Groupe 1**
+**Souleymane Barry · 300141685**
 INF1085 · Collège Boréal
 
-Notre groupe a préparé et installé **Proxmox VE 9.2** sur le serveur **HP ProLiant DL360 G6** du groupe 1 (S/N `MXQ0390BMX`, surnommé « Massif »). Ce serveur est aujourd'hui joignable à l'adresse `10.7.236.197` sous le nom `server197`. Il héberge les VM du groupe.
+J'ai préparé et installé **Proxmox VE 9.2** sur un serveur **HP ProLiant DL360 G6** (S/N `MXQ0390BMX`, surnommé « Massif »). Ce serveur est aujourd'hui joignable à l'adresse `10.7.236.197` sous le nom `server197`, et il héberge des machines virtuelles, dont la mienne.
 
 ## 📋 Résumé du serveur
 
@@ -22,7 +22,7 @@ Notre groupe a préparé et installé **Proxmox VE 9.2** sur le serveur **HP Pro
 
 ## 1️⃣ Inspection du matériel
 
-Nous avons d'abord ouvert le serveur pour identifier ses composants : les deux processeurs sous leurs radiateurs, les barrettes de mémoire de chaque côté, les ventilateurs et les disques à l'avant. L'étiquette iLO 2 sur le capot donne le numéro de série `MXQ0390BMX`. C'est le même que celui du serveur `10.7.236.197` dans le tableau du cours.
+J'ai d'abord ouvert le serveur pour identifier ses composants : les deux processeurs sous leurs radiateurs, les barrettes de mémoire de chaque côté, les ventilateurs et les disques à l'avant. L'étiquette iLO 2 sur le capot donne le numéro de série `MXQ0390BMX`. C'est le même que celui du serveur `10.7.236.197` dans le tableau du cours.
 
 | Façade (disques et lecteur DVD) | Serveur démonté | Serveur remonté |
 | --- | --- | --- |
@@ -44,7 +44,7 @@ Comme la mémoire avait été déplacée, le BIOS a lancé un **test mémoire** 
 
 ## 3️⃣ Configuration du stockage (Smart Array P410i)
 
-Dans l'utilitaire **Option ROM Configuration for Arrays** du contrôleur **HP Smart Array P410i**, nous avons créé le volume logique qui sert de disque système. Le message **« Configuration saved »** confirme l'enregistrement.
+Dans l'utilitaire **Option ROM Configuration for Arrays** du contrôleur **HP Smart Array P410i**, j'ai créé le volume logique qui sert de disque système. Le message **« Configuration saved »** confirme l'enregistrement.
 
 | Volume enregistré | Calibration au démarrage |
 | --- | --- |
@@ -58,7 +58,7 @@ Le serveur démarre ensuite sur le support d'installation de **Proxmox VE 9.2 (I
 
 ### ⚙️ Ajout de `nomodeset acpi=off`
 
-Le DL360 G6 date de 2010 et le noyau de Proxmox est beaucoup plus récent. Pour éviter un écran noir ou un blocage, nous avons sélectionné une entrée et appuyé sur **`e`**. Nous avons ajouté à la fin de la ligne `linux` :
+Le DL360 G6 date de 2010 et le noyau de Proxmox est beaucoup plus récent. Pour éviter un écran noir ou un blocage, j'ai sélectionné une entrée et appuyé sur **`e`**. J'ai ajouté à la fin de la ligne `linux` :
 
 ```text
 nomodeset acpi=off
@@ -90,7 +90,7 @@ Boot comandline: BOOT_IMAGE=/boot/linux26 ro ramdisk_size=16777216 rw quiet spla
 
 ## 6️⃣ Configuration du réseau de gestion
 
-Comme le DHCP ne répondait pas, nous avons rempli le réseau de gestion à la main :
+Comme le DHCP ne répondait pas, j'ai rempli le réseau de gestion à la main :
 
 | Champ | Valeur saisie |
 | --- | --- |
@@ -112,7 +112,7 @@ Depuis Windows PowerShell, la connexion SSH au serveur fonctionne :
 ssh root@10.7.236.197
 ```
 
-Le serveur répond avec le noyau Proxmox **`7.0.2-6-pve`**. La commande `qm list` montre les machines virtuelles du groupe 1, dont ma VM `126 B300141685`.
+Le serveur répond avec le noyau Proxmox **`7.0.2-6-pve`**. La commande `qm list` montre les machines virtuelles du serveur, dont ma VM `126 B300141685`.
 
 ![Connexion SSH à server197 et liste des VM](images/13-ssh-server197.png)
 
@@ -149,4 +149,4 @@ ip a                # adresse de gestion sur vmbr0
 
 ## ✅ Conclusion
 
-Proxmox VE 9.2 est installé et stable sur le DL360 G6 grâce aux paramètres `nomodeset acpi=off`. Le BIOS détecte les 2 Xeon E5540 (8 cœurs) et les 64 Go de RAM. Le serveur est joignable en SSH et par l'interface web à `10.7.236.197`, et il héberge déjà les machines virtuelles du groupe 1.
+Proxmox VE 9.2 est installé et stable sur le DL360 G6 grâce aux paramètres `nomodeset acpi=off`. Le BIOS détecte les 2 Xeon E5540 (8 cœurs) et les 64 Go de RAM. Le serveur est joignable en SSH et par l'interface web à `10.7.236.197`, et il héberge déjà plusieurs machines virtuelles, dont la mienne.
