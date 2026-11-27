@@ -1,9 +1,9 @@
 # 🔌 Diagnostic matériel d'un HP ProLiant DL360 G6
 
-**Souleymane Barry · 300141685 · Groupe 1**
+**Souleymane Barry · 300141685**
 INF1085 · Collège Boréal
 
-Avec mon groupe, nous avons démonté et identifié les composants d'un serveur **HP ProLiant DL360 G6**. Nous l'avons ensuite redémarré par étapes pour vérifier que le BIOS reconnaissait chaque pièce. Pour finir, nous avons reconfiguré les disques en **RAID 5** pour préparer l'installation de Proxmox.
+J'ai démonté et identifié les composants d'un serveur **HP ProLiant DL360 G6**. Je l'ai ensuite redémarré par étapes pour vérifier que le BIOS reconnaissait chaque pièce. Pour finir, j'ai reconfiguré les disques en **RAID 5** pour préparer l'installation de Proxmox.
 
 ## 📋 Résumé du diagnostic
 
@@ -145,13 +145,13 @@ Pendant le démarrage, la touche **F8** ouvre l'**Option ROM Configuration for A
 
 ### Étape 1 : menu principal
 
-Le menu propose *Create*, *View* et *Delete Logical Drive*. Avec **View Logical Drive**, nous avons vu qu'un ancien volume existait déjà.
+Le menu propose *Create*, *View* et *Delete Logical Drive*. Avec **View Logical Drive**, j'ai constaté qu'un ancien volume existait déjà.
 
 ![Menu principal de l'utilitaire RAID](images/11-raid-menu.jpg)
 
 ### Étape 2 : suppression de l'ancien volume
 
-Pour repartir d'un disque propre, nous avons supprimé l'ancien volume (**RAID 5, 273,4 Go, 3 disques**). L'utilitaire avertit que **toutes les données seront perdues**. On confirme avec **F3**.
+Pour repartir d'un disque propre, j'ai supprimé l'ancien volume (**RAID 5, 273,4 Go, 3 disques**). L'utilitaire avertit que **toutes les données seront perdues**. On confirme avec **F3**.
 
 ![Avertissement avant suppression du volume](images/12-raid-suppression.jpg)
 
