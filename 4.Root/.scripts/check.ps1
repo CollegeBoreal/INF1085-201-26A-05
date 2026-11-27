@@ -1,96 +1,203 @@
 # --------------------------------------
-# Script pour accéder aux AD DS des étudiants et générer README.md
+# Validation INF1085 - Utilisateurs Proxmox
 # --------------------------------------
 
-# Forcer UTF-8 dans tout le script
+# Forcer UTF-8
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $PSDefaultParameterValues['Set-Content:Encoding'] = 'utf8'
 
-# Autorise toutes les IP pour les connexions WinRM
-Set-Item WSMan:\localhost\Client\TrustedHosts -Value "10.7.236.*" -Force
+# Charger les étudiants
+. ../.scripts/students.ps1
 
-# Charger la liste des VMs depuis students.ps1
-. ../.scripts/students.ps1 # le point suivi d'espace permet d'importer les variables
+# --------------------------------------
+# VALIDATION
+# --------------------------------------
 
-# Vérifier que $SERVERS existe
-if (-not $SERVERS) {
-    Write-Host "La variable `$SERVERS n'a pas été trouvée dans students.ps1" -ForegroundColor Red
+# Fonctions communes
+. ../.scripts/functions.ps1
+. ../.scripts/commons.ps1
+
+# Fonctions du laboratoire
+. .scripts/functions.ps1
+
+if (-not $WINDOWS_SERVERS) {
+
+    Write-Host `
+        "La variable `$WINDOWS_SERVERS n'a pas été trouvée dans students.ps1" `
+        -ForegroundColor Red
+
     exit
 }
 
-# Identifiants administrateur (local ou domaine)
-$User = "Administrator"
-# $Password = Read-Host -AsSecureString "Mot de passe de $User"
-$plain = 'Boreal@2026'
-$Password = ConvertTo-SecureString $plain -AsPlainText -Force
+# --------------------------------------
+# README
+# --------------------------------------
 
-# Préparer le contenu Markdown
 $timestamp = Get-Date -Format "dd-MM-yyyy HH:mm"
+
 $md = @()
+
 $md += "# Precision au $timestamp"
 $md += ""
-$md += "| Table des matieres            | Description                                             |"
-$md += "|-------------------------------|---------------------------------------------------------|"
-$md += "| :a: [Presence](#a-presence)   | L'etudiant.e a fait son travail    :heavy_check_mark:   |"
-$md += "| :b: [Precision](#b-precision) | L'etudiant.e a reussi son travail  :tada:               |"
+
+$md += "| Table des matieres | Description |"
+$md += "|--------------------|-------------|"
+$md += "| :a: [Presence](#a-presence) | Serveur Proxmox accessible |"
+$md += "| :b: [Precision](#b-precision) | Verification du compte Proxmox |"
 $md += ""
-$md += ":bulb: Le mot de passe Administrateur (en Anglais) de la VM est **Infra@2024**"
-$md += ""
+
 $md += "## Legende"
 $md += ""
-$md += "| Signe              | Signification                 |"
-$md += "|--------------------|-------------------------------|"
-$md += "| :heavy_check_mark: | AD DS a ete installe          |"
-$md += "| :x:                | AD DS est inexistant          |"
-$md += "| :no_entry:         | Acces refuse                  |"
+
+$md += "| Symbole | Signification |"
+$md += "|----------|-------------|"
+$md += "| :white_check_mark: | Compte Proxmox trouvé |"
+$md += "| :x: | Compte Proxmox absent |"
+$md += "| :no_entry: | Connexion SSH impossible |"
 $md += ""
+
 $md += "## :b: Precision"
 $md += ""
-$md += "| :hash: | Boreal :id: | :slot_machine: VM   | :tada:   |"
-$md += "|--------|-------------|---------------------|----------|"
 
-# Boucle sur chaque VM
-$i = 0
-$s = 0
-$counter = 1
+$md += "| # | Boreal :id: | :link: IP | :closed_lock_with_key: Compte PVE |"
+$md += "|---|-------------|-----------|-----------------------------|"
 
-foreach ($VM in $SERVERS) {
-    $URL = "[<image src='https://avatars0.githubusercontent.com/u/$($AVATARS[$i])?s=460&v=4' width=20 height=20></image>](https://github.com/$($IDS[$i]))"    
-    $id = $ETUDIANTS[$i]
-    $FILE = "$id/README.md"
-    $server = $SERVERS[$i]
+# --------------------------------------
+# Build ACL Cache
+# --------------------------------------
 
-    Write-Host "Connexion à $VM ..." -ForegroundColor Cyan
+$ACLCache = @{}
+
+foreach ($PveHost in $WINDOWS_SERVERS | Select-Object -Unique) {
+
+    Write-Host ""
+    Write-Host "Collecte ACL sur $PveHost ..." `
+        -ForegroundColor Cyan
+
     try {
-        $Session = New-PSSession -ComputerName $VM -Credential (New-Object PSCredential ($User, $Password))
-        
-        # Vérifier le service AD DS (NTDS)
-        $ADStatus = Invoke-Command -Session $Session -ScriptBlock {
-            $svc = Get-Service -Name NTDS -ErrorAction SilentlyContinue
-            if ($svc) { $svc.Status } else { -1 }
+
+        $ACLs = ssh `
+            -i ~/.ssh/b300098957@ramena `
+            -o ConnectTimeout=10 `
+            -o BatchMode=yes `
+            "root@$PveHost" `
+            "pveum acl list 2>/dev/null"
+
+        if ($LASTEXITCODE -ne 0) {
+            throw "Connexion SSH impossible"
         }
 
-        $statusIcon = if ($ADStatus -eq 4) { ":heavy_check_mark:"; $s++ } else { ":x:" }
+        foreach ($Line in ($ACLs -split "`n")) {
 
-        # Ajouter la ligne Markdown
-        $md += "| $counter | [$id](../$FILE) $URL | $VM | $statusIcon |"
+            if ($Line -match 'B\d+@pam') {
 
-        # Fermer la session
-        Remove-PSSession $Session
+                $User = $Matches[0]
+
+                $ACLCache[$User] = $PveHost
+            }
+        }
+
+        Write-Host `
+            "$PveHost : ACL collectées" `
+            -ForegroundColor Green
     }
     catch {
-        Write-Host "Échec de connexion à $VM : $($_.Exception.Message)" -ForegroundColor Red
-        $md += "| $counter | [$id](../$FILE) $URL | $VM | :no_entry: |"
+
+        Write-Host `
+            "$PveHost : SSH impossible" `
+            -ForegroundColor Red
     }
-    $i++
-    $counter++
-    $COUNT = "\$\\frac{$s}{$i}$"
-    $STATS = [math]::Round(($s * 100) / $i, 2)
-    $SUM = "\$\displaystyle\sum_{i=1}^{$i} s_i$"
 }
 
-$md += "| :abacus: | $COUNT = $STATS% | | $SUM = $s |"
+# --------------------------------------
+# Validation
+# --------------------------------------
 
-# Exporter le README.md
-$md | Set-Content -Path ".scripts/Check.md" -Encoding UTF8
-Write-Host "README.md généré avec succès !" -ForegroundColor Green
+$SuccessCount = 0
+$Counter = 1
+
+for ($i = 0; $i -lt $STUDENTS.Count; $i++) {
+
+    $parts = $STUDENTS[$i] -split '\|'
+
+    $StudentID = $parts[0]
+    $GitHubID  = $parts[1]
+    $AvatarID  = $parts[2]
+
+    $url = Get-GitHubAvatarLink `
+        -GitHubID $GitHubID `
+        -AvatarID $AvatarID
+
+    $ExpectedUser = "B$StudentID@pam"
+
+    if ($ACLCache.ContainsKey($ExpectedUser)) {
+
+        $ServerFound = $ACLCache[$ExpectedUser]
+
+        $Status = ":white_check_mark:"
+
+        $SuccessCount++
+
+        Write-Host `
+            "$ExpectedUser trouvé sur $ServerFound" `
+            -ForegroundColor Green
+    }
+    else {
+
+        $ServerFound = "-"
+
+        $Status = ":x:"
+
+        Write-Host `
+            "$ExpectedUser absent" `
+            -ForegroundColor Red
+    }
+
+    $md += "| $Counter | [$StudentID](../$StudentID/README.md) :point_right: $url | $ServerFound | $Status |"
+
+    $Counter++
+}
+
+# --------------------------------------
+# Résumé
+# --------------------------------------
+
+$TotalStudents = $Counter - 1
+
+if ($TotalStudents -gt 0) {
+
+    $Percentage = [math]::Round(
+        ($SuccessCount * 100) / $TotalStudents,
+        2
+    )
+}
+else {
+
+    $Percentage = 0
+}
+
+$md += ""
+$md += "| :abacus: | `$\displaystyle\sum_{i=1}^{$TotalStudents} s_i$ = $SuccessCount :chart_with_upwards_trend: = $Percentage% | | |"
+
+# --------------------------------------
+# Export
+# --------------------------------------
+
+$OutputFile = ".scripts/Check.md"
+
+$md | Out-File `
+    -FilePath $OutputFile `
+    -Encoding utf8
+
+Write-Host ""
+Write-Host `
+    "README.md généré avec succès !" `
+    -ForegroundColor Green
+
+Write-Host `
+    "$SuccessCount / $TotalStudents étudiants possèdent un compte Proxmox valide." `
+    -ForegroundColor Green
+
+Write-Host `
+    "Fichier : $OutputFile" `
+    -ForegroundColor Yellow
