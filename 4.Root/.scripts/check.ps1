@@ -133,6 +133,8 @@ for ($i = 0; $i -lt $STUDENTS.Count; $i++) {
     if ($ACLCache.ContainsKey($ExpectedUser)) {
 
         $ServerFound = $ACLCache[$ExpectedUser]
+        
+        $PveUrl = "https://$ServerFound:8006"
 
         $Status = ":white_check_mark:"
 
@@ -146,6 +148,8 @@ for ($i = 0; $i -lt $STUDENTS.Count; $i++) {
 
         $ServerFound = "-"
 
+        $PveUrl = "-"
+
         $Status = ":x:"
 
         Write-Host `
@@ -153,7 +157,7 @@ for ($i = 0; $i -lt $STUDENTS.Count; $i++) {
             -ForegroundColor Red
     }
 
-    $md += "| $Counter | [$StudentID](../$StudentID/README.md) :point_right: $url | [$ServerFound](https:\/\/$ServerFound:8006) | $Status |"
+    $md += "| $Counter | [$StudentID](../$StudentID/README.md) :point_right: $url | [$ServerFound]($PveUrl) | $Status |"
 
     $Counter++
 }
