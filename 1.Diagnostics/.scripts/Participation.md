@@ -19,7 +19,7 @@
 
 |:hash:| Boréal :id: | 📑 | 🖼️ | 💯 | 💬 |
 |------|-------------|----|---|----|----|
-| 1 | [300141685](../300141685/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/157196575?s=460&v=4' width=20 height=20></image>](https://github.com/soulemaneBRY) | :x: | :x: | :x: | 0️⃣ Rien à corriger |
+| 1 | [300141685](../300141685/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/157196575?s=460&v=4' width=20 height=20></image>](https://github.com/soulemaneBRY) | :1st_place_medal: | :heavy_check_mark: | :x: | 0️⃣ Rien à corriger |
 | 2 | [300147065](../300147065/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/266599103?s=460&v=4' width=20 height=20></image>](https://github.com/Ahmedboreal) | :x: | :x: | :x: | 0️⃣ Rien à corriger |
 | 3 | [300150411](../300150411/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/211593030?s=460&v=4' width=20 height=20></image>](https://github.com/brhnkess) | :1st_place_medal: | :heavy_check_mark: | 🥇 | 1️⃣ Documentation à soigner |
 | 4 | [300150477](../300150477/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/195692630?s=460&v=4' width=20 height=20></image>](https://github.com/Trafalgar-D-Low) | :1st_place_medal: | :heavy_check_mark: | :x: | 0️⃣ Rien à corriger |
@@ -52,4 +52,4 @@
 | 31 | [300157374](../300157374/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/255961683?s=460&v=4' width=20 height=20></image>](https://github.com/yanisna) | :x: | :x: | :x: | 0️⃣ Rien à corriger |
 | 32 | [300157416](../300157416/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/232939450?s=460&v=4' width=20 height=20></image>](https://github.com/lounisyounes) | :x: | :x: | :x: | 0️⃣ Rien à corriger |
 | 33 | [300157424](../300157424/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/258873685?s=460&v=4' width=20 height=20></image>](https://github.com/MA-JID-06) | :1st_place_medal: | :heavy_check_mark: | :x: | 0️⃣ Rien à corriger |
-| :abacus: | \$\displaystyle\sum_{i=1}^{33} s_i\$ = 20 📈 60.61% |
+| :abacus: | \$\displaystyle\sum_{i=1}^{33} s_i\$ = 21 📈 63.64% |
