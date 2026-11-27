@@ -59,8 +59,8 @@ $md += ""
 $md += "## :b: Precision"
 $md += ""
 
-$md += "| # | Boreal :id: | :link: IP | :closed_lock_with_key: Compte PVE |"
-$md += "|---|-------------|-----------|-----------------------------|"
+$md += "| # | Boreal :id: | :link: PVE IP | :closed_lock_with_key: Compte PVE |"
+$md += "|---|-------------|---------------|-----------------------------|"
 
 # --------------------------------------
 # Build ACL Cache
@@ -153,7 +153,7 @@ for ($i = 0; $i -lt $STUDENTS.Count; $i++) {
             -ForegroundColor Red
     }
 
-    $md += "| $Counter | [$StudentID](../$StudentID/README.md) :point_right: $url | $ServerFound | $Status |"
+    $md += "| $Counter | [$StudentID](../$StudentID/README.md) :point_right: [$url](https://$url:8006) | $ServerFound | $Status |"
 
     $Counter++
 }
