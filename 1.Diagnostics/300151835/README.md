@@ -13,6 +13,16 @@
 | POST avec CPU2 | À relever |
 | Conclusion | À compléter |
 
+## Interpréter le diagnostic
+
+| Résultat du test comparatif | Conclusion |
+| --- | --- |
+| Les deux processeurs passent le POST dans le premier socket. | Tester le deuxième socket et la mémoire qui lui est associée. |
+| Seul le processeur de référence passe le POST dans le premier socket. | CPU2 est la cause la plus probable. |
+| Les deux processeurs échouent dans le premier socket. | Reprendre la configuration de référence et vérifier l’alimentation, la mémoire et la carte système avant de conclure. |
+
+Un voyant CPU oriente le diagnostic vers le processeur ou son socket. Un code mémoire oriente d’abord le diagnostic vers le module DIMM, son emplacement ou le circuit mémoire.
+
 ## Captures
 
 Après le laboratoire, ajouter les preuves dans `images/` et adapter le nom dans ce lien exemple.
