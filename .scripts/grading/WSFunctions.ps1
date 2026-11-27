@@ -14,6 +14,10 @@ function Get-ParticipationGrades {
         function never contains hardcoded level IDs or criterion IDs.
 
         Each valid row produces one grading entry keyed by Boréal ID.
+
+        Special rule:
+        If criterion "app" contains 🛑 or :stop_sign:,
+        ALL criteria are forced to their FAIL level.
     #>
     param (
         [Parameter(Mandatory)]
@@ -35,6 +39,8 @@ function Get-ParticipationGrades {
         # Only process Markdown table rows starting with:
         # | <number> |
         if ($line -match '^\|\s*\d+\s*\|') {
+
+            $AppTriggeredFail = $false
 
             # Split on column separators
             $cols = $line -split '\|'
@@ -67,6 +73,17 @@ function Get-ParticipationGrades {
 
                 $levelId = Get-RubricLevelId -Emoji $emoji -Levels $levels
                 $entry[$criterion.name] = $levelId
+
+                # --------------------------------------------------
+                # Global fail rule
+                #
+                # If APP contains 🛑 or :stop_sign:
+                # all criteria become FAIL.
+                # --------------------------------------------------
+
+                if ($criterion.name -eq 'app' -and $emoji -match ':stop_sign:|🛑') {
+                    $AppTriggeredFail = $true
+                }
             }
 
             # Apply implied-pass rule (e.g. gold README → images pass)
@@ -74,6 +91,27 @@ function Get-ParticipationGrades {
                 $whenVal = $entry[$ImpliedPass.when]
                 if ($whenVal -gt $ImpliedPass.exceeds) {
                     $entry[$ImpliedPass.set] = $ImpliedPass.levelid
+                }
+            }
+
+            # --------------------------------------------------
+            # APP FAIL => EVERYTHING FAILS
+            # --------------------------------------------------
+
+            if ($AppTriggeredFail) {
+
+                foreach ($criterion in $Criteria) {
+
+                    if ($criterion.name -eq 'comments') {
+                        continue
+                    }
+
+                    $failLevel = [int[]]$criterion.levels | Select-Object -First 1
+                    $entry[$criterion.name] = $failLevel
+                }
+
+                if ($DEBUG) {
+                    Write-Host "[FAIL OVERRIDE] $borealId : APP = 🛑" -ForegroundColor Red
                 }
             }
 

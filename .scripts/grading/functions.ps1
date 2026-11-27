@@ -66,7 +66,7 @@ function Get-RubricLevelId {
             $champ = $Levels[4]
 
             switch -Regex ($Emoji) {
-                ':x:|❌' { return $fail }
+                ':x:|❌|:stop_sign:|🛑' { return $fail }
                 ':3rd_place_medal:|🥉' { return $bronze }
                 ':2nd_place_medal:|🥈' { return $silver }
                 ':1st_place_medal:|🥇' { return $gold }
