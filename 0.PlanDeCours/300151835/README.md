@@ -4,9 +4,18 @@
 
 Je suis Liza Benhammouche, étudiante en soutien informatique et réseaux au Collège Boréal.
 
-1. Ouvrir [GitHub Education](https://education.github.com/) et explorer les ressources.
-2. Conserver le README et les images du premier travail déjà fait.
-3. Vérifier que chaque capture ajoutée est liée dans le README.
+
+## Parcours du cours
+
+| Étape | Travail prévu en laboratoire |
+| --- | --- |
+| Diagnostic et installation | Isoler la cause d’un échec de démarrage et installer Proxmox VE. |
+| Virtualisation | Créer une VM Linux, configurer son réseau et vérifier SSH. |
+| Administration | Créer un compte Proxmox individuel et vérifier son rôle. |
+| Stockage | Identifier un SSD NVMe et y déplacer le disque de la VM. |
+| Projet | Produire un inventaire système avec Bash. |
+
+[GitHub Education](https://education.github.com/) présente les ressources proposées aux étudiants, dont le Student Developer Pack.
 
 ## Captures
 
