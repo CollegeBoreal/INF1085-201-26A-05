@@ -115,7 +115,10 @@ foreach ($PveHost in ($WINDOWS_SERVERS | Select-Object -Unique)) {
 
             if (-not [string]::IsNullOrWhiteSpace($VmId)) {
 
-                $NVMeCache[$VmId] = $PveHost
+                $NVMeCache[$VmId] = [PSCustomObject]@{
+                    VmId    = $VmId
+                    PveHost = $PveHost
+                }
 
                 Write-Host `
                     "VM $VmId utilise nvme-storage sur $PveHost" `
@@ -163,12 +166,16 @@ for ($i = 0; $i -lt $STUDENTS.Count; $i++) {
     $VmUser = $server_parts[1]
     $VmId   = $server_parts[2]
 
+
     if (
         $VmId -ne "0" -and
         $NVMeCache.ContainsKey($VmId)
     ) {
 
-        $PveHost = $NVMeCache[$VmId]
+        $VmInfo = $NVMeCache[$VmId]
+
+        $PveHost = $VmInfo.PveHost
+        $VmId    = $VmInfo.VmId
 
         $PveUrl = "https://$($PveHost):8006"
 
