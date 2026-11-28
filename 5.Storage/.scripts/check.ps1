@@ -1,5 +1,5 @@
 # --------------------------------------
-# Validation INF1085 - Utilisateurs Proxmox
+# Validation INF1085 - Stockage NVMe
 # --------------------------------------
 
 # Forcer UTF-8
@@ -29,6 +29,15 @@ if (-not $WINDOWS_SERVERS) {
     exit
 }
 
+if (-not $SERVERS) {
+
+    Write-Host `
+        "La variable `$SERVERS n'a pas été trouvée dans students.ps1" `
+        -ForegroundColor Red
+
+    exit
+}
+
 # --------------------------------------
 # README
 # --------------------------------------
@@ -42,8 +51,7 @@ $md += ""
 
 $md += "| Table des matieres | Description |"
 $md += "|--------------------|-------------|"
-$md += "| :a: [Presence](#a-presence) | Serveur Proxmox accessible |"
-$md += "| :b: [Precision](#b-precision) | Verification du compte Proxmox |"
+$md += "| :a: #a-presence | Verification du stockage NVMe |"
 $md += ""
 
 $md += "## Legende"
@@ -51,61 +59,78 @@ $md += ""
 
 $md += "| Symbole | Signification |"
 $md += "|----------|-------------|"
-$md += "| :white_check_mark: | Compte Proxmox trouvé |"
-$md += "| :x: | Compte Proxmox absent |"
-$md += "| :no_entry: | Connexion SSH impossible |"
+$md += "| :white_check_mark: | VM stockée sur nvme-storage |"
+$md += "| :x: | VM absente du stockage NVMe |"
+$md += "| :no_entry: | Serveur Proxmox inaccessible |"
+
+$md += ""
+$md += "## :a: Presence"
 $md += ""
 
-$md += "## :b: Precision"
-$md += ""
-
-$md += "| # | Boreal :id: | :link: PVE IP | :closed_lock_with_key: Compte PVE |"
-$md += "|---|-------------|---------------|-----------------------------|"
+$md += "| # | Boreal :id: | VMID | :link: PVE | :floppy_disk: NVMe |"
+$md += "|---|-------------|------|----------|----------------|"
 
 # --------------------------------------
-# Build ACL Cache
+# Build NVMe Cache
 # --------------------------------------
 
-$ACLCache = @{}
+$NVMeCache = @{}
 
-foreach ($PveHost in $WINDOWS_SERVERS | Select-Object -Unique) {
+foreach ($PveHost in ($WINDOWS_SERVERS | Select-Object -Unique)) {
 
     Write-Host ""
-    Write-Host "Collecte ACL sur $PveHost ..." `
+    Write-Host "Analyse du serveur PVE $PveHost..." `
         -ForegroundColor Cyan
 
     try {
 
-        $ACLs = ssh `
-            -i ~/.ssh/b300098957@ramena `
-            -o ConnectTimeout=10 `
-            -o BatchMode=yes `
-            "root@$PveHost" `
-            "pveum acl list 2>/dev/null"
+$Command = @'
+for vm in $(qm list | sed 1d | awk '{print $1}'); do
+    qm config $vm | grep -q nvme-storage && echo $vm
+done
+'@
+
+        $Output = ssh `
+        -i ~/.ssh/b300098957@ramena `
+        -o ConnectTimeout=10 `
+        -o BatchMode=yes `
+        "root@$PveHost" `
+        $Command
+
+        Write-Host "Output from ${PveHost}:"
+
+        Write-Host "===== OUTPUT ====="
+        Write-Host $Output
+        Write-Host "LASTEXITCODE=$LASTEXITCODE"
+        Write-Host "=================="
 
         if ($LASTEXITCODE -ne 0) {
             throw "Connexion SSH impossible"
         }
 
-        foreach ($Line in ($ACLs -split "`n")) {
+        foreach ($VmId in ($Output -split "`n")) {
 
-            if ($Line -match 'B\d+@pam') {
+            $VmId = $VmId.Trim()
 
-                $User = $Matches[0]
+            if (-not [string]::IsNullOrWhiteSpace($VmId)) {
 
-                $ACLCache[$User] = $PveHost
+                $NVMeCache[$VmId] = $PveHost
+
+                Write-Host `
+                    "VM $VmId utilise nvme-storage sur $PveHost" `
+                    -ForegroundColor Green
             }
         }
-
-        Write-Host `
-            "$PveHost : ACL collectées" `
-            -ForegroundColor Green
     }
     catch {
 
-        Write-Host `
-            "$PveHost : SSH impossible" `
-            -ForegroundColor Red
+        Write-Host "Erreur complète :" -ForegroundColor Red
+        Write-Host $_.Exception.Message -ForegroundColor Red
+
+        if ($_.InvocationInfo.PositionMessage) {
+            Write-Host $_.InvocationInfo.PositionMessage `
+                -ForegroundColor DarkYellow
+        }
     }
 }
 
@@ -128,36 +153,46 @@ for ($i = 0; $i -lt $STUDENTS.Count; $i++) {
         -GitHubID $GitHubID `
         -AvatarID $AvatarID
 
-    $ExpectedUser = "B$StudentID@pam"
+    # Format:
+    # 10.7.236.196|ayoub|101
 
-    if ($ACLCache.ContainsKey($ExpectedUser)) {
+    $server_parts = $SERVERS[$i] -split '\|'
 
-        $ServerFound = $ACLCache[$ExpectedUser]
-        
-        $PveUrl = "https://$($ServerFound):8006"
+    $VmIP   = $server_parts[0]
+    $VmUser = $server_parts[1]
+    $VmId   = $server_parts[2]
+
+    if (
+        $VmId -ne "0" -and
+        $NVMeCache.ContainsKey($VmId)
+    ) {
+
+        $PveHost = $NVMeCache[$VmId]
+
+        $PveUrl = "https://$($PveHost):8006"
 
         $Status = ":white_check_mark:"
 
         $SuccessCount++
 
         Write-Host `
-            "$ExpectedUser trouvé sur $ServerFound" `
+            "Étudiant $StudentID : VM $VmId sur $PveHost utilise nvme-storage" `
             -ForegroundColor Green
     }
     else {
 
-        $ServerFound = "-"
+        $PveHost = "-"
 
         $PveUrl = "-"
 
         $Status = ":x:"
 
         Write-Host `
-            "$ExpectedUser absent" `
+            "Étudiant $StudentID : VM $VmId n'utilise pas nvme-storage" `
             -ForegroundColor Red
     }
 
-    $md += "| $Counter | [$StudentID](../$StudentID/README.md) :point_right: $url | [$ServerFound]($PveUrl) | $Status |"
+    $md += "| $Counter | ../$StudentID/README.md :point_right: $url | $VmId | $PveUrl | $Status |"
 
     $Counter++
 }
@@ -181,7 +216,7 @@ else {
 }
 
 $md += ""
-$md += "| :abacus: | `$\displaystyle\sum_{i=1}^{$TotalStudents} s_i$ = $SuccessCount :chart_with_upwards_trend: = $Percentage% | | |"
+$md += "| :abacus: | `$\displaystyle\sum_{i=1}^{$TotalStudents} s_i$ = $SuccessCount :chart_with_upwards_trend: = $Percentage% | | | |"
 
 # --------------------------------------
 # Export
@@ -199,7 +234,7 @@ Write-Host `
     -ForegroundColor Green
 
 Write-Host `
-    "$SuccessCount / $TotalStudents étudiants possèdent un compte Proxmox valide." `
+    "$SuccessCount / $TotalStudents VM utilisent nvme-storage." `
     -ForegroundColor Green
 
 Write-Host `
