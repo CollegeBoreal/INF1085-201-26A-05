@@ -84,11 +84,11 @@ foreach ($PveHost in ($WINDOWS_SERVERS | Select-Object -Unique)) {
 
     try {
 
-$Command = @'
-for vm in $(qm list | sed 1d | awk '{print $1}'); do
-    qm config $vm | grep -q nvme-storage && echo $vm
-done
-'@
+        $Command = @(
+            "for vm in `$(qm list | sed 1d | awk '{print `$1}'); do"
+            "    qm config `$vm | grep -q nvme-storage && echo `$vm"
+            "done"
+        ) -join "`n"
 
         $Output = ssh `
         -i ~/.ssh/b300098957@ramena `
@@ -193,7 +193,7 @@ for ($i = 0; $i -lt $STUDENTS.Count; $i++) {
             -ForegroundColor Red
     }
 
-    $md += "| $Counter | ../$StudentID/README.md :point_right: $url | $VmId | $PveUrl | $Status |"
+    $md += "| $Counter | [$StudentID](../$StudentID/README.md) :point_right: $url | $VmId | $PveUrl | $Status |"
 
     $Counter++
 }
