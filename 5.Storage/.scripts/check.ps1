@@ -104,7 +104,8 @@ done
         Write-Host "LASTEXITCODE=$LASTEXITCODE"
         Write-Host "=================="
 
-        if ($LASTEXITCODE -ne 0) {
+        if ($LASTEXITCODE -eq 255) {
+
             throw "Connexion SSH impossible"
         }
 
